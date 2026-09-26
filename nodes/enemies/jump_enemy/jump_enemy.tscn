@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c0ujg2wuj4j6s"]
+
+[ext_resource type="Script" uid="uid://b3un8db6a3x60" path="res://nodes/enemies/jump_enemy/jump_enemy.gd" id="1_jump"]
+[ext_resource type="PackedScene" path="res://nodes/enemies/lethal_component.tscn" id="2_lethal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(32, 32)
+
+[node name="JumpEnemy" type="CharacterBody2D" unique_id=1654153278]
+collision_layer = 16
+collision_mask = 64
+script = ExtResource("1_jump")
+
+[node name="Placeholder" type="Polygon2D" parent="." unique_id=1123397988]
+color = Color(0.85, 0.2, 0.2, 1)
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2110909430]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="LethalComponent" parent="." unique_id=1352236130 instance=ExtResource("2_lethal")]

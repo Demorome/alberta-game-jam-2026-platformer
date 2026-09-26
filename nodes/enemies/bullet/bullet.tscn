@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://nodes/enemies/bullet/bullet.gd" id="1_bullet"]
+[ext_resource type="PackedScene" path="res://nodes/enemies/lethal_component.tscn" id="2_lethal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bullet"]
+size = Vector2(8, 8)
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_bullet")
+
+[node name="Placeholder" type="Polygon2D" parent="."]
+color = Color(1, 0.8, 0.2, 1)
+polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-4, -4, 8, 8)
+
+[node name="LethalComponent" parent="." instance=ExtResource("2_lethal")]
+
+[node name="CollisionShape2D" parent="LethalComponent" index="0"]
+shape = SubResource("RectangleShape2D_bullet")
+
+[editable path="LethalComponent"]

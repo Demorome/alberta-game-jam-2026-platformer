@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://1lju6rkdtp7r"]
+
+[ext_resource type="Script" uid="uid://dcuocpxpcmmoi" path="res://nodes/enemies/lethal_component.gd" id="1_lethal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lethal"]
+resource_local_to_scene = true
+size = Vector2(32, 32)
+
+[node name="LethalComponent" type="Area2D" unique_id=1127409436]
+collision_layer = 16
+collision_mask = 33
+script = ExtResource("1_lethal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1638093079]
+shape = SubResource("RectangleShape2D_lethal")

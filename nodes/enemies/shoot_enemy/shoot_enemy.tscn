@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://nodes/enemies/shoot_enemy/shoot_enemy.gd" id="1_shoot"]
+[ext_resource type="PackedScene" path="res://nodes/enemies/lethal_component.tscn" id="2_lethal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_detect"]
+size = Vector2(400, 128)
+
+[node name="ShootEnemy" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_shoot")
+
+[node name="Placeholder" type="Polygon2D" parent="."]
+color = Color(0.6, 0.2, 0.8, 1)
+polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-20, 0)
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-216, -48)
+shape = SubResource("RectangleShape2D_detect")
+
+[node name="LethalComponent" parent="." instance=ExtResource("2_lethal")]

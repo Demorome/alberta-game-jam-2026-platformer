@@ -109,8 +109,11 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ldfxe")
 animation = &"idle"
 autoplay = "idle"
+frame = 1
+frame_progress = 0.72151893
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1927395993]
+collision_mask = 112
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=445683785]
 position = Vector2(0.5, -16)

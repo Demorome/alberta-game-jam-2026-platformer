@@ -118,8 +118,6 @@ public partial class Player : Entity
 				movementDirection * moveSpeed,
 				moveSpeed * 2.0f * (float)delta
 			);
-
-			//TODO: Flip the sprite
 		}
 		else
 		{

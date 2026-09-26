@@ -19,6 +19,7 @@ rect = Rect2(-4, -4, 8, 8)
 shape = SubResource("RectangleShape2D_bullet")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1335842581]
+rotation = 4.712389
 texture = ExtResource("3_ests7")
 
 [editable path="LethalComponent"]

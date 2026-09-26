@@ -27,6 +27,14 @@ window/stretch/aspect="expand"
 
 project/assembly_name="AlbertaGameJam2026_Plaftformer"
 
+[file_customization]
+
+folder_colors={
+"res://nodes/entities/enemies/": "red",
+"res://nodes/entities/enemies/bullet/": "gray",
+"res://nodes/entities/enemies/sandbox/": "yellow"
+}
+
 [global_group]
 
 player=""

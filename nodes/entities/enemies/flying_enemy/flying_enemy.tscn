@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cw3x6qbs75i4g" path="res://art/enemies/eyething/eyething2.png" id="4_ua2xl"]
 [ext_resource type="Texture2D" uid="uid://b8v0aio3ayehi" path="res://art/enemies/eyething/eyething3.png" id="5_qg4ge"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_s0cde"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_yrwds"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -40,23 +40,17 @@ animations = [{
 [node name="FlyingEnemy" unique_id=1622520287 instance=ExtResource("1_base")]
 script = ExtResource("2_flying")
 bullet_direction = Vector2(0, 1)
+bullet_spawn_delay = 500
 
 [node name="Muzzle" parent="." index="2" unique_id=1228435906]
-position = Vector2(0, 20)
+position = Vector2(0, 8)
 
 [node name="DetectionArea" parent="." index="4" unique_id=1921624051]
 position = Vector2(0, 304)
 scale = Vector2(5, 20)
 
-[node name="Sprite2D" parent="." index="6" unique_id=97990587]
-visible = false
-modulate = Color(0.55, 0.2585, 0.26335827, 1)
-rotation = -1.5707964
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7" unique_id=1697104359]
-position = Vector2(0, -1)
-sprite_frames = SubResource("SpriteFrames_s0cde")
+[node name="AnimatedSprite2D" parent="." index="6" unique_id=392108590]
+sprite_frames = SubResource("SpriteFrames_yrwds")
 animation = &"shooting"
-autoplay = "default"
 frame = 4
 frame_progress = 1.0

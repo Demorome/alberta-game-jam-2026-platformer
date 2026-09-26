@@ -8,9 +8,8 @@ using Components;
 /// </summary>
 public partial class Entity : Node2D
 {
-	public Vector2? Velocity;
-	public BaseAirMoveSpeed? BaseAirMoveSpeed;
-	public BaseGroundMoveSpeed? BaseGroundMoveSpeed;
+	public float? BaseAirMoveSpeed;
+	public float? BaseGroundMoveSpeed;
 	public Health? Health;
 	public JumpInfo? JumpInfo;
 	public Gravity? Gravity;
@@ -42,7 +41,7 @@ public partial class Entity : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        base._Ready();
+		base._Ready();
 
 		if (AnimatedSprite == null)
 		{
@@ -53,30 +52,69 @@ public partial class Entity : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        base._Process(delta);
+		base._Process(delta);
 
 		// TODO: Handle component logic!
 	}
 
-    public override void _PhysicsProcess(double delta)
-    {
-        base._PhysicsProcess(delta);
+	public override void _PhysicsProcess(double delta)
+	{
+		base._PhysicsProcess(delta);
 
-        if (CharacterBody2D != null)
-        {
-            // Apply gravity
-            if (!CharacterBody2D.IsOnFloor())
-            {
-                // velocity.y += gravity * delta
-            }
-            else
-            {
-                if (JumpInfo != null)
-                {
-                    var jumpInfo = JumpInfo.Value;
-                    JumpInfo = jumpInfo with { CurrentJumps = 0};
-                }
-            }
-        }
-    }
+		if (CharacterBody2D != null)
+		{
+			// Apply gravity
+			if (!CharacterBody2D.IsOnFloor())
+			{
+				if (Gravity.HasValue)
+				{
+					var velocity = CharacterBody2D.Velocity;
+					CharacterBody2D.Velocity = velocity
+						+ new Vector2(0, Gravity.Value.Value * (float)delta);
+				}
+			}
+			else
+			{
+				if (JumpInfo != null)
+				{
+					var jumpInfo = JumpInfo.Value;
+					JumpInfo = jumpInfo with { CurrentJumps = 0};
+				}
+			}
+		}
+	}
+
+	public void PostPhysicsProcess(double delta)
+	{
+		if (CharacterBody2D != null)
+		{
+			CharacterBody2D.MoveAndSlide();
+
+			if (CharacterBody2D.IsOnFloor())
+			{
+				var velocityX = CharacterBody2D.Velocity.X;
+
+				if (velocityX > 0)
+				{
+					AnimatedSprite.FlipH = false;
+				}
+				else if (velocityX < 0)
+				{
+					AnimatedSprite.FlipH = true;
+				}
+			}
+		}
+	}
+
+	public float GetBaseMoveSpeed()
+	{
+		if (CharacterBody2D!.IsOnFloor() || !BaseAirMoveSpeed.HasValue)
+		{
+			return BaseGroundMoveSpeed!.Value;
+		}
+		else
+		{
+			return BaseAirMoveSpeed.Value;
+		}
+	}
 }

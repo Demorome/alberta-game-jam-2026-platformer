@@ -6,3 +6,4 @@ func _ready() -> void:
 	# Keep shooter setup.
 	super()
 	print("🪰 Flying enemy alive")
+	

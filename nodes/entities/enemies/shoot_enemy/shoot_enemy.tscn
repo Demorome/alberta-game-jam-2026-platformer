@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dv7vc6ya4vt6b"]
+[gd_scene format=3 uid="uid://cfpcqfap3awcn"]
 
 [ext_resource type="Script" uid="uid://n3a4txibdgx0" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.gd" id="1_shoot"]
 [ext_resource type="PackedScene" uid="uid://1lju6rkdtp7r" path="res://nodes/entities/enemies/lethal_component.tscn" id="2_lethal"]
@@ -9,6 +9,17 @@ size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_detect"]
 size = Vector2(32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lncns"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fmq3u")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="ShootEnemy" type="StaticBody2D" unique_id=393889548 groups=["enemy"]]
 collision_layer = 16
@@ -39,5 +50,5 @@ shape = SubResource("RectangleShape2D_detect")
 
 [node name="LethalComponent" parent="." unique_id=558618702 instance=ExtResource("2_lethal")]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=97990587]
-texture = ExtResource("3_fmq3u")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=392108590]
+sprite_frames = SubResource("SpriteFrames_lncns")

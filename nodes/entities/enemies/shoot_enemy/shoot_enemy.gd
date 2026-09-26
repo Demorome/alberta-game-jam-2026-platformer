@@ -16,11 +16,13 @@ const BULLET_SCENE := preload("res://nodes/entities/enemies/bullet/bullet.tscn")
 @export var bullet_speed := 300.0
 ## Initial bullet direction.
 @export var bullet_direction := Vector2.LEFT
+## Delay in ms before spawning the bullet after animation starts.
+@export_range(0, 2000, 10, "suffix:ms") var bullet_spawn_delay := 100
 
 var _facing_right := false
 
 @onready var placeholder: Polygon2D = $Placeholder
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Marker2D = $Muzzle
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var detection_area: Area2D = $DetectionArea
@@ -54,7 +56,7 @@ func _update_facing() -> void:
 func _mirror() -> void:
 	# Flip children horizontally.
 	#placeholder.scale.x = -placeholder.scale.x
-	sprite.flip_h = not sprite.flip_h
+	animatedSprite.flip_h = not animatedSprite.flip_h
 	muzzle.position.x = -muzzle.position.x
 	sight_shape.position.x = -sight_shape.position.x
 
@@ -86,6 +88,12 @@ func _shoot() -> void:
 	var direction := bullet_direction.normalized()
 	if _facing_right:
 		direction.x = -direction.x
+
+	animatedSprite.play(&"shooting")
+
+	# Wait for bullet spawn delay
+	if bullet_spawn_delay > 0:
+		await get_tree().create_timer(bullet_spawn_delay / 1000.0).timeout
 
 	var bullet: EnemyBullet = BULLET_SCENE.instantiate()
 	bullet.direction = direction

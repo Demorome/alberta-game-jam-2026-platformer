@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://7qhk8wcibrw2"]
 
 [ext_resource type="PackedScene" uid="uid://c0ujg2wuj4j6s" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.tscn" id="1_jump"]
-[ext_resource type="PackedScene" uid="uid://dv7vc6ya4vt6b" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="2_shoot"]
-[ext_resource type="PackedScene" uid="uid://dhplturmoe28k" path="res://nodes/entities/enemies/bullet/bullet.tscn" id="3_bullet"]
+[ext_resource type="PackedScene" uid="uid://cfpcqfap3awcn" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="2_shoot"]
 [ext_resource type="PackedScene" uid="uid://xvky0d3nnmb1" path="res://nodes/entities/enemies/sandbox/test_player.tscn" id="4_qol3q"]
+[ext_resource type="PackedScene" uid="uid://cam5w74fep5i" path="res://nodes/entities/enemies/pacifist_enemy/pacifist_enemy.tscn" id="5_8px65"]
 [ext_resource type="PackedScene" uid="uid://bayrlq3isyfmt" path="res://nodes/entities/enemies/flying_enemy/flying_enemy.tscn" id="5_ogjj6"]
 [ext_resource type="PackedScene" uid="uid://77og5br0g55u" path="res://nodes/entities/chain_system/ChainSystem.tscn" id="6_8px65"]
 [ext_resource type="Texture2D" uid="uid://mthibn752wyt" path="res://nodes/entities/enemies/sandbox/jump_enemy_placeholder.png" id="7_d06sb"]
@@ -62,16 +62,11 @@ position = Vector2(19, 302)
 position = Vector2(263, 301)
 face_player = true
 
-[node name="Bullet" parent="." unique_id=1255697074 instance=ExtResource("3_bullet")]
-position = Vector2(427, 291)
-
 [node name="TestPlayer" parent="." unique_id=58294919 instance=ExtResource("4_qol3q")]
 position = Vector2(61, 301)
 
 [node name="FlyingEnemy" parent="." unique_id=691769773 instance=ExtResource("5_ogjj6")]
-position = Vector2(576, 25)
+position = Vector2(119, 101)
 
-[node name="ChainSystem" parent="." unique_id=1673201277 node_paths=PackedStringArray("ball") instance=ExtResource("6_8px65")]
-position = Vector2(188, 96)
-ball = NodePath("../Ground2")
-link_texture = ExtResource("7_d06sb")
+[node name="PacifistEnemy" parent="." unique_id=123456789 instance=ExtResource("5_8px65")]
+position = Vector2(470, 302)

@@ -6,8 +6,6 @@ namespace Components;
 // Components that can be reused between all Entities.
 public readonly record struct Gravity(float Value);
 public readonly record struct Velocity(Vector2 Value);
-public readonly record struct BaseAirMoveSpeed(float Value);
-public readonly record struct BaseGroundMoveSpeed(float Value);
 public readonly record struct Health
 {
     public int Current { get; }
@@ -31,8 +29,8 @@ public readonly record struct Health
 }
 public readonly record struct JumpInfo(
     float JumpStrength, // should be positive, we'll flip it later since Y goes down. Controls the burst of vertical velocity.
-    int MaxJumps,
-    int CurrentJumps
+    int MaxJumps = 1,
+    int CurrentJumps = 0
 );
 public readonly record struct DealsDamageOnContact(float Value);
 public readonly record struct BecomeInvincibleOnDamage(float TimeInSeconds);

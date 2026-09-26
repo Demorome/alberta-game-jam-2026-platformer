@@ -8,8 +8,8 @@ using Components;
 /// </summary>
 public partial class Entity : Node2D
 {
-	public BaseAirMoveSpeed? BaseAirMoveSpeed;
-	public BaseGroundMoveSpeed? BaseGroundMoveSpeed;
+	public float? BaseAirMoveSpeed;
+	public float? BaseGroundMoveSpeed;
 	public Health? Health;
 	public JumpInfo? JumpInfo;
 	public Gravity? Gravity;
@@ -84,27 +84,37 @@ public partial class Entity : Node2D
 		}
 	}
 
-	public float GetBaseMoveSpeed()
-	{
-		if (CharacterBody2D == null || BaseGroundMoveSpeed == null)
-		{
-			return float.NaN;
-		}
-
-		if (CharacterBody2D.IsOnFloor() || !BaseAirMoveSpeed.HasValue)
-		{
-			return BaseGroundMoveSpeed.Value.Value;
-		}
-		else
-		{
-			return BaseAirMoveSpeed.Value.Value;
-		}
-	}
 	public void PostPhysicsProcess(double delta)
 	{
 		if (CharacterBody2D != null)
 		{
 			CharacterBody2D.MoveAndSlide();
+
+			if (CharacterBody2D.IsOnFloor())
+			{
+				var velocityX = CharacterBody2D.Velocity.X;
+
+				if (velocityX > 0)
+				{
+					AnimatedSprite.FlipH = false;
+				}
+				else if (velocityX < 0)
+				{
+					AnimatedSprite.FlipH = true;
+				}
+			}
+		}
+	}
+
+	public float GetBaseMoveSpeed()
+	{
+		if (CharacterBody2D!.IsOnFloor() || !BaseAirMoveSpeed.HasValue)
+		{
+			return BaseGroundMoveSpeed!.Value;
+		}
+		else
+		{
+			return BaseAirMoveSpeed.Value;
 		}
 	}
 }

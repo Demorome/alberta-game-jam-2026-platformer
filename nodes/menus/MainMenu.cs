@@ -19,7 +19,7 @@ public partial class MainMenu : Node
 
 		NewGameButton.Pressed += () => {
 			var gameScene = IntroScene.Instantiate<IntroScene>();
-			AddChild(gameScene);
+			GetTree().ChangeSceneToNode(gameScene);
 		};
 	}
 

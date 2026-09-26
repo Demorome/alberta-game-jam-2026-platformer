@@ -99,7 +99,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldfxe"]
 size = Vector2(31, 32)
 
-[node name="Player" type="Node2D" unique_id=1748661077 node_paths=PackedStringArray("AnimatedSprite")]
+[node name="Player" type="Node2D" unique_id=1748661077 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D") groups=["player"]]
 script = ExtResource("1_50kia")
 AnimatedSprite = NodePath("AnimatedSprite2D")
 
@@ -108,8 +108,11 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ldfxe")
 animation = &"idle"
 autoplay = "idle"
+frame = 1
+frame_progress = 0.72151893
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1927395993]
+collision_mask = 112
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=445683785]
 position = Vector2(0.5, -16)

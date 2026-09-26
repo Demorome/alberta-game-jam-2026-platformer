@@ -8,13 +8,19 @@ resource_name = "PlaceHolders"
 texture = ExtResource("2_mrsif")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:0/0 = 0
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0/custom_data_0 = 1
 1:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_kvns4"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 64
+physics_layer_0/collision_mask = 63
+custom_data_layer_0/name = "Hit"
+custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_6ji5p")
 
 [node name="Intro" type="Node" unique_id=1422523592]

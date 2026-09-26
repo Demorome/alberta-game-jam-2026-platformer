@@ -22,6 +22,13 @@ public partial class Entity : Node2D
 	public bool DestroyOnLeaveLevelBounds;
 	public BecomeInvincibleOnDamage? BecomeInvincibleOnDamage;
 
+	/// <summary>
+	/// Assume all Entities will have an animated sprite.
+	/// Even if they only have one frame of animation.
+	/// </summary>
+	[Export]
+	public AnimatedSprite2D? AnimatedSprite;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

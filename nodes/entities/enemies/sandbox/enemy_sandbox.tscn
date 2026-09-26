@@ -3,9 +3,46 @@
 [ext_resource type="PackedScene" uid="uid://c0ujg2wuj4j6s" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.tscn" id="1_jump"]
 [ext_resource type="PackedScene" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="2_shoot"]
 [ext_resource type="PackedScene" path="res://nodes/entities/enemies/bullet/bullet.tscn" id="3_bullet"]
+[ext_resource type="Texture2D" uid="uid://db23yl4fhffl2" path="res://nodes/entities/enemies/sandbox/pixilart-sprite1.png" id="4_qol3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(2000, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogjj6"]
+atlas = ExtResource("4_qol3q")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8px65"]
+atlas = ExtResource("4_qol3q")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d06sb"]
+atlas = ExtResource("4_qol3q")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v1hv"]
+atlas = ExtResource("4_qol3q")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8b4v3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogjj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8px65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d06sb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v1hv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="EnemySandbox" type="Node2D" unique_id=635866082]
 
@@ -26,7 +63,6 @@ shape = SubResource("RectangleShape2D_ground")
 
 [node name="JumpEnemy" parent="." unique_id=1120772388 instance=ExtResource("1_jump")]
 position = Vector2(300, 400)
-jump_pattern = Array[float]([1.0, 1.0, 0.5, 2.0])
 
 [node name="ShootEnemy" parent="." unique_id=405484669 instance=ExtResource("2_shoot")]
 position = Vector2(900, 552)
@@ -34,3 +70,14 @@ use_sight = false
 
 [node name="Bullet" parent="." unique_id=1255697074 instance=ExtResource("3_bullet")]
 position = Vector2(700, 540)
+
+[node name="TestPlayer" type="CharacterBody2D" parent="." unique_id=585385007]
+position = Vector2(401, 546)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer" unique_id=2146684374]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TestPlayer" unique_id=1121347501]
+sprite_frames = SubResource("SpriteFrames_8b4v3")
+autoplay = "default"
+frame_progress = 0.25165296
+speed_scale = 1.5

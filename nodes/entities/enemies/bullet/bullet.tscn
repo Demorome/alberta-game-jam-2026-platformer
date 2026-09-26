@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dhplturmoe28k"]
 
 [ext_resource type="Script" uid="uid://ckxkgh8ypefkm" path="res://nodes/entities/enemies/bullet/bullet.gd" id="1_bullet"]
 [ext_resource type="PackedScene" uid="uid://1lju6rkdtp7r" path="res://nodes/entities/enemies/lethal_component.tscn" id="2_lethal"]
@@ -6,19 +6,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bullet"]
 size = Vector2(8, 8)
 
-[node name="Bullet" type="Node2D"]
+[node name="Bullet" type="Node2D" unique_id=1301097769 groups=["enemy"]]
 script = ExtResource("1_bullet")
 
-[node name="Placeholder" type="Polygon2D" parent="."]
+[node name="Placeholder" type="Polygon2D" parent="." unique_id=674720272]
 color = Color(1, 0.8, 0.2, 1)
 polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=751809379]
 rect = Rect2(-4, -4, 8, 8)
 
-[node name="LethalComponent" parent="." instance=ExtResource("2_lethal")]
+[node name="LethalComponent" parent="." unique_id=996291731 instance=ExtResource("2_lethal")]
 
-[node name="CollisionShape2D" parent="LethalComponent" index="0"]
+[node name="CollisionShape2D" parent="LethalComponent" index="0" unique_id=1638093079]
 shape = SubResource("RectangleShape2D_bullet")
 
 [editable path="LethalComponent"]

@@ -19,13 +19,17 @@ config/icon="res://art/icon.svg"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [dotnet]
 
 project/assembly_name="AlbertaGameJam2026_Plaftformer"
+
+[global_group]
+
+player=""
+enemy=""
 
 [input]
 

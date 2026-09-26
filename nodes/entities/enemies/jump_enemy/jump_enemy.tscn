@@ -18,4 +18,4 @@ polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2110909430]
 shape = SubResource("RectangleShape2D_body")
 
-[node name="LethalComponent" parent="." unique_id=1352236130 instance=ExtResource("2_lethal")]
+[node name="LethalComponent" parent="." unique_id=1352236130 groups=["enemy"] instance=ExtResource("2_lethal")]

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://77og5br0g55u"]
+
+[ext_resource type="Script" uid="uid://d3dpt74uekot1" path="res://nodes/entities/chain_system/chain_system.gd" id="1_3n0mm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lncns"]
+
+[node name="ChainSystem" type="Node2D" unique_id=1673201277]
+script = ExtResource("1_3n0mm")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=125288297]
+position = Vector2(186, 78)
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=2084683066]
+shape = SubResource("CircleShape2D_lncns")
+
+[node name="Polygon2D" type="Polygon2D" parent="RigidBody2D" unique_id=175800837]
+position = Vector2(-2.3841858e-07, -0.9999995)
+scale = Vector2(0.29934973, 0.3132869)
+color = Color(0.7385542, 0.028123278, 0.5675889, 1)
+polygon = PackedVector2Array(-24.000015, 29.200005, -39.200012, 3.5999987, -27.199997, -27.599998, 8.800003, -35.6, 33.59999, -15.599998, 36.800003, 17.199997, 15.688894, 38.78442)
+uv = PackedVector2Array(-208, 33.200005, -223.2, 7.5999985, -211.19998, -23.599998, -175.19998, -31.599998, -150.4, -11.599998, -147.19998, 21.199997, -167.19998, 37.200005)
+
+[node name="LinkContainer" type="Node2D" parent="." unique_id=1872151991]

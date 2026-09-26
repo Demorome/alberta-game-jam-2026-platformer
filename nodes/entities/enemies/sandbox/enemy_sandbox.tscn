@@ -1,17 +1,22 @@
 [gd_scene format=3 uid="uid://7qhk8wcibrw2"]
 
+[ext_resource type="Script" uid="uid://v1tuf6nyhha7" path="res://nodes/entities/enemies/sandbox/enemy_sandbox.gd" id="1_8v1hv"]
 [ext_resource type="PackedScene" uid="uid://c0ujg2wuj4j6s" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.tscn" id="1_jump"]
 [ext_resource type="PackedScene" uid="uid://cfpcqfap3awcn" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="2_shoot"]
 [ext_resource type="PackedScene" uid="uid://xvky0d3nnmb1" path="res://nodes/entities/enemies/sandbox/test_player.tscn" id="4_qol3q"]
 [ext_resource type="PackedScene" uid="uid://cam5w74fep5i" path="res://nodes/entities/enemies/pacifist_enemy/pacifist_enemy.tscn" id="5_8px65"]
 [ext_resource type="PackedScene" uid="uid://bayrlq3isyfmt" path="res://nodes/entities/enemies/flying_enemy/flying_enemy.tscn" id="5_ogjj6"]
 [ext_resource type="PackedScene" uid="uid://77og5br0g55u" path="res://nodes/entities/chain_system/ChainSystem.tscn" id="6_8px65"]
-[ext_resource type="Texture2D" uid="uid://mthibn752wyt" path="res://nodes/entities/enemies/sandbox/jump_enemy_placeholder.png" id="7_d06sb"]
+[ext_resource type="Texture2D" uid="uid://b3st0ccb2wegq" path="res://art/player/chain_link.png" id="8_uamj0"]
+[ext_resource type="Texture2D" uid="uid://b7okmr7d4ryqd" path="res://art/player/Bag.png" id="9_uamj0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(2000, 64)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8v1hv"]
+
 [node name="EnemySandbox" type="Node2D" unique_id=635866082]
+script = ExtResource("1_8v1hv")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=222887066]
 position = Vector2(322, 183)
@@ -30,8 +35,8 @@ polygon = PackedVector2Array(-1000, -32, 1000, -32, 1000, 32, -1000, 32)
 shape = SubResource("RectangleShape2D_ground")
 
 [node name="Ground2" type="StaticBody2D" parent="." unique_id=1974474373]
-position = Vector2(251, -12)
-scale = Vector2(0.1296, 1)
+position = Vector2(336, -23)
+scale = Vector2(0.40960062, 1)
 collision_layer = 64
 collision_mask = 0
 
@@ -55,6 +60,32 @@ polygon = PackedVector2Array(-1000, -32, 1000, -32, 1000, 32, -1000, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3" unique_id=1028784135]
 shape = SubResource("RectangleShape2D_ground")
 
+[node name="Ground4" type="StaticBody2D" parent="." unique_id=499981790]
+position = Vector2(-20.000002, 166)
+scale = Vector2(0.01679616, 5.0000005)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Visual" type="Polygon2D" parent="Ground4" unique_id=795857243]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-1000, -32, 1000, -32, 1000, 32, -1000, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground4" unique_id=946943117]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="Ground5" type="StaticBody2D" parent="." unique_id=65475442]
+position = Vector2(651.99994, 164)
+scale = Vector2(0.01679616, 5.0000005)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Visual" type="Polygon2D" parent="Ground5" unique_id=1450281071]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-1000, -32, 1000, -32, 1000, 32, -1000, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground5" unique_id=35721154]
+shape = SubResource("RectangleShape2D_ground")
+
 [node name="JumpEnemy" parent="." unique_id=1120772388 instance=ExtResource("1_jump")]
 position = Vector2(19, 302)
 
@@ -70,3 +101,20 @@ position = Vector2(119, 101)
 
 [node name="PacifistEnemy" parent="." unique_id=123456789 instance=ExtResource("5_8px65")]
 position = Vector2(470, 302)
+
+[node name="ChainSystem" parent="." unique_id=1673201277 node_paths=PackedStringArray("bagNode") instance=ExtResource("6_8px65")]
+position = Vector2(316, 44)
+scale = Vector2(1, 1)
+bagNode = NodePath("../Bag")
+link_texture = ExtResource("8_uamj0")
+
+[node name="Bag" type="RigidBody2D" parent="." unique_id=215362188]
+position = Vector2(376, 67)
+collision_layer = 32
+collision_mask = 64
+
+[node name="BlueishBall" type="Sprite2D" parent="Bag" unique_id=984768900]
+texture = ExtResource("9_uamj0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bag" unique_id=1084343544]
+shape = SubResource("CircleShape2D_8v1hv")

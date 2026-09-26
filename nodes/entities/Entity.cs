@@ -29,14 +29,17 @@ public partial class Entity : Node2D
 	[Export]
 	public AnimatedSprite2D? AnimatedSprite;
 
+	[Export]
+	public CharacterBody2D? CharacterBody2D;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        if (AnimatedSprite == null)
-        {
-            throw new NullReferenceException("AnimatedSprite should not be null!");
-        }
+		if (AnimatedSprite == null)
+		{
+			throw new NullReferenceException("AnimatedSprite should not be null!");
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

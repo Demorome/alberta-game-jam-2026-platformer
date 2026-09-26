@@ -1,6 +1,117 @@
 [gd_scene format=3 uid="uid://djfunxgeyym7j"]
 
 [ext_resource type="Script" uid="uid://tph47ac20mor" path="res://nodes/entities/player/Player.cs" id="1_50kia"]
+[ext_resource type="Texture2D" uid="uid://bat8vy6culp7t" path="res://art/player/pixilart-sprite1.png" id="2_jmlei"]
 
-[node name="Player" type="Node2D" unique_id=1748661077]
+[sub_resource type="AtlasTexture" id="AtlasTexture_apgst"]
+atlas = ExtResource("2_jmlei")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xfb0"]
+atlas = ExtResource("2_jmlei")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryjgh"]
+atlas = ExtResource("2_jmlei")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx6bh"]
+atlas = ExtResource("2_jmlei")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ldfxe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apgst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xfb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryjgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx6bh")
+}],
+"loop": 1,
+"name": &"carrying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apgst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xfb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryjgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx6bh")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"jumping",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"jumping_carrying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"jumping_throwing",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"picking_up",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"pulling",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"throwing_idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"throwing_walking",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldfxe"]
+size = Vector2(31, 32)
+
+[node name="Player" type="Node2D" unique_id=1748661077 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D")]
 script = ExtResource("1_50kia")
+AnimatedSprite = NodePath("AnimatedSprite2D")
+CharacterBody2D = NodePath("CharacterBody2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=713325998]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ldfxe")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1927395993]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=445683785]
+position = Vector2(0.5, -16)
+shape = SubResource("RectangleShape2D_ldfxe")

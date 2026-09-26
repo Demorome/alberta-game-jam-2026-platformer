@@ -21,9 +21,9 @@ public partial class Player : Entity
 	CarryingObjects ObjectCarrying = new();
 
 	[Export]
-	float GroundMoveSpeed = 40f;
+	float GroundMoveSpeed = 180f;
 	[Export]
-	float AirMoveSpeed = 40f;
+	float AirMoveSpeed = 120f;
 
 	[Export]
 	int MaxHealth = 1;
@@ -93,6 +93,7 @@ public partial class Player : Entity
 			if (isOnFloor || CoyoteTimer > 0)
 			{
 				CharacterBody2D.Velocity = CharacterBody2D.Velocity with { Y = -jumpInfo.JumpStrength };
+				JumpInfo = jumpInfo with { CurrentJumps = jumpInfo.CurrentJumps + 1 };
 				JumpBufferTimer = 0; // Consume buffer
 				CoyoteTimer = 0; // Consume coyote time if used
 			}

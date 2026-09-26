@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export_range(0.1, 10.0, 0.1, "suffix:s") var jump_interval := 1.5
 ## Jump start speed or impulse force.
 @export var jump_impulse := 400.0
+## Delay before first jump.
+@export_range(0.0, 5.0, 0.1, "suffix:s") var jump_delay := 0.0
 ## Pattern that multiplies the jump impulse on each iteration.
 @export var jump_pattern: Array[float] = []
 
@@ -15,7 +17,7 @@ var _pattern_index := 0
 func _ready() -> void:
 	print("🦘 Jump enemy alive")
 	print("🦘 Jump pattern: ", jump_pattern)
-	_wait = jump_interval
+	_wait = jump_delay
 
 
 func _physics_process(delta: float) -> void:

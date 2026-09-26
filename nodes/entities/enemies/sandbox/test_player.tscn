@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://xvky0d3nnmb1"]
+
+[ext_resource type="Script" uid="uid://cpv2ldycf35fk" path="res://nodes/entities/enemies/sandbox/test_player.gd" id="1_u6g6l"]
+[ext_resource type="Texture2D" uid="uid://db23yl4fhffl2" path="res://nodes/entities/enemies/sandbox/pixilart-sprite1.png" id="2_d2kfo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qol3q"]
+size = Vector2(20, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogjj6"]
+atlas = ExtResource("2_d2kfo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8px65"]
+atlas = ExtResource("2_d2kfo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d06sb"]
+atlas = ExtResource("2_d2kfo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v1hv"]
+atlas = ExtResource("2_d2kfo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8b4v3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogjj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8px65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d06sb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v1hv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="TestPlayer" type="CharacterBody2D" unique_id=58294919 groups=["player"]]
+collision_mask = 80
+script = ExtResource("1_u6g6l")
+SPEED = 100.0
+JUMP_VELOCITY = -300.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627586756]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_qol3q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2000851529]
+sprite_frames = SubResource("SpriteFrames_8b4v3")
+autoplay = "default"
+frame_progress = 0.25165296
+speed_scale = 1.5

@@ -1,3 +1,4 @@
+class_name ShootEnemy
 extends StaticBody2D
 ## Shoots on interval a set interval and may or may not need to "see" the player.
 
@@ -19,6 +20,7 @@ const BULLET_SCENE := preload("res://nodes/entities/enemies/bullet/bullet.tscn")
 var _facing_right := false
 
 @onready var placeholder: Polygon2D = $Placeholder
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var muzzle: Marker2D = $Muzzle
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var detection_area: Area2D = $DetectionArea
@@ -51,7 +53,8 @@ func _update_facing() -> void:
 
 func _mirror() -> void:
 	# Flip children horizontally.
-	placeholder.scale.x = -placeholder.scale.x
+	#placeholder.scale.x = -placeholder.scale.x
+	sprite.flip_h = not sprite.flip_h
 	muzzle.position.x = -muzzle.position.x
 	sight_shape.position.x = -sight_shape.position.x
 

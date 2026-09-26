@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bayrlq3isyfmt"]
+
+[ext_resource type="PackedScene" uid="uid://dv7vc6ya4vt6b" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="1_base"]
+[ext_resource type="Script" uid="uid://bqqoksne27b47" path="res://nodes/entities/enemies/flying_enemy/flying_enemy.gd" id="2_flying"]
+
+[node name="FlyingEnemy" unique_id=1622520287 instance=ExtResource("1_base")]
+script = ExtResource("2_flying")
+bullet_direction = Vector2(0, 1)
+
+[node name="Muzzle" parent="." index="2" unique_id=1228435906]
+position = Vector2(0, 20)
+
+[node name="DetectionArea" parent="." index="4" unique_id=1921624051]
+position = Vector2(0, 304)
+scale = Vector2(5, 20)
+
+[node name="Sprite2D" parent="." index="6" unique_id=97990587]
+modulate = Color(0.55, 0.2585, 0.26335827, 1)
+rotation = -1.5707964

@@ -20,10 +20,28 @@ public partial class Player : Entity
 	}
 	CarryingObjects ObjectCarrying = new();
 
+	[Export]
+	float GroundMoveSpeed = 40f;
+	[Export]
+	float AirMoveSpeed = 40f;
+
+	[Export]
+	int MaxHealth = 1;
+	[Export]
+	float JumpVelocity = 200;
+	[Export]
+	int MaxJumps = 1;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
+
+		AddDefaultGravity();
+		JumpInfo = new Components.JumpInfo(JumpVelocity, MaxJumps);
+		BaseAirMoveSpeed = AirMoveSpeed;
+		BaseGroundMoveSpeed = GroundMoveSpeed;
+		Health = new Components.Health(MaxHealth);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,32 +53,19 @@ public partial class Player : Entity
 		{
 			return;
 		}
-
-		float horizontalMove = Input.GetAxis("move_left", "move_right");
-		float verticalAim = Input.GetAxis("aim_up", "aim_down");
-		bool jump_pressed = Input.GetActionRawStrength("jump") > .5f;
-		bool grab_or_throw_pressed = Input.GetActionRawStrength("grab_or_throw") > .5f;
-
-		if (jump_pressed)
-		{
-
-		}
-
-		if (grab_or_throw_pressed)
-		{
-			if (ObjectCarrying.MaybeCarriedEntity != null)
-			{
-				// Throw in moving + aiming direction.
-			}
-		}
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
 
-		bool isOnFloor = CharacterBody2D!.IsOnFloor();
+		if (Health!.Value.IsDead)
+		{
+			// GD.Print("Player is dead!");
+			return;
+		}
 
+		bool isOnFloor = CharacterBody2D!.IsOnFloor();
 		if (isOnFloor)
 		{
 			CoyoteTimer = COYOTE_TIME_THRESHOLD;  // Reload coyote time
@@ -101,23 +106,19 @@ public partial class Player : Entity
 		}
 
 		// Handle Horizontal input
-		var direction = Input.GetAxis("move_left", "move_right");
+		var movementDirection = Input.GetAxis("move_left", "move_right");
 
 		var oldVelocity = CharacterBody2D.Velocity;
 		var moveSpeed = GetBaseMoveSpeed();
-		if (float.IsNaN(moveSpeed))
-		{
-			GD.Print("ERROR, NaN move speed!");
-		}
 		float newVelocityX;
 
 		// Movement with simple acceleration/deceleration (you can make this more complex)
-		if (direction != 0.0f)
+		if (movementDirection != 0.0f)
 		{
 			// We use move_toward for basic acceleration/deceleration
 			newVelocityX = Mathf.MoveToward(
 				oldVelocity.X,
-				direction * moveSpeed,
+				movementDirection * moveSpeed,
 				moveSpeed * 2.0f * (float)delta
 			);
 
@@ -131,6 +132,17 @@ public partial class Player : Entity
 				0,
 				moveSpeed * 2.0f * (float)delta
 			);
+		}
+
+		float verticalAim = Input.GetAxis("aim_up", "aim_down");
+		bool grab_or_throw_pressed = Input.GetActionRawStrength("grab_or_throw") > .5f;
+
+		if (grab_or_throw_pressed)
+		{
+			if (ObjectCarrying.MaybeCarriedEntity != null)
+			{
+				// Throw in moving + aiming direction.
+			}
 		}
 
 		CharacterBody2D.Velocity = new Vector2(newVelocityX, oldVelocity.Y);

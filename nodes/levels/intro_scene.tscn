@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwj70p15ki68t" path="res://art/tiles/tileset.png" id="2_81p7k"]
 [ext_resource type="PackedScene" uid="uid://c0ujg2wuj4j6s" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.tscn" id="3_ahe41"]
 [ext_resource type="PackedScene" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="4_vprsf"]
+[ext_resource type="PackedScene" uid="uid://djfunxgeyym7j" path="res://nodes/entities/player/player.tscn" id="5_vprsf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
 texture = ExtResource("2_81p7k")
@@ -67,3 +68,9 @@ position = Vector2(430, 208)
 
 [node name="ShootEnemy" parent="." unique_id=393889548 instance=ExtResource("4_vprsf")]
 position = Vector2(588, 141)
+
+[node name="Player" parent="." unique_id=1748661077 instance=ExtResource("5_vprsf")]
+position = Vector2(102, 316)
+GroundMoveSpeed = 150.0
+AirMoveSpeed = 150.0
+JumpVelocity = 300.0

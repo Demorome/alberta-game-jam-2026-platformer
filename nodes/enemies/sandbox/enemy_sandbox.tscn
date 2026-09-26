@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://7qhk8wcibrw2"]
+
+[ext_resource type="PackedScene" uid="uid://c0ujg2wuj4j6s" path="res://nodes/enemies/jump_enemy/jump_enemy.tscn" id="1_jump"]
+[ext_resource type="PackedScene" path="res://nodes/enemies/shoot_enemy/shoot_enemy.tscn" id="2_shoot"]
+[ext_resource type="PackedScene" path="res://nodes/enemies/bullet/bullet.tscn" id="3_bullet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(2000, 64)
+
+[node name="EnemySandbox" type="Node2D" unique_id=635866082]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=222887066]
+position = Vector2(576, 324)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=750706823]
+position = Vector2(576, 600)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Visual" type="Polygon2D" parent="Ground" unique_id=929883444]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-1000, -32, 1000, -32, 1000, 32, -1000, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1113082301]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="JumpEnemy" parent="." unique_id=1120772388 instance=ExtResource("1_jump")]
+position = Vector2(300, 400)
+jump_pattern = Array[float]([1.0, 1.0, 0.5, 2.0])
+
+[node name="ShootEnemy" parent="." unique_id=405484669 instance=ExtResource("2_shoot")]
+position = Vector2(900, 552)
+use_sight = false
+
+[node name="Bullet" parent="." unique_id=1255697074 instance=ExtResource("3_bullet")]
+position = Vector2(700, 540)

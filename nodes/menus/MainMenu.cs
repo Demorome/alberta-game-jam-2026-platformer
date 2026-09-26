@@ -9,16 +9,16 @@ public partial class MainMenu : Node
 	[Export]
 	public Button? NewGameButton { get; set; }
 
+	[Export]
+	public PackedScene? IntroScene { get; set; }
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		ExitButton.Pressed += () => { GetTree().Quit(); };
 
 		NewGameButton.Pressed += () => {
-			var gameScene = ResourceLoader
-				.Load<PackedScene>("res://nodes/levels/intro_scene.tscn")
-				.Instantiate<IntroScene>();
-
+			var gameScene = IntroScene.Instantiate<IntroScene>();
 			AddChild(gameScene);
 		};
 	}

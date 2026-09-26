@@ -43,6 +43,7 @@ animations = [{
 collision_layer = 16
 collision_mask = 64
 script = ExtResource("1_jump")
+jump_pattern = Array[float]([1.0, 0.5, 1.75])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2110909430]
 shape = SubResource("RectangleShape2D_body")

@@ -2,51 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://c0ujg2wuj4j6s" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.tscn" id="1_jump"]
 [ext_resource type="PackedScene" uid="uid://dv7vc6ya4vt6b" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="2_shoot"]
-[ext_resource type="PackedScene" path="res://nodes/entities/enemies/bullet/bullet.tscn" id="3_bullet"]
-[ext_resource type="Script" uid="uid://cpv2ldycf35fk" path="res://nodes/entities/enemies/sandbox/test_player.gd" id="4_ogjj6"]
-[ext_resource type="Texture2D" uid="uid://db23yl4fhffl2" path="res://nodes/entities/enemies/sandbox/pixilart-sprite1.png" id="4_qol3q"]
+[ext_resource type="PackedScene" uid="uid://dhplturmoe28k" path="res://nodes/entities/enemies/bullet/bullet.tscn" id="3_bullet"]
+[ext_resource type="PackedScene" uid="uid://xvky0d3nnmb1" path="res://nodes/entities/enemies/sandbox/test_player.tscn" id="4_qol3q"]
+[ext_resource type="PackedScene" uid="uid://bayrlq3isyfmt" path="res://nodes/entities/enemies/flying_enemy/flying_enemy.tscn" id="5_ogjj6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(2000, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qol3q"]
-size = Vector2(20, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ogjj6"]
-atlas = ExtResource("4_qol3q")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8px65"]
-atlas = ExtResource("4_qol3q")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d06sb"]
-atlas = ExtResource("4_qol3q")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8v1hv"]
-atlas = ExtResource("4_qol3q")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8b4v3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ogjj6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8px65")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d06sb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8v1hv")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 3.0
-}]
 
 [node name="EnemySandbox" type="Node2D" unique_id=635866082]
 
@@ -66,29 +27,44 @@ polygon = PackedVector2Array(-1000, -32, 1000, -32, 1000, 32, -1000, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1113082301]
 shape = SubResource("RectangleShape2D_ground")
 
+[node name="Ground2" type="StaticBody2D" parent="." unique_id=1974474373]
+position = Vector2(251, -12)
+scale = Vector2(0.1296, 1)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Visual" type="Polygon2D" parent="Ground2" unique_id=1386950804]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-1000, -32, 1000, -32, 1000, 32, -1000, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2" unique_id=938262072]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="Ground3" type="StaticBody2D" parent="." unique_id=131842482]
+position = Vector2(119.000015, 53.000004)
+scale = Vector2(0.01679616, 1)
+collision_layer = 64
+collision_mask = 0
+
+[node name="Visual" type="Polygon2D" parent="Ground3" unique_id=1718392546]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-1000, -32, 1000, -32, 1000, 32, -1000, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3" unique_id=1028784135]
+shape = SubResource("RectangleShape2D_ground")
+
 [node name="JumpEnemy" parent="." unique_id=1120772388 instance=ExtResource("1_jump")]
-position = Vector2(100, 198)
+position = Vector2(19, 302)
 
 [node name="ShootEnemy" parent="." unique_id=405484669 instance=ExtResource("2_shoot")]
-position = Vector2(390, 302)
+position = Vector2(263, 301)
 face_player = true
 
 [node name="Bullet" parent="." unique_id=1255697074 instance=ExtResource("3_bullet")]
 position = Vector2(427, 291)
 
-[node name="TestPlayer" type="CharacterBody2D" parent="." unique_id=585385007 groups=["player"]]
-position = Vector2(181, 297)
-collision_mask = 80
-script = ExtResource("4_ogjj6")
-SPEED = 100.0
-JUMP_VELOCITY = -300.0
+[node name="TestPlayer" parent="." unique_id=58294919 instance=ExtResource("4_qol3q")]
+position = Vector2(61, 301)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestPlayer" unique_id=2146684374]
-position = Vector2(-1, -0.5)
-shape = SubResource("RectangleShape2D_qol3q")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TestPlayer" unique_id=1121347501]
-sprite_frames = SubResource("SpriteFrames_8b4v3")
-autoplay = "default"
-frame_progress = 0.25165296
-speed_scale = 1.5
+[node name="FlyingEnemy" parent="." unique_id=691769773 instance=ExtResource("5_ogjj6")]
+position = Vector2(576, 25)

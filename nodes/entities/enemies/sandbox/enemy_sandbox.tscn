@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://7qhk8wcibrw2"]
 
-[ext_resource type="PackedScene" uid="uid://c0ujg2wuj4j6s" path="res://nodes/enemies/jump_enemy/jump_enemy.tscn" id="1_jump"]
-[ext_resource type="PackedScene" path="res://nodes/enemies/shoot_enemy/shoot_enemy.tscn" id="2_shoot"]
-[ext_resource type="PackedScene" path="res://nodes/enemies/bullet/bullet.tscn" id="3_bullet"]
+[ext_resource type="PackedScene" uid="uid://c0ujg2wuj4j6s" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.tscn" id="1_jump"]
+[ext_resource type="PackedScene" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="2_shoot"]
+[ext_resource type="PackedScene" path="res://nodes/entities/enemies/bullet/bullet.tscn" id="3_bullet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(2000, 64)

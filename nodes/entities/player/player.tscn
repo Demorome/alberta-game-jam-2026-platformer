@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://djfunxgeyym7j"]
+
+[ext_resource type="Script" uid="uid://tph47ac20mor" path="res://nodes/entities/player/Player.cs" id="1_50kia"]
+
+[node name="Player" type="Node2D" unique_id=1748661077]
+script = ExtResource("1_50kia")

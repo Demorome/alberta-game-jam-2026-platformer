@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1lju6rkdtp7r"]
 
-[ext_resource type="Script" uid="uid://dcuocpxpcmmoi" path="res://nodes/enemies/lethal_component.gd" id="1_lethal"]
+[ext_resource type="Script" uid="uid://dcuocpxpcmmoi" path="res://nodes/entities/enemies/lethal_component.gd" id="1_lethal"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lethal"]
 resource_local_to_scene = true

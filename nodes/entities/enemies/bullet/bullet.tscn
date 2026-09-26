@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3]
 
-[ext_resource type="Script" path="res://nodes/enemies/bullet/bullet.gd" id="1_bullet"]
-[ext_resource type="PackedScene" path="res://nodes/enemies/lethal_component.tscn" id="2_lethal"]
+[ext_resource type="Script" uid="uid://ckxkgh8ypefkm" path="res://nodes/entities/enemies/bullet/bullet.gd" id="1_bullet"]
+[ext_resource type="PackedScene" uid="uid://1lju6rkdtp7r" path="res://nodes/entities/enemies/lethal_component.tscn" id="2_lethal"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bullet"]
 size = Vector2(8, 8)

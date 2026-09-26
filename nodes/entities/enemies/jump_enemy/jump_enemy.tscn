@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0ujg2wuj4j6s"]
 
-[ext_resource type="Script" uid="uid://b3un8db6a3x60" path="res://nodes/enemies/jump_enemy/jump_enemy.gd" id="1_jump"]
-[ext_resource type="PackedScene" path="res://nodes/enemies/lethal_component.tscn" id="2_lethal"]
+[ext_resource type="Script" uid="uid://b3un8db6a3x60" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.gd" id="1_jump"]
+[ext_resource type="PackedScene" uid="uid://1lju6rkdtp7r" path="res://nodes/entities/enemies/lethal_component.tscn" id="2_lethal"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(32, 32)

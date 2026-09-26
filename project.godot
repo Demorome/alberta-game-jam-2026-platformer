@@ -24,6 +24,16 @@ window/stretch/aspect="expand"
 
 project/assembly_name="AlbertaGameJam2026_Plaftformer"
 
+[layer_names]
+
+2d_physics/layer_1="PLAYER_1"
+2d_physics/layer_2="PLAYER_extra1"
+2d_physics/layer_3="PLAYER_extra2"
+2d_physics/layer_4="PLAYER_extra3"
+2d_physics/layer_5="ENEMY"
+2d_physics/layer_6="CARRIABLE"
+2d_physics/layer_7="GROUND"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

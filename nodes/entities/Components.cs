@@ -3,7 +3,19 @@ using Godot;
 
 namespace Components;
 
-// Components that can be reused between all Entities.
+//== Components that can be reused between all Entities.
+
+public record class CanCarryObjects
+{
+    public bool IsInGrabbingAnimation;
+    public Entity? MaybeCarriedEntity;
+}
+
+public record class TetheredObject
+{
+    public bool IsPulling;
+    public required Entity TetheredEntity;
+}
 public readonly record struct Gravity(float Value);
 public readonly record struct Velocity(Vector2 Value);
 public readonly record struct Health

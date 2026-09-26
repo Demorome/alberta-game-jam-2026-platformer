@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://n3a4txibdgx0" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.gd" id="1_shoot"]
 [ext_resource type="PackedScene" uid="uid://1lju6rkdtp7r" path="res://nodes/entities/enemies/lethal_component.tscn" id="2_lethal"]
+[ext_resource type="Texture2D" uid="uid://bgibfcw7kuklx" path="res://nodes/entities/enemies/sandbox/shoot_enemy_placeholder.png" id="3_fmq3u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(32, 32)
@@ -15,6 +16,7 @@ collision_mask = 0
 script = ExtResource("1_shoot")
 
 [node name="Placeholder" type="Polygon2D" parent="." unique_id=269344093]
+visible = false
 color = Color(0.6, 0.2, 0.8, 1)
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
@@ -36,3 +38,6 @@ monitorable = false
 shape = SubResource("RectangleShape2D_detect")
 
 [node name="LethalComponent" parent="." unique_id=558618702 instance=ExtResource("2_lethal")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=97990587]
+texture = ExtResource("3_fmq3u")

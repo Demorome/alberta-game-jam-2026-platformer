@@ -15,9 +15,9 @@ var _pattern_index := 0
 
 
 func _ready() -> void:
-	print("🦘 Jump enemy alive")
-	print("🦘 Jump pattern: ", jump_pattern)
-	_wait = jump_delay
+	# print("🦘 Jump enemy alive")
+	# print("🦘 Jump pattern: ", jump_pattern)
+	_wait = jump_interval
 
 
 func _physics_process(delta: float) -> void:
@@ -41,8 +41,8 @@ func _jump() -> void:
 func _next_multiplier() -> float:
 	if jump_pattern.is_empty():
 		return 1.0
-	print("🦘 Jump pattern index: ", _pattern_index)
-	print("🦘 Jump pattern multiplier: ", jump_pattern[_pattern_index])
+	# print("🦘 Jump pattern index: ", _pattern_index)
+	# print("🦘 Jump pattern multiplier: ", jump_pattern[_pattern_index])
 	var multiplier := jump_pattern[_pattern_index]
 	_pattern_index = (_pattern_index + 1) % jump_pattern.size()
 	return multiplier

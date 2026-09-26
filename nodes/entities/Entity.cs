@@ -8,6 +8,10 @@ using Components;
 /// </summary>
 public partial class Entity : Node2D
 {
+	public CanCarryObjects? ObjectCarrying;
+	public TetheredObject? TetheredObject;
+	public bool IsThrowing;
+	public bool LockedFacing;
 	public float? BaseAirMoveSpeed;
 	public float? BaseGroundMoveSpeed;
 	public Health? Health;
@@ -86,21 +90,96 @@ public partial class Entity : Node2D
 
 	public void PostPhysicsProcess(double delta)
 	{
+		if (Health.HasValue && Health.Value.IsDead)
+		{
+			AnimatedSprite!.Play("dying");
+			return;
+		}
+
 		if (CharacterBody2D != null)
 		{
 			CharacterBody2D.MoveAndSlide();
+			var velocityX = CharacterBody2D.Velocity.X;
+
+			bool playingOtherAnim = ObjectCarrying?.IsInGrabbingAnimation == true;
+			if (playingOtherAnim)
+			{
+			   AnimatedSprite!.Play("picking_up");
+			}
+			else
+			{
+				playingOtherAnim = TetheredObject?.IsPulling == true;
+				if (playingOtherAnim)
+				{
+					AnimatedSprite!.Play("pulling");
+				}
+				else if (IsThrowing)
+				{
+					playingOtherAnim = true;
+					if (velocityX == 0)
+					{
+						AnimatedSprite!.Play("throwing_idle");
+					}
+					else
+					{
+						AnimatedSprite!.Play("throwing_walking");
+					}
+				}
+			}
 
 			if (CharacterBody2D.IsOnFloor())
 			{
-				var velocityX = CharacterBody2D.Velocity.X;
-
-				if (velocityX > 0)
+				if (velocityX == 0)
 				{
-					AnimatedSprite.FlipH = false;
+					if (!playingOtherAnim  && AnimatedSprite!.SpriteFrames.HasAnimation("idle"))
+					{
+						AnimatedSprite.Play("idle");
+					}
 				}
-				else if (velocityX < 0)
+				else
 				{
-					AnimatedSprite.FlipH = true;
+					if (!playingOtherAnim  && AnimatedSprite!.SpriteFrames.HasAnimation("walking"))
+					{
+						AnimatedSprite.Play("walking");
+					}
+
+					if (velocityX > 0)
+					{
+						if (!LockedFacing)
+						{
+							AnimatedSprite!.FlipH = false;
+						}
+					}
+					else if (velocityX < 0)
+					{
+						if (!LockedFacing)
+						{
+							AnimatedSprite!.FlipH = true;
+						}
+					}
+				}
+			}
+			// else, in the air
+			else if (!playingOtherAnim)
+			{
+				if (IsThrowing)
+				{
+					if (AnimatedSprite!.SpriteFrames.HasAnimation("jumping_throwing"))
+					{
+						AnimatedSprite.Play("jumping_throwing");
+					}
+				}
+				else if (ObjectCarrying?.MaybeCarriedEntity != null)
+				{
+					//if (ObjectCarrying.Value.InGrabbingAnimation)
+					if (AnimatedSprite!.SpriteFrames.HasAnimation("jumping_carrying"))
+					{
+						AnimatedSprite.Play("jumping_carrying");
+					}
+				}
+				else if (AnimatedSprite!.SpriteFrames.HasAnimation("jumping"))
+				{
+					AnimatedSprite.Play("jumping");
 				}
 			}
 		}

@@ -46,7 +46,7 @@ animations = [{
 collision_mask = 80
 script = ExtResource("1_u6g6l")
 SPEED = 100.0
-JUMP_VELOCITY = -300.0
+JUMP_VELOCITY = -150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627586756]
 position = Vector2(-1, -0.5)

@@ -10,16 +10,6 @@ public partial class Player : Entity
 	public float JumpBufferTimer;
 	const float JUMP_BUFFER_TIME_THRESHOLD = 0.1f; // 100 milliseconds for jump buffer
 
-	public class CarryingObjects
-	{
-		/// <summary>
-		/// Just a way to disable object carrying if needed.
-		/// </summary>
-		public bool CanCarryObjects = true;
-		public Entity? MaybeCarriedEntity;
-	}
-	CarryingObjects ObjectCarrying = new();
-
 	[Export]
 	float GroundMoveSpeed = 180f;
 	[Export]
@@ -42,6 +32,7 @@ public partial class Player : Entity
 		BaseAirMoveSpeed = AirMoveSpeed;
 		BaseGroundMoveSpeed = GroundMoveSpeed;
 		Health = new Components.Health(MaxHealth);
+		ObjectCarrying = new Components.CanCarryObjects();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

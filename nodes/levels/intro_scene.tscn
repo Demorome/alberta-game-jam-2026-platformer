@@ -80,5 +80,4 @@ position = Vector2(359, 52)
 [node name="Player" parent="." unique_id=1199104382 instance=ExtResource("6_a0xom")]
 position = Vector2(176, 317)
 GroundMoveSpeed = 200.0
-AirMoveSpeed = 150.0
 JumpVelocity = 300.0

@@ -1,0 +1,79 @@
+[gd_scene format=4 uid="uid://bd3gbau4fe5wb"]
+
+[ext_resource type="Texture2D" uid="uid://dwj70p15ki68t" path="res://art/tiles/tileset.png" id="1_bhunt"]
+[ext_resource type="PackedScene" uid="uid://xvky0d3nnmb1" path="res://nodes/entities/enemies/sandbox/test_player.tscn" id="2_pcsq5"]
+[ext_resource type="PackedScene" uid="uid://bayrlq3isyfmt" path="res://nodes/entities/enemies/flying_enemy/flying_enemy.tscn" id="3_edywu"]
+[ext_resource type="PackedScene" uid="uid://cfpcqfap3awcn" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="3_jqhsy"]
+[ext_resource type="PackedScene" uid="uid://c0ujg2wuj4j6s" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.tscn" id="4_sa4ar"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
+texture = ExtResource("1_bhunt")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0/custom_data_0 = 1
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0/custom_data_0 = 1
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_kvns4"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 64
+physics_layer_0/collision_mask = 63
+custom_data_layer_0/name = "Hit"
+custom_data_layer_0/type = 2
+sources/1 = SubResource("TileSetAtlasSource_7wkfx")
+
+[node name="Lvl3" type="Node" unique_id=1422523592]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1610676418]
+tile_map_data = PackedByteArray("AAAAAAkAAQABAAEAAAATAAoAAQABAAEAAAATAAkAAQABAAEAAAATAAIAAQAAAAEAAAATAAEAAQAAAAEAAAATAAAAAQAFAAAAAAAAAAQAAQACAAIAAAAAAAMAAQACAAEAAAAAAAIAAQACAAEAAAAAAAEAAQACAAEAAAAAAAAAAQAEAAAAAAATAAgAAQABAAEAAAAUAAAAAQABAAEAAAAUAAEAAQABAAEAAAAUAAIAAQABAAEAAAAUAAgAAQABAAEAAAAUAAkAAQABAAEAAAAUAAoAAQABAAEAAAAAAAoAAQAEAAEAAAABAAkAAQABAAEAAAACAAkAAQABAAEAAAADAAkAAQABAAEAAAAEAAkAAQABAAEAAAAFAAkAAQABAAEAAAAGAAkAAQABAAEAAAAHAAkAAQABAAEAAAAIAAkAAQABAAEAAAAOAAkAAQABAAEAAAAPAAkAAQABAAEAAAAQAAkAAQABAAEAAAARAAkAAQABAAEAAAASAAkAAQABAAEAAAANAAkAAQABAAEAAAALAAkAAQABAAEAAAAKAAkAAQABAAEAAAAJAAkAAQABAAEAAAAMAAkAAQABAAEAAAABAAoAAQABAAEAAAACAAoAAQABAAEAAAADAAoAAQABAAEAAAAEAAoAAQABAAEAAAAFAAoAAQABAAEAAAAGAAoAAQABAAEAAAAHAAoAAQABAAEAAAAIAAoAAQABAAEAAAAJAAoAAQABAAEAAAAKAAoAAQABAAEAAAALAAoAAQABAAEAAAAMAAoAAQABAAEAAAANAAoAAQABAAEAAAAOAAoAAQABAAEAAAAPAAoAAQABAAEAAAAQAAoAAQABAAEAAAARAAoAAQABAAEAAAASAAoAAQABAAEAAAAAAAsAAQABAAEAAAABAAsAAQABAAEAAAACAAsAAQABAAEAAAADAAsAAQABAAEAAAAEAAsAAQABAAEAAAAFAAsAAQABAAEAAAAGAAsAAQABAAEAAAAHAAsAAQABAAEAAAAIAAsAAQABAAEAAAAJAAsAAQABAAEAAAAKAAsAAQABAAEAAAALAAsAAQABAAEAAAAMAAsAAQABAAEAAAANAAsAAQABAAEAAAAOAAsAAQABAAEAAAAPAAsAAQABAAEAAAAQAAsAAQABAAEAAAARAAsAAQABAAEAAAASAAsAAQABAAEAAAATAAsAAQABAAEAAAAUAAsAAQABAAEAAAADAAAAAQABAAIAAAAKAAAAAQABAAIAAAALAAAAAQABAAIAAAAMAAAAAQABAAIAAAANAAAAAQABAAIAAAAOAAAAAQABAAIAAAAPAAAAAQABAAIAAAAQAAAAAQABAAIAAAARAAAAAQABAAIAAAASAAAAAQABAAIAAAAEAAAAAQABAAIAAAAFAAAAAQABAAIAAAAGAAAAAQABAAIAAAAHAAAAAQABAAIAAAAIAAAAAQABAAIAAAAJAAAAAQABAAIAAAAHAAgAAQABAAAAAAAIAAgAAQABAAAAAAAJAAgAAQABAAAAAAAKAAgAAQAFAAEAAAALAAgAAQAEAAEAAAAMAAgAAQABAAAAAAAPAAgAAQAEAAEAAAAQAAgAAQABAAAAAAARAAgAAQAFAAEAAAASAAgAAQABAAEAAAANAAgAAQABAAAAAAAOAAgAAQAFAAEAAAABAAAAAQABAAIAAAACAAAAAQABAAIAAAABAAgAAQABAAAAAAAAAAgAAQABAAAAAAACAAgAAQAFAAEAAAADAAgAAQABAAEAAAAEAAgAAQAEAAEAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAACAAcAAQAAAAAAAAADAAcAAQAFAAEAAAADAAYAAQAAAAAAAAAEAAYAAQACAAAAAAAEAAcAAQACAAEAAAAKAAcAAQAAAAAAAAALAAcAAQACAAAAAAARAAcAAQAAAAAAAAAOAAcAAQAAAAAAAAAPAAcAAQACAAAAAAASAAYAAQAAAAAAAAASAAcAAQAFAAEAAAATAAcAAQABAAEAAAAUAAcAAQABAAEAAAATAAYAAQABAAAAAAAUAAYAAQABAAAAAAATAAMAAQAAAAIAAAAUAAMAAQABAAIAAAA=")
+tile_set = SubResource("TileSet_kvns4")
+
+[node name="TestPlayer" parent="." unique_id=58294919 instance=ExtResource("2_pcsq5")]
+position = Vector2(16, 240)
+JUMP_VELOCITY = -300.0
+
+[node name="ShootEnemy" parent="." unique_id=393889548 instance=ExtResource("3_jqhsy")]
+position = Vector2(336, 208)
+shoot_interval = 3.0
+
+[node name="FlyingEnemy" parent="." unique_id=1622520287 instance=ExtResource("3_edywu")]
+position = Vector2(400, 48)
+
+[node name="JumpEnemy" parent="." unique_id=1654153278 instance=ExtResource("4_sa4ar")]
+position = Vector2(528, 240)
+jump_interval = 0.5
+jump_pattern = Array[float]([1.0, 0.5, 1.25])

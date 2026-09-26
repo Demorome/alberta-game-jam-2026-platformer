@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Main : Node
+public partial class MainMenu : Node
 {
 	[Export]
 	public Button? ExitButton { get; set; }
@@ -16,7 +16,7 @@ public partial class Main : Node
 
 		NewGameButton.Pressed += () => {
 			var gameScene = ResourceLoader
-				.Load<PackedScene>("res://nodes/game_scenes/intro_scene.tscn")
+				.Load<PackedScene>("res://scenes/game_scenes/intro_scene.tscn")
 				.Instantiate<IntroScene>();
 
 			AddChild(gameScene);

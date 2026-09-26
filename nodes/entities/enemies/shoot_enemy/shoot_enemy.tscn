@@ -1,39 +1,43 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dv7vc6ya4vt6b"]
 
 [ext_resource type="Script" uid="uid://n3a4txibdgx0" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.gd" id="1_shoot"]
 [ext_resource type="PackedScene" uid="uid://1lju6rkdtp7r" path="res://nodes/entities/enemies/lethal_component.tscn" id="2_lethal"]
+[ext_resource type="Texture2D" uid="uid://bgibfcw7kuklx" path="res://nodes/entities/enemies/sandbox/shoot_enemy_placeholder.png" id="3_fmq3u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_detect"]
-size = Vector2(400, 128)
+size = Vector2(32, 32)
 
-[node name="ShootEnemy" type="StaticBody2D"]
+[node name="ShootEnemy" type="StaticBody2D" unique_id=393889548 groups=["enemy"]]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_shoot")
 
-[node name="Placeholder" type="Polygon2D" parent="."]
+[node name="Placeholder" type="Polygon2D" parent="." unique_id=269344093]
+visible = false
 color = Color(0.6, 0.2, 0.8, 1)
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=243657730]
 shape = SubResource("RectangleShape2D_body")
 
-[node name="Muzzle" type="Marker2D" parent="."]
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1228435906]
 position = Vector2(-20, 0)
 
-[node name="ShootTimer" type="Timer" parent="."]
+[node name="ShootTimer" type="Timer" parent="." unique_id=1765037889]
 one_shot = true
 
-[node name="DetectionArea" type="Area2D" parent="."]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1921624051]
+scale = Vector2(11, 5)
 collision_layer = 0
-collision_mask = 1
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(-216, -48)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=263962031]
 shape = SubResource("RectangleShape2D_detect")
 
-[node name="LethalComponent" parent="." instance=ExtResource("2_lethal")]
+[node name="LethalComponent" parent="." unique_id=558618702 instance=ExtResource("2_lethal")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=97990587]
+texture = ExtResource("3_fmq3u")

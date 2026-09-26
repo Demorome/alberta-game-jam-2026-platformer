@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b3un8db6a3x60" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.gd" id="1_jump"]
 [ext_resource type="PackedScene" uid="uid://1lju6rkdtp7r" path="res://nodes/entities/enemies/lethal_component.tscn" id="2_lethal"]
+[ext_resource type="Texture2D" uid="uid://mthibn752wyt" path="res://nodes/entities/enemies/sandbox/jump_enemy_placeholder.png" id="3_ny25v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(32, 32)
@@ -18,4 +19,7 @@ polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2110909430]
 shape = SubResource("RectangleShape2D_body")
 
-[node name="LethalComponent" parent="." unique_id=1352236130 instance=ExtResource("2_lethal")]
+[node name="LethalComponent" parent="." unique_id=1352236130 groups=["enemy"] instance=ExtResource("2_lethal")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=48082881]
+texture = ExtResource("3_ny25v")

@@ -102,7 +102,6 @@ size = Vector2(31, 32)
 [node name="Player" type="Node2D" unique_id=1748661077 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D") groups=["player"]]
 script = ExtResource("1_50kia")
 AnimatedSprite = NodePath("AnimatedSprite2D")
-CharacterBody2D = NodePath("CharacterBody2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=713325998]
 position = Vector2(0, -16)

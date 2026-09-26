@@ -12,7 +12,13 @@ public partial class Entity : Node2D
 	public BaseAirMoveSpeed? BaseAirMoveSpeed;
 	public BaseGroundMoveSpeed? BaseGroundMoveSpeed;
 	public Health? Health;
-	public JumpHeight? JumpHeight;
+	public JumpInfo? JumpInfo;
+	public Gravity? Gravity;
+	public void AddDefaultGravity()
+	{
+		var defaultGravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsDouble();
+		Gravity = new Gravity((float)defaultGravity);
+	}
 	public DealsDamageOnContact? DealsDamageOnContact;
 	[Export]
 	public bool DestroyOnContact;

@@ -62,20 +62,20 @@ func _mirror() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("[SHOOT_ENEMY] ↳ body entered: ", body)
+	# print("[SHOOT_ENEMY] ↳ body entered: ", body)
 	# if use_sight and body.is_in_group(LethalComponent.PLAYER_GROUP):
 	if use_sight: # Realistically, only player related bodies are in the mask layer
-		print("[SHOOT_ENEMY] 👀 player entered sight, starting shoot timer")
+		# print("[SHOOT_ENEMY] 👀 player entered sight, starting shoot timer")
 		shoot_timer.start(shoot_delay)
 
 
 func _on_body_exited(body: Node2D) -> void:
-	print("[SHOOT_ENEMY] ↳ body exited: ", body)
+	# print("[SHOOT_ENEMY] ↳ body exited: ", body)
 	# print("[SHOOT_ENEMY] body.get_collision_layer_value(1): ", body.get_collision_layer_value(1))
 	# print("[SHOOT_ENEMY] body.get_collision_layer_value(2): ", body.get_collision_layer_value(2))
 	# if use_sight and body.is_in_group(LethalComponent.PLAYER_GROUP):
 	if use_sight: # Realistically, only player related bodies are in the mask layer
-		print("[SHOOT_ENEMY] 👀 player exited sight, stopping shoot timer")
+		# print("[SHOOT_ENEMY] 👀 player exited sight, stopping shoot timer")
 		shoot_timer.stop()
 
 

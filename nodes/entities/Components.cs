@@ -4,6 +4,7 @@ using Godot;
 namespace Components;
 
 // Components that can be reused between all Entities.
+public readonly record struct Gravity(float Value);
 public readonly record struct Velocity(Vector2 Value);
 public readonly record struct BaseAirMoveSpeed(float Value);
 public readonly record struct BaseGroundMoveSpeed(float Value);
@@ -11,6 +12,7 @@ public readonly record struct Health
 {
     public int Current { get; }
     public int Max { get; }
+    public bool IsDead => Current <= 0;
 
     public Health(int amount, int max)
     {
@@ -27,6 +29,10 @@ public readonly record struct Health
         return new Health(Current - amount);
     }
 }
-public readonly record struct JumpHeight(float Value);
+public readonly record struct JumpInfo(
+    float JumpStrength, // should be positive, we'll flip it later since Y goes down. Controls the burst of vertical velocity.
+    int MaxJumps,
+    int CurentJumps
+);
 public readonly record struct DealsDamageOnContact(float Value);
 public readonly record struct BecomeInvincibleOnDamage(float TimeInSeconds);

@@ -21,7 +21,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		$AnimatedSprite2D.play(&"jump")
 	else:
+		$AnimatedSprite2D.play(&"default")
 		_wait -= delta
 		if _wait <= 0.0:
 			_jump()

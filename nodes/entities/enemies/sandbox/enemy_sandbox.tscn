@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c0ujg2wuj4j6s" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.tscn" id="1_jump"]
 [ext_resource type="PackedScene" uid="uid://cfpcqfap3awcn" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="2_shoot"]
 [ext_resource type="PackedScene" uid="uid://xvky0d3nnmb1" path="res://nodes/entities/enemies/sandbox/test_player.tscn" id="4_qol3q"]
+[ext_resource type="PackedScene" uid="uid://cam5w74fep5i" path="res://nodes/entities/enemies/pacifist_enemy/pacifist_enemy.tscn" id="5_8px65"]
 [ext_resource type="PackedScene" uid="uid://bayrlq3isyfmt" path="res://nodes/entities/enemies/flying_enemy/flying_enemy.tscn" id="5_ogjj6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
@@ -64,3 +65,6 @@ position = Vector2(61, 301)
 
 [node name="FlyingEnemy" parent="." unique_id=691769773 instance=ExtResource("5_ogjj6")]
 position = Vector2(119, 101)
+
+[node name="PacifistEnemy" parent="." unique_id=123456789 instance=ExtResource("5_8px65")]
+position = Vector2(470, 302)

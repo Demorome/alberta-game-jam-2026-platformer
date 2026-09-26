@@ -27,6 +27,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="AlbertaGameJam2026_Plaftformer"
 
+[global_group]
+
+player=""
+
 [input]
 
 jump={

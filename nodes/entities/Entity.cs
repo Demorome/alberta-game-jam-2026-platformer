@@ -42,6 +42,8 @@ public partial class Entity : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+        base._Ready();
+
 		if (AnimatedSprite == null)
 		{
 			throw new NullReferenceException("AnimatedSprite should not be null!");
@@ -51,6 +53,30 @@ public partial class Entity : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+        base._Process(delta);
+
 		// TODO: Handle component logic!
 	}
+
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+
+        if (CharacterBody2D != null)
+        {
+            // Apply gravity
+            if (!CharacterBody2D.IsOnFloor())
+            {
+                // velocity.y += gravity * delta
+            }
+            else
+            {
+                if (JumpInfo != null)
+                {
+                    var jumpInfo = JumpInfo.Value;
+                    JumpInfo = jumpInfo with { CurrentJumps = 0};
+                }
+            }
+        }
+    }
 }

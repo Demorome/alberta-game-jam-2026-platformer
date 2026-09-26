@@ -5,10 +5,12 @@ public partial class Player : Entity
 {
 	// Credits to https://indiegameacademy.com/how-to-make-a-smooth-movement-system-for-a-2d-platformer-in-godot/
 	public float CoyoteTimer;
-	const float COYOTE_TIME_THRESHOLD = 0.1f; // 100 milliseconds of coyote time
+	[Export]
+	public float CoyoteTimeMax = 0.12f;
 
 	public float JumpBufferTimer;
-	const float JUMP_BUFFER_TIME_THRESHOLD = 0.1f; // 100 milliseconds for jump buffer
+	[Export]
+	public float JumpBufferTimerMax = 0.1f;
 
 	[Export]
 	float GroundMoveSpeed = 180f;
@@ -18,7 +20,7 @@ public partial class Player : Entity
 	[Export]
 	int MaxHealth = 1;
 	[Export]
-	float JumpVelocity = 200;
+	float JumpVelocity = 300;
 	[Export]
 	int MaxJumps = 1;
 
@@ -59,7 +61,7 @@ public partial class Player : Entity
 		bool isOnFloor = CharacterBody2D!.IsOnFloor();
 		if (isOnFloor)
 		{
-			CoyoteTimer = COYOTE_TIME_THRESHOLD;  // Reload coyote time
+			CoyoteTimer = CoyoteTimeMax;  // Reload coyote time
 		}
 
 		// Update timers
@@ -75,7 +77,7 @@ public partial class Player : Entity
 		// Handle Jump input (with buffer and coyote time)
 		if (Input.IsActionJustPressed("jump"))
 		{
-			JumpBufferTimer = JUMP_BUFFER_TIME_THRESHOLD;
+			JumpBufferTimer = JumpBufferTimerMax;
 		}
 
 		if (JumpBufferTimer > 0)
@@ -89,11 +91,14 @@ public partial class Player : Entity
 				CoyoteTimer = 0; // Consume coyote time if used
 			}
 			// Air jump (double jump, etc.)
-			else if (jumpInfo.CurrentJumps < jumpInfo.MaxJumps)
+			else
 			{
-				CharacterBody2D.Velocity = CharacterBody2D.Velocity with { Y = -jumpInfo.JumpStrength * 0.8f };
-				JumpInfo = jumpInfo with { CurrentJumps = jumpInfo.CurrentJumps + 1 };
-				JumpBufferTimer = 0; // Consume buffer
+				if (jumpInfo.CurrentJumps + 1 < jumpInfo.MaxJumps)
+				{
+					CharacterBody2D.Velocity = CharacterBody2D.Velocity with { Y = -jumpInfo.JumpStrength * 0.8f };
+					JumpInfo = jumpInfo with { CurrentJumps = jumpInfo.CurrentJumps + 1 };
+					JumpBufferTimer = 0; // Consume buffer
+				}
 			}
 		}
 

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bqfi8m1qbprwt"]
+
+[ext_resource type="Script" uid="uid://7xpld6e4lyfg" path="res://scenes/game_scenes/IntroScene.cs" id="1_erw1j"]
+
+[node name="Intro" type="Node" unique_id=1422523592]
+script = ExtResource("1_erw1j")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=375323370]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.25490198, 1, 1)

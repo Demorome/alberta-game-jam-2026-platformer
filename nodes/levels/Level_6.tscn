@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://77og5br0g55u" path="res://nodes/entities/chain_system/ChainSystem.tscn" id="8_0jwch"]
 [ext_resource type="Texture2D" uid="uid://b3st0ccb2wegq" path="res://art/player/chain_link.png" id="9_cx6so"]
 [ext_resource type="PackedScene" uid="uid://c33wvy4xt4xrc" path="res://nodes/entities/player/moneybag.tscn" id="10_kq4c0"]
+[ext_resource type="Script" uid="uid://cecuv8tpc8ay6" path="res://nodes/levels/killzone.gd" id="12_kq4c0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
 texture = ExtResource("1_ma2ro")
@@ -22,7 +23,6 @@ texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:0/0/custom_data_0 = 1
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -35,7 +35,6 @@ texture_region_size = Vector2i(32, 32)
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:1/0/custom_data_0 = 1
 4:1/0 = 0
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -61,6 +60,9 @@ physics_layer_0/collision_mask = 63
 custom_data_layer_0/name = "Hit"
 custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_7wkfx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkmbw"]
+size = Vector2(160, 26)
 
 [node name="Lvl6" type="Node" unique_id=1422523592]
 
@@ -108,3 +110,12 @@ link_texture = ExtResource("9_cx6so")
 
 [node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("10_kq4c0")]
 position = Vector2(107, 36)
+
+[node name="killzone" type="Area2D" parent="." unique_id=904432196]
+script = ExtResource("12_kq4c0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=1123841421]
+position = Vector2(528, 336)
+shape = SubResource("RectangleShape2D_mkmbw")
+
+[connection signal="body_entered" from="killzone" to="killzone" method="_on_body_entered"]

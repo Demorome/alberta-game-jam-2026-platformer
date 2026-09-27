@@ -67,7 +67,6 @@ position = Vector2(107, 36)
 
 [node name="Player" parent="." unique_id=1748661077 node_paths=PackedStringArray("TetheredEntity", "CarriedEntityNodeLocation") instance=ExtResource("2_qyq5f")]
 position = Vector2(48, 40)
-AirMoveSpeed = 180.0
 TetheredEntity = NodePath("../MoneyBag")
 PlayerInputControlled = true
 CarriedEntityNodeLocation = NodePath("CharacterBody2D/CarriedObjectPlacement")

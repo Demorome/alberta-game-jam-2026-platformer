@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b3st0ccb2wegq" path="res://art/player/chain_link.png" id="8_uamj0"]
 [ext_resource type="Texture2D" uid="uid://b7okmr7d4ryqd" path="res://art/player/Bag.png" id="9_uamj0"]
 [ext_resource type="PackedScene" uid="uid://brcnjafe2gbs4" path="res://nodes/levels/LevelChanger.tscn" id="10_ioqqe"]
-[ext_resource type="PackedScene" uid="uid://bd3gbau4fe5wb" path="res://nodes/levels/Level_4.tscn" id="11_x06eq"]
+[ext_resource type="PackedScene" path="res://nodes/menus/game_complete.tscn" id="11_x06eq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(2000, 64)
@@ -100,7 +100,7 @@ position = Vector2(467, 261)
 JUMP_VELOCITY = -500.0
 
 [node name="Bag" type="RigidBody2D" parent="TestPlayer" unique_id=215362188]
-position = Vector2(315, -234)
+position = Vector2(128, -151)
 collision_layer = 32
 collision_mask = 64
 

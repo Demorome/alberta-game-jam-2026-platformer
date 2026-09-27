@@ -15,12 +15,17 @@ run/main_scene="uid://dymyn86li0v0"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://art/icon.svg"
 
+[autoload]
+
+GameManager="*res://nodes/autoload/game_manager.gd"
+Hud="*res://nodes/autoload/hud.tscn"
+
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/resizable=false
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [dotnet]

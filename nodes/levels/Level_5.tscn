@@ -76,6 +76,7 @@ position = Vector2(528, 304)
 
 [node name="ShootEnemy2" parent="." unique_id=1559425682 instance=ExtResource("3_e4hi3")]
 position = Vector2(560, 272)
+shoot_delay = 1.05
 
 [node name="Player" parent="." unique_id=1748661077 instance=ExtResource("5_x8qv4")]
 position = Vector2(16, 192)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b3un8db6a3x60" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.gd" id="1_jump"]
 [ext_resource type="PackedScene" uid="uid://1lju6rkdtp7r" path="res://nodes/entities/enemies/lethal_component.tscn" id="2_lethal"]
 [ext_resource type="Texture2D" uid="uid://4wyl3ail5dbr" path="res://art/enemies/angelfrog/angel_frog_sprites.png" id="3_clo8k"]
+[ext_resource type="AudioStream" uid="uid://bnw3wvhxge4jb" path="res://audio/Enemy_Hurt_1.wav" id="4_ncwyp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(32, 32)
@@ -73,4 +74,5 @@ autoplay = "default"
 frame = 1
 frame_progress = 0.97986
 
-[node name="deathSound" type="AudioStreamPlayer" parent="."]
+[node name="deathSound" type="AudioStreamPlayer" parent="." unique_id=564400698]
+stream = ExtResource("4_ncwyp")

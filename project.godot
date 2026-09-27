@@ -19,12 +19,13 @@ config/icon="res://art/icon.svg"
 
 GameManager="*res://nodes/autoload/game_manager.gd"
 Hud="*res://nodes/autoload/hud.tscn"
+BackgroundMusic="*uid://88gdv23y08w1"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"

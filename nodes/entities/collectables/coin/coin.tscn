@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://0otn888mukly" path="res://nodes/entities/collectables/coin/coin.gd" id="1_4gu5a"]
 [ext_resource type="Texture2D" uid="uid://ds4rce37hiy0m" path="res://art/UI/bagpickup1.png" id="2_qgbs1"]
 [ext_resource type="Texture2D" uid="uid://cjpcynfb8duwo" path="res://art/UI/bagpickup2.png" id="3_kpift"]
+[ext_resource type="AudioStream" uid="uid://k4cgd64l2srt" path="res://audio/Bounce_Jump_3.wav" id="4_kpift"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_coin"]
 
@@ -33,3 +34,4 @@ frame_progress = 0.33493719
 offset = Vector2(10, 10)
 
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=875598549]
+stream = ExtResource("4_kpift")

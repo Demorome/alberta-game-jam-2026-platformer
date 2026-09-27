@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dnr1xfgforpjo"]
 
 [ext_resource type="Script" uid="uid://0otn888mukly" path="res://nodes/entities/collectables/coin/coin.gd" id="1_4gu5a"]
-[ext_resource type="Texture2D" uid="uid://dgsfppuyfn2df" path="res://nodes/entities/enemies/sandbox/collectable_placholder.png" id="2_3v5t5"]
+[ext_resource type="Texture2D" uid="uid://ds4rce37hiy0m" path="res://art/UI/bagpickup1.png" id="2_qgbs1"]
+[ext_resource type="Texture2D" uid="uid://cjpcynfb8duwo" path="res://art/UI/bagpickup2.png" id="3_kpift"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_coin"]
 
@@ -9,11 +10,14 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3v5t5")
+"texture": ExtResource("2_qgbs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kpift")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [node name="Coin" type="Area2D" unique_id=1997712920]
@@ -25,6 +29,7 @@ shape = SubResource("RectangleShape2D_coin")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1674292933]
 position = Vector2(-10, -10)
 sprite_frames = SubResource("SpriteFrames_sy8c6")
+frame_progress = 0.33493719
 offset = Vector2(10, 10)
 
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=875598549]

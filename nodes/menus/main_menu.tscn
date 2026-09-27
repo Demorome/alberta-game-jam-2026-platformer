@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dymyn86li0v0"]
 
 [ext_resource type="Script" uid="uid://dhuukfyjvgk1y" path="res://nodes/menus/MainMenu.cs" id="1_o5qli"]
-[ext_resource type="PackedScene" uid="uid://bqfi8m1qbprwt" path="res://nodes/levels/intro_scene.tscn" id="2_vyfe4"]
+[ext_resource type="PackedScene" uid="uid://b3cy8vl4a02do" path="res://nodes/levels/Level_1.tscn" id="2_vyfe4"]
 
 [node name="Main" type="Node" unique_id=2027019671 node_paths=PackedStringArray("ExitButton", "NewGameButton")]
 script = ExtResource("1_o5qli")

@@ -2,7 +2,12 @@
 
 [ext_resource type="Script" uid="uid://n3a4txibdgx0" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.gd" id="1_shoot"]
 [ext_resource type="PackedScene" uid="uid://1lju6rkdtp7r" path="res://nodes/entities/enemies/lethal_component.tscn" id="2_lethal"]
-[ext_resource type="Texture2D" uid="uid://bgibfcw7kuklx" path="res://nodes/entities/enemies/sandbox/shoot_enemy_placeholder.png" id="3_fmq3u"]
+[ext_resource type="Texture2D" uid="uid://cgijc6cklgkft" path="res://art/enemies/candlejerk/candlejerk1.png" id="3_h04xf"]
+[ext_resource type="Texture2D" uid="uid://4g6hria1jf7r" path="res://art/enemies/candlejerk/candlejerk2.png" id="4_rcwoc"]
+[ext_resource type="Texture2D" uid="uid://yf2h8bbsdwj7" path="res://art/enemies/candlejerk/candlejerk3.png" id="5_nal15"]
+[ext_resource type="Texture2D" uid="uid://t41jp3ektje8" path="res://art/enemies/candlejerk/candlejerkshoot1.png" id="6_26fyr"]
+[ext_resource type="Texture2D" uid="uid://b4k7p2kwgxitw" path="res://art/enemies/candlejerk/candlejerkshoot2.png" id="7_sfp5d"]
+[ext_resource type="Texture2D" uid="uid://babqgcvy2va7d" path="res://art/enemies/candlejerk/candlejerkshoot3.png" id="8_m4hhm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(32, 32)
@@ -10,20 +15,35 @@ size = Vector2(32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_detect"]
 size = Vector2(32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_lncns"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3vtq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_fmq3u")
+"texture": ExtResource("3_h04xf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rcwoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nal15")
 }],
 "loop": 1,
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_26fyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sfp5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_m4hhm")
+}],
 "loop": 1,
 "name": &"shooting",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="ShootEnemy" type="StaticBody2D" unique_id=393889548 groups=["enemy"]]
@@ -56,5 +76,7 @@ shape = SubResource("RectangleShape2D_detect")
 [node name="LethalComponent" parent="." unique_id=558618702 instance=ExtResource("2_lethal")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=392108590]
-sprite_frames = SubResource("SpriteFrames_lncns")
+sprite_frames = SubResource("SpriteFrames_d3vtq")
 animation = &"shooting"
+autoplay = "default"
+frame_progress = 0.3032876

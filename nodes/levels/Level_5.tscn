@@ -89,8 +89,9 @@ position = Vector2(528, 304)
 position = Vector2(560, 272)
 shoot_delay = 1.05
 
-[node name="Player" parent="." unique_id=1748661077 instance=ExtResource("5_x8qv4")]
+[node name="Player" parent="." unique_id=1748661077 node_paths=PackedStringArray("TetheredEntity") instance=ExtResource("5_x8qv4")]
 position = Vector2(16, 192)
+TetheredEntity = NodePath("../MoneyBag")
 
 [node name="LevelChanger" parent="." unique_id=592061574 instance=ExtResource("6_e4hi3")]
 position = Vector2(648, 208)

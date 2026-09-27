@@ -81,8 +81,9 @@ shoot_interval = 3.0
 [node name="FlyingEnemy" parent="." unique_id=1622520287 instance=ExtResource("3_edywu")]
 position = Vector2(400, 48)
 
-[node name="Player" parent="." unique_id=1748661077 instance=ExtResource("5_pcsq5")]
+[node name="Player" parent="." unique_id=1748661077 node_paths=PackedStringArray("TetheredEntity") instance=ExtResource("5_pcsq5")]
 position = Vector2(16, 256)
+TetheredEntity = NodePath("../MoneyBag")
 
 [node name="LevelChanger" parent="." unique_id=592061574 instance=ExtResource("6_sa4ar")]
 position = Vector2(656, 152)

@@ -21,4 +21,6 @@ shape = SubResource("RectangleShape2D_fireball")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=373807552]
 texture = ExtResource("3_fireball")
 
+[node name="deathSound" type="AudioStreamPlayer" parent="." unique_id=491194759]
+
 [editable path="LethalComponent"]

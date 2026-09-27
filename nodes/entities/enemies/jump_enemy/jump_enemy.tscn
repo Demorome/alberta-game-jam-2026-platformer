@@ -72,3 +72,5 @@ animation = &"jump"
 autoplay = "default"
 frame = 1
 frame_progress = 0.97986
+
+[node name="deathSound" type="AudioStreamPlayer" parent="."]

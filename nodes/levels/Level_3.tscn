@@ -94,3 +94,19 @@ position = Vector2(64, 40)
 [node name="LevelChanger" parent="." unique_id=592061574 instance=ExtResource("5_6gndq")]
 position = Vector2(656, 232)
 target_scene = ExtResource("6_h6t6v")
+
+[node name="Label" type="Label" parent="." unique_id=1808099394]
+offset_left = 24.0
+offset_top = 312.0
+offset_right = 229.0
+offset_bottom = 376.0
+text = "Press E as the bag hits an enemy to
+execute a perfect pull."
+
+[node name="Label2" type="Label" parent="." unique_id=1859391338]
+offset_left = 376.0
+offset_top = 272.0
+offset_right = 581.0
+offset_bottom = 336.0
+text = "Perfect pulls return the bag to you
+faster and negate any point loss."

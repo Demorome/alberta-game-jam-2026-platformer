@@ -23,6 +23,7 @@ animations = [{
 
 [node name="MoneyBag" type="Node2D" unique_id=1653107175 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D")]
 script = ExtResource("1_46mdd")
+StopMovementOnCollision = true
 AnimatedSprite = NodePath("CharacterBody2D/AnimatedSprite2D")
 CharacterBody2D = NodePath("CharacterBody2D")
 

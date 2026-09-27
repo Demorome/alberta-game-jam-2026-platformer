@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://culhi8ly2genj"]
+
+[ext_resource type="Script" uid="uid://cbfkil431ququ" path="res://nodes/entities/player/label.gd" id="1_6q21y"]
+
+[node name="PointsDeducted" type="Node2D" unique_id=1271862658]
+
+[node name="Label" type="Label" parent="." unique_id=1486802688]
+offset_right = 40.0
+offset_bottom = 13.0
+text = "-50"
+script = ExtResource("1_6q21y")

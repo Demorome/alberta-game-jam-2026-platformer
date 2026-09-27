@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://gswaa3yw5g35"]
+
+[ext_resource type="Texture2D" uid="uid://cveuthbo8nbqc" path="res://art/UI/parrystar.png" id="1_m5565"]
+[ext_resource type="Texture2D" uid="uid://cbnm6snxv7c2t" path="res://art/UI/parrystar2.png" id="2_jd23c"]
+[ext_resource type="Texture2D" uid="uid://b1cmh8gmoupys" path="res://art/UI/parrystar3.png" id="3_pm24g"]
+[ext_resource type="Texture2D" uid="uid://cbdf8qyqs5lqs" path="res://art/UI/parrystar4.png" id="4_ljj23"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s0cde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m5565")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jd23c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pm24g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ljj23")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ParryStar" type="Node2D" unique_id=2079665723]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1993543222]
+sprite_frames = SubResource("SpriteFrames_s0cde")
+frame = 3
+frame_progress = 1.0

@@ -8,7 +8,7 @@ using Components;
 /// </summary>
 public partial class Entity : Node2D
 {
-	[Export]
+    [Export]
 	public bool PlayerInputControlled;
 	public CanBeCarriedAndThrown? CanBeCarriedAndThrownInfo;
 	public CanCarryAndThrowObjects? CanCarryAndThrowObjectsInfo;
@@ -25,7 +25,10 @@ public partial class Entity : Node2D
 		Gravity = new Gravity((float)defaultGravity);
 	}
 	public float? LosePointsOnThrownCollisionUnlessParried;
+
 	public float? ParryTimeOnThrownCollisionToRetrieve;
+	public float CountdownUntilParryExpires = 0f;
+
 	public float? GracePeriodToNotLosePointsAfterHittingEnemy;
 	public float TimerToNotLosePointsAfterHittingEnemy;
 	public DealsDamageOnContact? DealsDamageOnContact;
@@ -36,6 +39,10 @@ public partial class Entity : Node2D
 	public bool DestroyOnChangeLevel;
 	[Export]
 	public bool DestroyOnLeaveLevelBounds;
+	[Export]
+	public bool SlidesOnCollision = true;
+	[Export]
+	public bool StopMovementOnCollision = false;
 	public BecomeInvincibleOnDamage? BecomeInvincibleOnDamage;
 
 	/// <summary>
@@ -58,6 +65,8 @@ public partial class Entity : Node2D
 	[Export]
 	public Node? CarriedEntityNodeLocation;
 
+    public Node? ParryStarEffectForThrowable;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -68,6 +77,8 @@ public partial class Entity : Node2D
 		{
 			throw new NullReferenceException("AnimatedSprite should not be null!");
 		}
+
+        ParryStarEffectForThrowable = GetNode("res://nodes/entities/player/ParryStar.tscn");
 	}
 
 	public readonly record struct Inputs(
@@ -99,23 +110,31 @@ public partial class Entity : Node2D
 
 		if (CharacterBody2D != null)
 		{
-			// Apply gravity
 			bool isBeingCarried = CanBeCarriedAndThrownInfo?.IsBeingCarried == true;
-			if (!CharacterBody2D.IsOnFloor() && !isBeingCarried)
+			if (!CharacterBody2D.IsOnFloor())
 			{
-				if (Gravity.HasValue)
+				// GD.Print($"{this} is not touching the floor");
+
+				// Apply gravity
+				if (Gravity.HasValue && !isBeingCarried)
 				{
 					var velocity = CharacterBody2D.Velocity;
 					CharacterBody2D.Velocity = velocity
 						+ new Vector2(0, Gravity.Value.Value * (float)delta);
 				}
 			}
-			else
+			else // On the ground.
 			{
 				if (JumpInfo != null)
 				{
 					var jumpInfo = JumpInfo.Value;
 					JumpInfo = jumpInfo with { CurrentJumps = 0};
+				}
+
+				if (!SlidesOnCollision)
+				{
+					// Reset speed if it's on the ground, since it doesn't slide.
+					CharacterBody2D.Velocity = Vector2.Zero;
 				}
 			}
 		}
@@ -157,16 +176,7 @@ public partial class Entity : Node2D
 				}
 				else if (HasTetheredObjectInfo?.TetheredEntity != null)
 				{
-					var tethered = HasTetheredObjectInfo.TetheredEntity;
-
-					// TODO: Detect if this was done within a parry frame period!
-
-					// TODO: Change the tethered entity's layer so it doesn't collide with anything.
-					// TODO: Make it move in a straight line towards player.
-					// TODO: Make it show up in the foreground while it is being pulled.
-					//
-
-					HasTetheredObjectInfo.IsPulling = true;
+					TryPullObject(HasTetheredObjectInfo.TetheredEntity);
 				}
 			}
 		}
@@ -174,7 +184,82 @@ public partial class Entity : Node2D
 		bool beingCarried = CanBeCarriedAndThrownInfo?.IsBeingCarried == true;
 		if (CharacterBody2D != null && !beingCarried)
 		{
-			CharacterBody2D.MoveAndSlide();
+			if (CharacterBody2D.Velocity != Vector2.Zero)
+			{
+				if (SlidesOnCollision)
+				{
+					// Player should slide around a bit, for example.
+					CharacterBody2D.MoveAndSlide();
+
+					bool canParry = false;
+					Vector2? parryStarLocation;
+
+					var num_collisions = CharacterBody2D.GetSlideCollisionCount();
+					for (int i = 0; i < num_collisions; ++i)
+					{
+						var collision = CharacterBody2D.GetSlideCollision(i);
+						var collider = collision.GetCollider();
+						// GD.Print(collider);
+
+						if (collider is Node2D colliderNode)
+						{
+							if (colliderNode.IsInGroup("enemy"))
+							{
+								GD.Print($"{this} collided with enemy!");
+								canParry = true;
+								parryStarLocation = colliderNode.GlobalPosition;
+							}
+						}
+					}
+
+					if (num_collisions > 0)
+					{
+						if (StopMovementOnCollision)
+						{
+							CharacterBody2D.Velocity = Vector2.Zero;
+						}
+
+						if (!canParry)
+						{
+							if (LosePointsOnThrownCollisionUnlessParried != null)
+							{
+								var lostPoints = LosePointsOnThrownCollisionUnlessParried.Value;
+								GetNode("/root/GameManager").Call("lose_score", lostPoints);
+
+								// TODO: Play SFX + VFX (text to show lost points over area)!
+
+							}
+						}
+						// Else, lose points later if the player doesn't parry in time.
+						else
+						{
+							CountdownUntilParryExpires = ParryTimeOnThrownCollisionToRetrieve!.Value;
+
+							// TODO: Spawn Parrystar node on enemy hit location!
+							// ParryStarEffectForThrowable
+                                // parryStarLocation
+						}
+					}
+
+				}
+				// else
+				// {
+				// 	GD.Print(CharacterBody2D.Velocity);
+				//
+				// 	// Thrown bag should not slide around; handle collision manually.
+				// 	var collisionInfo = CharacterBody2D.MoveAndCollide(CharacterBody2D.Velocity * (float)delta);
+				// 	if (collisionInfo != null)
+				// 	{
+				// 		var collisionPoint = collisionInfo.GetPosition();
+				// 		var collider = collisionInfo.GetCollider();
+				// 		//GD.Print(collider);
+				//
+				// 		// Reset velocity to 0 when colliding with anything, unless otherwise specified.
+				// 		CharacterBody2D.Velocity = Vector2.Zero;
+				// 		// velocity = velocity.bounce(collision_info.get_normal());
+				// 	}
+				// }
+			}
 			var velocityX = CharacterBody2D.Velocity.X;
 			bool carrying = CanCarryAndThrowObjectsInfo?.MaybeCarriedEntity != null;
 
@@ -251,6 +336,27 @@ public partial class Entity : Node2D
 					AnimatedSprite.Play("jumping");
 				}
 			}
+		}
+	}
+
+	public void TryPullObject(Entity toPull)
+	{
+		bool isTethered = HasTetheredObjectInfo?.TetheredEntity == toPull;
+
+		// TODO: Detect if this was done within a parry frame period!
+
+		// TODO: Change the tethered entity's collision layer so it doesn't collide with anything.
+
+
+		// TODO: Make it move in a straight line towards player.
+
+
+		// Make it show up in the foreground while it is being pulled.
+		// Change the Visual Layer to do so.
+
+		if (isTethered)
+		{
+			HasTetheredObjectInfo!.IsPulling = true;
 		}
 	}
 

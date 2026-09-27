@@ -353,9 +353,12 @@ public partial class Entity : Node2D
 
 		if (this.CharacterBody2D != null)
 		{
-			// Give the thrower a height boost if they threw down.
 			if (throwDirection == Vector2.Down)
 			{
+				// Reset the Y velocity from gravity.
+				this.CharacterBody2D.Velocity = this.CharacterBody2D.Velocity with { Y = 0 };
+
+				// Give the thrower a height boost if they threw down.
 				this.CharacterBody2D.Velocity += new Vector2(0, -throwInfo.VerticalVelocityBoostWhenThrowingDownwards);
 			}
 		}

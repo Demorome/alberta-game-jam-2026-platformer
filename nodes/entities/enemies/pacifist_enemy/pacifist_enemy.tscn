@@ -36,3 +36,5 @@ shape = SubResource("RectangleShape2D_body")
 sprite_frames = SubResource("SpriteFrames_idle")
 frame = 1
 frame_progress = 0.9118798
+
+[node name="deathSound" type="AudioStreamPlayer" parent="."]

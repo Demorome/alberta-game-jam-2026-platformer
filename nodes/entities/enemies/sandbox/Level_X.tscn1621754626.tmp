@@ -1,0 +1,80 @@
+[gd_scene format=4 uid="uid://sb4l2et1gpgk"]
+
+[ext_resource type="Texture2D" uid="uid://dwj70p15ki68t" path="res://art/tiles/tileset.png" id="1_wj0f1"]
+[ext_resource type="PackedScene" uid="uid://cam5w74fep5i" path="res://nodes/entities/enemies/pacifist_enemy/pacifist_enemy.tscn" id="2_lrocf"]
+[ext_resource type="PackedScene" uid="uid://c33wvy4xt4xrc" path="res://nodes/entities/player/moneybag.tscn" id="2_nyimo"]
+[ext_resource type="PackedScene" uid="uid://djfunxgeyym7j" path="res://nodes/entities/player/player.tscn" id="3_3y2v8"]
+[ext_resource type="PackedScene" uid="uid://brcnjafe2gbs4" path="res://nodes/levels/LevelChanger.tscn" id="4_18qwm"]
+[ext_resource type="PackedScene" uid="uid://4fitt872ow7u" path="res://nodes/levels/Level_3.tscn" id="5_e4sge"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
+texture = ExtResource("1_wj0f1")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0/custom_data_0 = 1
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0/custom_data_0 = 1
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_kvns4"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 64
+physics_layer_0/collision_mask = 63
+custom_data_layer_0/name = "Hit"
+custom_data_layer_0/type = 2
+sources/1 = SubResource("TileSetAtlasSource_7wkfx")
+
+[node name="LvlX" type="Node" unique_id=1422523592]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1610676418]
+tile_map_data = PackedByteArray("AAAAAAoAAQACAAEAAAAAAAkAAQACAAEAAAAAAAgAAQACAAEAAAAAAAcAAQACAAEAAAAAAAYAAQAEAAAAAAAAAAUAAQABAAEAAAATAAQAAQAAAAEAAAATAAoAAQABAAEAAAATAAkAAQABAAEAAAATAAsAAQABAAEAAAAAAAsAAQACAAEAAAATAAMAAQAAAAEAAAATAAIAAQAAAAEAAAATAAEAAQAAAAEAAAATAAAAAQAAAAEAAAAAAAQAAQABAAEAAAAAAAMAAQABAAEAAAAAAAIAAQABAAEAAAAAAAEAAQABAAEAAAAAAAAAAQABAAEAAAAEAAAAAQABAAEAAAAFAAAAAQABAAEAAAAGAAAAAQABAAEAAAAHAAAAAQABAAEAAAAIAAAAAQABAAEAAAAJAAAAAQABAAEAAAAKAAAAAQABAAEAAAALAAAAAQABAAEAAAAMAAAAAQABAAEAAAANAAAAAQABAAEAAAAOAAAAAQABAAEAAAAPAAAAAQABAAEAAAAQAAAAAQACAAEAAAAEAAEAAQABAAEAAAAIAAEAAQABAAIAAAAHAAEAAQABAAIAAAAGAAEAAQABAAIAAAAFAAEAAQAEAAAAAAAJAAEAAQABAAIAAAAKAAEAAQABAAIAAAALAAEAAQABAAIAAAAMAAEAAQABAAIAAAANAAEAAQABAAIAAAAOAAEAAQABAAIAAAAPAAEAAQABAAIAAAAQAAEAAQACAAIAAAATAAgAAQAFAAEAAAATAAcAAQAAAAEAAAATAAYAAQAAAAEAAAATAAUAAQAAAAEAAAAUAAAAAQABAAEAAAAUAAEAAQABAAEAAAAUAAIAAQABAAEAAAAUAAMAAQABAAEAAAAUAAQAAQABAAEAAAAUAAUAAQABAAEAAAAUAAYAAQABAAEAAAAUAAcAAQABAAEAAAAUAAgAAQABAAEAAAAUAAkAAQABAAEAAAAUAAoAAQABAAEAAAAUAAsAAQABAAEAAAADAAEAAQABAAEAAAACAAEAAQABAAEAAAABAAEAAQABAAEAAAABAAAAAQABAAEAAAACAAAAAQABAAEAAAADAAAAAQABAAEAAAASAAgAAQABAAAAAAARAAgAAQABAAAAAAAQAAgAAQABAAAAAAAPAAgAAQABAAAAAAAOAAgAAQABAAAAAAANAAgAAQAAAAAAAAANAAkAAQAAAAEAAAANAAoAAQAAAAEAAAANAAsAAQAAAAEAAAAOAAkAAQABAAEAAAAPAAkAAQABAAEAAAAQAAkAAQABAAEAAAARAAkAAQABAAEAAAASAAkAAQABAAEAAAASAAsAAQABAAEAAAARAAsAAQABAAEAAAAQAAsAAQABAAEAAAAPAAsAAQABAAEAAAAOAAsAAQABAAEAAAAOAAoAAQABAAEAAAAPAAoAAQABAAEAAAAQAAoAAQABAAEAAAARAAoAAQABAAEAAAASAAoAAQABAAEAAAAMAAsAAQABAAAAAAALAAsAAQABAAAAAAAKAAsAAQABAAAAAAAJAAsAAQABAAAAAAAIAAsAAQABAAAAAAAHAAsAAQAEAAEAAAAHAAoAAQACAAEAAAAHAAkAAQACAAAAAAAGAAkAAQABAAAAAAAFAAkAAQABAAAAAAAEAAkAAQABAAAAAAADAAkAAQAAAAAAAAADAAoAAQAAAAEAAAADAAsAAQAAAAEAAAAEAAsAAQABAAEAAAAFAAsAAQABAAEAAAAGAAsAAQABAAEAAAAEAAoAAQABAAEAAAAFAAoAAQABAAEAAAAGAAoAAQABAAEAAAACAAYAAQABAAIAAAACAAUAAQABAAEAAAACAAQAAQABAAEAAAACAAMAAQABAAEAAAACAAIAAQABAAEAAAABAAYAAQABAAIAAAABAAUAAQABAAEAAAABAAQAAQABAAEAAAABAAMAAQABAAEAAAABAAIAAQABAAEAAAADAAYAAQACAAIAAAADAAUAAQACAAEAAAADAAQAAQAEAAAAAAADAAMAAQABAAEAAAADAAIAAQABAAEAAAAIAAoAAQADAAAAAAAJAAoAAQADAAAAAAAKAAoAAQADAAAAAAALAAoAAQADAAAAAAAMAAoAAQADAAAAAAAEAAQAAQACAAIAAAAFAAIAAQACAAIAAAAEAAIAAQAEAAAAAAAEAAMAAQACAAEAAAAQAP//AQABAAEAAAAQAP7/AQABAAEAAAAQAP3/AQABAAEAAAAQAPz/AQABAAEAAAAQAPv/AQABAAEAAAARAPv/AQABAAEAAAASAPv/AQABAAEAAAATAPv/AQABAAEAAAATAPz/AQABAAEAAAATAP7/AQABAAEAAAATAP3/AQABAAEAAAATAP//AQABAAEAAAA=")
+tile_set = SubResource("TileSet_kvns4")
+
+[node name="PacifistEnemy" parent="." unique_id=123456789 instance=ExtResource("2_lrocf")]
+position = Vector2(500, 241)
+
+[node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("2_nyimo")]
+position = Vector2(496, 171)
+
+[node name="Player" parent="." unique_id=1748661077 node_paths=PackedStringArray("TetheredEntity") instance=ExtResource("3_3y2v8")]
+position = Vector2(576, 40)
+TetheredEntity = NodePath("../MoneyBag")
+StartWithTetheredEntityBeingCarried = false
+
+[node name="LevelChanger" parent="." unique_id=592061574 instance=ExtResource("4_18qwm")]
+position = Vector2(64, 368)
+rotation = 1.5707964
+target_scene = ExtResource("5_e4sge")

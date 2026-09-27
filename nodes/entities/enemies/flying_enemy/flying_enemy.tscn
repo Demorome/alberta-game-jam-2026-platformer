@@ -43,7 +43,7 @@ bullet_direction = Vector2(0, 1)
 bullet_spawn_delay = 500
 
 [node name="Muzzle" parent="." index="2" unique_id=1228435906]
-position = Vector2(0, 8)
+position = Vector2(0, 13)
 
 [node name="DetectionArea" parent="." index="4" unique_id=1921624051]
 position = Vector2(0, 304)
@@ -51,6 +51,7 @@ scale = Vector2(5, 20)
 
 [node name="AnimatedSprite2D" parent="." index="6" unique_id=392108590]
 sprite_frames = SubResource("SpriteFrames_yrwds")
-animation = &"shooting"
 frame = 4
 frame_progress = 1.0
+
+[node name="deathSound" type="AudioStreamPlayer" parent="." index="7" unique_id=480341216]

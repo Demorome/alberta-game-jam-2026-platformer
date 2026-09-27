@@ -23,10 +23,11 @@ func _ready() -> void:
 
 func _on_hit(other: Node2D) -> void:
 	print("💥 [Lethal] Hit by: ", other)
-	if other.is_in_group(PLAYER_GROUP):
+	print("💥 [Lethal] Parent of the hitter: ", other.get_parent())
+	if other.get_parent().is_in_group(PLAYER_GROUP):
 		print("💥 [Lethal] Player hit: ", other)
-		player_touched.emit(other)
-		_kill_player(other)
+		player_touched.emit(other.get_parent())
+		_kill_player(other.get_parent())
 	elif other.is_in_group(BAG_GROUP):
 		print("💥 [Lethal] Carriable hit: ", other)
 		destroyed.emit()

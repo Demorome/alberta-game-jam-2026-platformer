@@ -61,6 +61,7 @@ public partial class Player : Entity
 			TryCarryEntity(TetheredEntity);
 		}
 
+		AddToGroup("player_group");
 		CharacterBody2D!.AddToGroup("player_group");
 	}
 

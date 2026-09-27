@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cubfqwju0dgts"]
+
+[ext_resource type="Script" uid="uid://ckxkgh8ypefkm" path="res://nodes/entities/enemies/bullet/bullet.gd" id="1_bullet"]
+[ext_resource type="PackedScene" uid="uid://1lju6rkdtp7r" path="res://nodes/entities/enemies/lethal_component.tscn" id="2_lethal"]
+[ext_resource type="Texture2D" uid="uid://53yv8gyk7b5h" path="res://art/enemies/candlejerk/fireball1.png" id="3_fireball"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fireball"]
+size = Vector2(8, 8)
+
+[node name="Fireball" type="Node2D" unique_id=141545277 groups=["enemy"]]
+script = ExtResource("1_bullet")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1949975046]
+rect = Rect2(-4, -4, 8, 8)
+
+[node name="LethalComponent" parent="." unique_id=702432382 instance=ExtResource("2_lethal")]
+
+[node name="CollisionShape2D" parent="LethalComponent" index="0" unique_id=1638093079]
+shape = SubResource("RectangleShape2D_fireball")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=373807552]
+texture = ExtResource("3_fireball")
+
+[editable path="LethalComponent"]

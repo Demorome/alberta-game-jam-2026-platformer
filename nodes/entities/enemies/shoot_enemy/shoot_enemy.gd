@@ -2,7 +2,7 @@ class_name ShootEnemy
 extends StaticBody2D
 ## Shoots on interval a set interval and may or may not need to "see" the player.
 
-const BULLET_SCENE := preload("res://nodes/entities/enemies/bullet/bullet.tscn")
+const BULLET_SCENE := preload("res://nodes/entities/enemies/bullet/fireball.tscn")
 
 ## Flag to tell if the enemy sould shoot only when player is in sight.
 @export var use_sight := true

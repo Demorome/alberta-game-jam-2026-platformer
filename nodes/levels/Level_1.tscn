@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://brcnjafe2gbs4" path="res://nodes/levels/LevelChanger.tscn" id="3_ebak3"]
 [ext_resource type="PackedScene" uid="uid://ox2tnartqa2c" path="res://nodes/levels/Level_2.tscn" id="4_m73q4"]
 [ext_resource type="PackedScene" uid="uid://c33wvy4xt4xrc" path="res://nodes/entities/player/moneybag.tscn" id="5_m73q4"]
+[ext_resource type="PackedScene" uid="uid://dnr1xfgforpjo" path="res://nodes/entities/collectables/coin/coin.tscn" id="6_wrcx5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
 texture = ExtResource("1_2jda8")
@@ -67,7 +68,6 @@ position = Vector2(107, 36)
 
 [node name="Player" parent="." unique_id=1748661077 node_paths=PackedStringArray("TetheredEntity", "CarriedEntityNodeLocation") instance=ExtResource("2_qyq5f")]
 position = Vector2(48, 40)
-AirMoveSpeed = 180.0
 TetheredEntity = NodePath("../MoneyBag")
 PlayerInputControlled = true
 CarriedEntityNodeLocation = NodePath("CharacterBody2D/CarriedObjectPlacement")
@@ -76,3 +76,6 @@ CarriedEntityNodeLocation = NodePath("CharacterBody2D/CarriedObjectPlacement")
 position = Vector2(568, 376)
 rotation = 1.5707964
 target_scene = ExtResource("4_m73q4")
+
+[node name="Coin" parent="." unique_id=1997712920 instance=ExtResource("6_wrcx5")]
+position = Vector2(103, 268)

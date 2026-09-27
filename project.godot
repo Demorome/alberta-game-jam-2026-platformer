@@ -47,6 +47,10 @@ folder_colors={
 player=""
 enemy=""
 
+[gui]
+
+theme/custom_font="uid://eukdu53elhhq"
+
 [input]
 
 jump={

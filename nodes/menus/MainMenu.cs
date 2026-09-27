@@ -15,10 +15,10 @@ public partial class MainMenu : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		ExitButton.Pressed += () => { GetTree().Quit(); };
+		ExitButton!.Pressed += () => { GetTree().Quit(); };
 
-		NewGameButton.Pressed += () => {
-			var gameScene = IntroScene.Instantiate<IntroScene>();
+		NewGameButton!.Pressed += () => {
+			var gameScene = IntroScene!.Instantiate<IntroScene>();
 			GetTree().ChangeSceneToNode(gameScene);
 		};
 	}

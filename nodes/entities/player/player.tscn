@@ -1,47 +1,20 @@
 [gd_scene format=3 uid="uid://djfunxgeyym7j"]
 
 [ext_resource type="Script" uid="uid://tph47ac20mor" path="res://nodes/entities/player/Player.cs" id="1_50kia"]
+[ext_resource type="PackedScene" uid="uid://c33wvy4xt4xrc" path="res://nodes/entities/player/moneybag.tscn" id="2_7xfb0"]
 [ext_resource type="Texture2D" uid="uid://5vdppyi7220m" path="res://art/player/pixilart-sprite7.png" id="2_jmlei"]
 [ext_resource type="Texture2D" uid="uid://b7okmr7d4ryqd" path="res://art/player/Bag.png" id="3_apgst"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldfxe"]
 size = Vector2(17, 42)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_apgst"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok7e6"]
 atlas = ExtResource("2_jmlei")
-region = Rect2(0, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7xfb0"]
-atlas = ExtResource("2_jmlei")
-region = Rect2(32, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ryjgh"]
-atlas = ExtResource("2_jmlei")
-region = Rect2(96, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rx6bh"]
-atlas = ExtResource("2_jmlei")
-region = Rect2(128, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_86aim"]
-atlas = ExtResource("2_jmlei")
-region = Rect2(160, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o407l"]
-atlas = ExtResource("2_jmlei")
-region = Rect2(192, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6pecj"]
-atlas = ExtResource("2_jmlei")
-region = Rect2(224, 0, 32, 48)
+region = Rect2(352, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fylyk"]
 atlas = ExtResource("2_jmlei")
 region = Rect2(256, 0, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ok7e6"]
-atlas = ExtResource("2_jmlei")
-region = Rect2(352, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgfec"]
 atlas = ExtResource("2_jmlei")
@@ -75,37 +48,36 @@ region = Rect2(448, 0, 32, 48)
 atlas = ExtResource("2_jmlei")
 region = Rect2(480, 0, 32, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_apgst"]
+atlas = ExtResource("2_jmlei")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xfb0"]
+atlas = ExtResource("2_jmlei")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryjgh"]
+atlas = ExtResource("2_jmlei")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx6bh"]
+atlas = ExtResource("2_jmlei")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86aim"]
+atlas = ExtResource("2_jmlei")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o407l"]
+atlas = ExtResource("2_jmlei")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pecj"]
+atlas = ExtResource("2_jmlei")
+region = Rect2(224, 0, 32, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ldfxe"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_apgst")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7xfb0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ryjgh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rx6bh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_86aim")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o407l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6pecj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fylyk")
-}],
-"loop": 1,
-"name": &"carrying",
-"speed": 5.0
-}, {
 "frames": [],
 "loop": 1,
 "name": &"dying",
@@ -117,6 +89,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fylyk")
+}],
+"loop": 1,
+"name": &"idle_carrying",
 "speed": 5.0
 }, {
 "frames": [{
@@ -185,12 +165,46 @@ animations = [{
 "loop": 1,
 "name": &"walking",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apgst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xfb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryjgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx6bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86aim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o407l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pecj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fylyk")
+}],
+"loop": 1,
+"name": &"walking_carrying",
+"speed": 5.0
 }]
 
-[node name="Player" type="Node2D" unique_id=1748661077 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D") groups=["player"]]
+[node name="Player" type="Node2D" unique_id=1748661077 node_paths=PackedStringArray("TetheredEntity", "AnimatedSprite", "CharacterBody2D", "CarriedEntityNodeLocation") groups=["player"]]
 script = ExtResource("1_50kia")
+TetheredEntity = NodePath("MoneyBag")
+PlayerInputControlled = true
 AnimatedSprite = NodePath("CharacterBody2D/AnimatedSprite2D")
 CharacterBody2D = NodePath("CharacterBody2D")
+CarriedEntityNodeLocation = NodePath("CharacterBody2D/CarriedObjectPlacement")
+
+[node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("2_7xfb0")]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1927395993 groups=["player"]]
 collision_mask = 112
@@ -203,16 +217,16 @@ shape = SubResource("RectangleShape2D_ldfxe")
 z_index = 1
 position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_ldfxe")
-animation = &"pulling"
+animation = &"idle_carrying"
 autoplay = "idle"
 
-[node name="BagPlacement" type="Marker2D" parent="CharacterBody2D" unique_id=1255912277]
+[node name="CarriedObjectPlacement" type="Marker2D" parent="CharacterBody2D" unique_id=1255912277]
 position = Vector2(1, -27)
 
-[node name="OffsetWhenJumping" type="Marker2D" parent="CharacterBody2D/BagPlacement" unique_id=580303063]
+[node name="OffsetWhenJumping" type="Marker2D" parent="CharacterBody2D/CarriedObjectPlacement" unique_id=580303063]
 position = Vector2(0, -5)
 
-[node name="ExampleBag" type="Sprite2D" parent="CharacterBody2D/BagPlacement" unique_id=1854126943]
+[node name="ExampleBag" type="Sprite2D" parent="CharacterBody2D/CarriedObjectPlacement" unique_id=1854126943]
 visible = false
 position = Vector2(3, -16)
 texture = ExtResource("3_apgst")

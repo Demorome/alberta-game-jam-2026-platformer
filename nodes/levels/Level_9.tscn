@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bx30lig3nvsey"]
+
+[ext_resource type="Texture2D" uid="uid://dwj70p15ki68t" path="res://art/tiles/tileset.png" id="1_jgiuc"]
+[ext_resource type="PackedScene" uid="uid://djfunxgeyym7j" path="res://nodes/entities/player/player.tscn" id="2_x23dv"]
+[ext_resource type="PackedScene" path="res://nodes/menus/game_complete.tscn" id="3_jgiuc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
+texture = ExtResource("1_jgiuc")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0/custom_data_0 = 1
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0/custom_data_0 = 1
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_kvns4"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 64
+physics_layer_0/collision_mask = 63
+custom_data_layer_0/name = "Hit"
+custom_data_layer_0/type = 2
+sources/1 = SubResource("TileSetAtlasSource_7wkfx")
+
+[node name="Lvl9" type="Node" unique_id=1422523592]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1610676418]
+position = Vector2(31, 0)
+tile_set = SubResource("TileSet_kvns4")
+
+[node name="Player" parent="." unique_id=1748661077 instance=ExtResource("2_x23dv")]
+position = Vector2(64, 40)
+
+[node name="GameComplete" parent="." unique_id=342772513 instance=ExtResource("3_jgiuc")]

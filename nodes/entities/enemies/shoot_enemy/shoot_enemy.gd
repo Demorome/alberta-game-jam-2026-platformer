@@ -101,3 +101,9 @@ func _shoot() -> void:
 	# Level owns bullet.
 	get_parent().add_child(bullet)
 	bullet.global_position = muzzle.global_position
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	print("[SHOOT_ENEMY] 🔥 animation finished: ", animatedSprite.animation)
+	if animatedSprite.animation == "shooting":
+		animatedSprite.play("default")

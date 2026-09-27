@@ -1,0 +1,77 @@
+[gd_scene format=4 uid="uid://iga5tydkg31y"]
+
+[ext_resource type="Texture2D" uid="uid://dwj70p15ki68t" path="res://art/tiles/tileset.png" id="1_8ejbr"]
+[ext_resource type="PackedScene" uid="uid://djfunxgeyym7j" path="res://nodes/entities/player/player.tscn" id="2_kqxcu"]
+[ext_resource type="PackedScene" uid="uid://cam5w74fep5i" path="res://nodes/entities/enemies/pacifist_enemy/pacifist_enemy.tscn" id="3_8ejbr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
+texture = ExtResource("1_8ejbr")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0/custom_data_0 = 1
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0/custom_data_0 = 1
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_kvns4"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 64
+physics_layer_0/collision_mask = 63
+custom_data_layer_0/name = "Hit"
+custom_data_layer_0/type = 2
+sources/1 = SubResource("TileSetAtlasSource_7wkfx")
+
+[node name="Lvl8" type="Node" unique_id=1422523592]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1610676418]
+position = Vector2(31, 0)
+tile_map_data = PackedByteArray("AAADAAAAAQABAAIAAAAKAAAAAQABAAIAAAALAAAAAQABAAIAAAASAAAAAQAFAAAAAAAEAAAAAQABAAIAAAAFAAAAAQABAAIAAAAHAAAAAQABAAIAAAAIAAAAAQABAAIAAAAJAAAAAQABAAIAAAACAAAAAQAAAAIAAAD//wAAAQACAAEAAAD//wMAAQACAAEAAAATAAAAAQABAAEAAAAGAAAAAQABAAIAAAD//wQAAQACAAEAAAD//wUAAQACAAEAAAD//wYAAQACAAEAAAD//wcAAQACAAEAAAD//wgAAQACAAEAAAD//wkAAQACAAEAAAD//woAAQACAAEAAAD//wsAAQAEAAEAAAAAAAsAAQABAAAAAAABAAsAAQABAAAAAAACAAsAAQABAAAAAAADAAsAAQABAAAAAAAEAAsAAQABAAAAAAAFAAsAAQABAAAAAAAGAAsAAQABAAAAAAAHAAsAAQABAAAAAAAKAAsAAQAFAAEAAAALAAsAAQAEAAEAAAAMAAsAAQABAAAAAAANAAsAAQABAAAAAAAOAAsAAQABAAAAAAAPAAsAAQAFAAEAAAAQAAsAAQABAAEAAAARAAsAAQABAAEAAAASAAEAAQABAAEAAAASAAIAAQABAAEAAAASAAMAAQABAAEAAAASAAQAAQABAAIAAAASAAcAAQABAAAAAAASAAgAAQABAAEAAAASAAkAAQABAAEAAAASAAoAAQABAAEAAAASAAsAAQABAAEAAAATAAEAAQABAAEAAAATAAIAAQABAAEAAAATAAMAAQABAAEAAAATAAQAAQABAAIAAAATAAcAAQABAAAAAAATAAgAAQABAAEAAAATAAkAAQABAAEAAAATAAoAAQABAAEAAAATAAsAAQABAAEAAAD//wEAAQACAAEAAAD//wIAAQACAAEAAAAMAAAAAQABAAIAAAANAAAAAQABAAIAAAAOAAAAAQAFAAAAAAAPAAAAAQABAAEAAAAQAAAAAQABAAEAAAARAAAAAQABAAEAAAAIAAsAAQABAAAAAAAJAAsAAQABAAAAAAAAAAoAAQADAAAAAAABAAoAAQADAAAAAAACAAoAAQADAAAAAAADAAoAAQADAAAAAAAEAAoAAQADAAAAAAAFAAoAAQADAAAAAAAGAAoAAQADAAAAAAAHAAoAAQADAAAAAAAIAAoAAQADAAAAAAAJAAoAAQADAAAAAAAKAAoAAQAAAAEAAAALAAoAAQACAAEAAAAMAAoAAQADAAAAAAANAAoAAQADAAAAAAAOAAoAAQADAAAAAAAPAAoAAQAAAAEAAAAQAAoAAQABAAEAAAARAAoAAQABAAEAAAAEAAQAAQADAAIAAAAFAAQAAQAFAAIAAAAKAAYAAQAAAAAAAAALAAYAAQACAAAAAAAKAAcAAQAAAAEAAAAKAAgAAQAAAAEAAAAKAAkAAQAAAAEAAAALAAcAAQACAAEAAAALAAgAAQACAAEAAAALAAkAAQACAAEAAAAPAAcAAQAAAAAAAAAPAAgAAQAAAAEAAAAPAAkAAQAAAAEAAAAQAAcAAQABAAAAAAARAAcAAQABAAAAAAAQAAgAAQABAAEAAAAQAAkAAQABAAEAAAARAAgAAQABAAEAAAARAAkAAQABAAEAAAAOAAQAAQAAAAIAAAAOAAMAAQAAAAEAAAAKAAUAAQADAAAAAAALAAUAAQADAAAAAAAPAAQAAQABAAIAAAAPAAMAAQABAAEAAAAPAAIAAQABAAEAAAAQAAQAAQABAAIAAAARAAQAAQABAAIAAAAOAAEAAQAAAAEAAAAOAAIAAQAAAAEAAAAPAAEAAQABAAEAAAAQAAEAAQABAAEAAAAQAAIAAQABAAEAAAAQAAMAAQABAAEAAAARAAEAAQABAAEAAAARAAIAAQABAAEAAAARAAMAAQABAAEAAAA=")
+tile_set = SubResource("TileSet_kvns4")
+
+[node name="Player" parent="." unique_id=1748661077 instance=ExtResource("2_kqxcu")]
+position = Vector2(64, 40)
+
+[node name="PacifistEnemy" parent="." unique_id=123456789 instance=ExtResource("3_8ejbr")]
+position = Vector2(112, 304)
+
+[node name="PacifistEnemy2" parent="." unique_id=727982846 instance=ExtResource("3_8ejbr")]
+position = Vector2(304, 304)
+
+[node name="PacifistEnemy3" parent="." unique_id=493803207 instance=ExtResource("3_8ejbr")]
+position = Vector2(464, 304)
+
+[node name="PacifistEnemy4" parent="." unique_id=1302331838 instance=ExtResource("3_8ejbr")]
+position = Vector2(528, 208)

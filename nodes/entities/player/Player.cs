@@ -15,7 +15,7 @@ public partial class Player : Entity
 	[Export]
 	float GroundMoveSpeed = 180f;
 	[Export]
-	float AirMoveSpeed = 120f;
+	float AirMoveSpeed = 180f;
 	[Export]
 	float MoveAccelerationMult = 3f;
 

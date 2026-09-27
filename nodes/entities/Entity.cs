@@ -261,7 +261,11 @@ public partial class Entity : Node2D
 			toCarry.CanBeCarriedAndThrownInfo.IsBeingCarried = true;
 
 			// Instantly teleport the to-carry entity to a node.
-			toCarry.Reparent(CarriedEntityNodeLocation!, false);
+			// toCarry.Reparent(CarriedEntityNodeLocation!, false);
+			Callable.From(() => {
+				toCarry.Reparent(CarriedEntityNodeLocation!, false);
+				toCarry.Position = Vector2.Zero;
+			}).CallDeferred();
 
 			// Disable collision with the player (assuming they're the ones grabbing it!!)
 			toCarry.CharacterBody2D!.SetCollisionMaskValue(1, false);

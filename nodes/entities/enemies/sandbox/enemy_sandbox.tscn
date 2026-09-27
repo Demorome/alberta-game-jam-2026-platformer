@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b7okmr7d4ryqd" path="res://art/player/Bag.png" id="9_uamj0"]
 [ext_resource type="PackedScene" uid="uid://brcnjafe2gbs4" path="res://nodes/levels/LevelChanger.tscn" id="10_ioqqe"]
 [ext_resource type="PackedScene" path="res://nodes/menus/game_complete.tscn" id="11_x06eq"]
+[ext_resource type="PackedScene" uid="uid://bu5rmg2o6co1h" path="res://nodes/entities/player/points_deducted.tscn" id="12_dlwmq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
 size = Vector2(2000, 64)
@@ -125,3 +126,6 @@ position = Vector2(366, 301)
 [node name="LevelChanger" parent="." unique_id=592061574 instance=ExtResource("10_ioqqe")]
 position = Vector2(494, 242)
 target_scene = ExtResource("11_x06eq")
+
+[node name="PointsDeducted" parent="." unique_id=1470101413 instance=ExtResource("12_dlwmq")]
+position = Vector2(479, 214)

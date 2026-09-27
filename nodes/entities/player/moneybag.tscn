@@ -21,13 +21,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldfxe"]
 size = Vector2(32, 30)
 
-[node name="MoneyBag" type="Node2D" unique_id=1653107175 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D")]
+[node name="MoneyBag" type="Node2D" unique_id=1653107175 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D") groups=["bag_group"]]
 script = ExtResource("1_46mdd")
 StopMovementOnCollision = true
 AnimatedSprite = NodePath("CharacterBody2D/AnimatedSprite2D")
 CharacterBody2D = NodePath("CharacterBody2D")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1937386629]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1937386629 groups=["bag_group"]]
 collision_layer = 32
 collision_mask = 111
 

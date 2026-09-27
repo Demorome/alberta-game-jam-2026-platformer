@@ -29,6 +29,7 @@ public partial class MoneyBag : Entity
 		LosePointsOnThrownCollisionUnlessParried = PointsLostOnThrownCollision;
 		GracePeriodToNotLosePointsAfterHittingEnemy = PeriodToNotLosePointsAfterHittingEnemy;
 
+		AddToGroup("bag_group");
 		CharacterBody2D!.AddToGroup("bag_group");
 
 	}

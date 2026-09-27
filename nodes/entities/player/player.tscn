@@ -196,18 +196,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D" unique_id=1748661077 node_paths=PackedStringArray("TetheredEntity", "AnimatedSprite", "CharacterBody2D", "CarriedEntityNodeLocation") groups=["player"]]
+[node name="Player" type="Node2D" unique_id=1748661077 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D") groups=["player"]]
 script = ExtResource("1_50kia")
-TetheredEntity = NodePath("MoneyBag")
-PlayerInputControlled = true
 AnimatedSprite = NodePath("CharacterBody2D/AnimatedSprite2D")
 CharacterBody2D = NodePath("CharacterBody2D")
-CarriedEntityNodeLocation = NodePath("CharacterBody2D/CarriedObjectPlacement")
 
 [node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("2_7xfb0")]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1927395993 groups=["player"]]
-collision_mask = 112
+collision_mask = 96
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=445683785]
 position = Vector2(-2.5, -21)

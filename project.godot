@@ -25,6 +25,7 @@ BackgroundMusic="*uid://88gdv23y08w1"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"

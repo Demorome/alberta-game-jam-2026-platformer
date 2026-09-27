@@ -80,3 +80,25 @@ CarriedEntityNodeLocation = NodePath("CharacterBody2D/CarriedObjectPlacement")
 position = Vector2(568, 376)
 rotation = 1.5707964
 target_scene = ExtResource("4_m73q4")
+
+[node name="Label" type="Label" parent="." unique_id=1619818220]
+offset_left = 144.0
+offset_top = 64.0
+offset_right = 349.0
+offset_bottom = 128.0
+text = "Press E to pick up and carry your bag."
+
+[node name="Label2" type="Label" parent="." unique_id=15343334]
+offset_left = 384.0
+offset_top = 96.0
+offset_right = 528.0
+offset_bottom = 112.0
+text = "Press E again to throw it."
+
+[node name="Label3" type="Label" parent="." unique_id=1469519375]
+offset_left = 344.0
+offset_top = 312.0
+offset_right = 512.0
+offset_bottom = 376.0
+text = "When your bag hits an object,
+you will lose points."

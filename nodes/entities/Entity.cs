@@ -91,8 +91,6 @@ public partial class Entity : Node2D
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
-
-		// TODO: Handle component logic!
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -268,9 +266,9 @@ public partial class Entity : Node2D
 			// Disable collision with the player (assuming they're the ones grabbing it!!)
 			toCarry.CharacterBody2D!.SetCollisionMaskValue(1, false);
 
-            // Swap CARRIABLE layer for PLAYER_GRABBED_OBJECT.
-            toCarry.CharacterBody2D.SetCollisionLayerValue(6, false);
-            toCarry.CharacterBody2D.SetCollisionLayerValue(2, true);
+			// Swap CARRIABLE layer for PLAYER_GRABBED_OBJECT.
+			toCarry.CharacterBody2D.SetCollisionLayerValue(6, false);
+			toCarry.CharacterBody2D.SetCollisionLayerValue(2, true);
 
 			CanCarryAndThrowObjectsInfo!.MaybeCarriedEntity = toCarry;
 		}
@@ -281,7 +279,7 @@ public partial class Entity : Node2D
 		var throwInfo = thrownEntity.CanBeCarriedAndThrownInfo!;
 		if (throwDirection == Vector2.Zero)
 		{
-            // Special case: throwing while not holding any direction.
+			// Special case: throwing while not holding any direction.
 			// Check for thrower's facing angle to determine throw direction.
 			var isFacingRight = !AnimatedSprite!.FlipH;
 			if (isFacingRight)

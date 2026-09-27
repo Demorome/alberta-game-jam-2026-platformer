@@ -96,4 +96,4 @@ auto_setup = true
 link_texture = ExtResource("8_j48cf")
 
 [node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("9_s4gaq")]
-position = Vector2(107, 36)
+position = Vector2(62, 89)

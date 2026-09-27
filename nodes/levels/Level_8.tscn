@@ -109,7 +109,7 @@ auto_setup = true
 link_texture = ExtResource("7_qodq5")
 
 [node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("8_xvus7")]
-position = Vector2(107, 36)
+position = Vector2(68, 101)
 
 [node name="killzone" type="Area2D" parent="." unique_id=1446438848]
 script = ExtResource("10_xvus7")

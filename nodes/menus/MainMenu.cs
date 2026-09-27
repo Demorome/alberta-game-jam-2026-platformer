@@ -18,6 +18,8 @@ public partial class MainMenu : Node
 		ExitButton!.Pressed += () => { GetTree().Quit(); };
 
 		NewGameButton!.Pressed += () => {
+			// Start run timer, GDScript equivalent to GameManager.start_timer()
+			GetNode("/root/GameManager").Call("start_timer");
 			var gameScene = IntroScene!.Instantiate<IntroScene>();
 			GetTree().ChangeSceneToNode(gameScene);
 		};

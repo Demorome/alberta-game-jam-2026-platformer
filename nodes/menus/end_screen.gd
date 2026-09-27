@@ -20,7 +20,7 @@ var _can_continue := false
 
 func _ready() -> void:
 	# Stop timer and also hide HUD.
-	GameManager.running = false
+	GameManager.stop_timer()
 	GameManager.hide_hud()
 	title_label.text = title
 	message_label.text = message

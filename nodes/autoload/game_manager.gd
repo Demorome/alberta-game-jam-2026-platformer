@@ -14,8 +14,8 @@ var score := START_SCORE
 var deaths := 0
 # Seconds since run start.
 var play_time := 0.0
-# Timer stops on end.
-var running := true
+# Off until run starts.
+var running := false
 
 
 func _process(delta: float) -> void:
@@ -39,6 +39,14 @@ func lose_score(amount: int) -> void:
 func add_death() -> void:
 	deaths += 1
 	deaths_changed.emit(deaths)
+
+
+func start_timer() -> void:
+	running = true
+
+
+func stop_timer() -> void:
+	running = false
 
 
 func restart_level() -> void:
@@ -71,6 +79,6 @@ func reset() -> void:
 	score = START_SCORE
 	deaths = 0
 	play_time = 0.0
-	running = true
+	running = false
 	score_changed.emit(score)
 	deaths_changed.emit(deaths)

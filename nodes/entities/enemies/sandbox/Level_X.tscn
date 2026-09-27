@@ -75,7 +75,6 @@ position = Vector2(496, 171)
 [node name="Player" parent="." unique_id=1748661077 node_paths=PackedStringArray("TetheredEntity") instance=ExtResource("3_3y2v8")]
 position = Vector2(576, 40)
 TetheredEntity = NodePath("../MoneyBag")
-StartWithTetheredEntityBeingCarried = false
 
 [node name="LevelChanger" parent="." unique_id=592061574 instance=ExtResource("4_18qwm")]
 position = Vector2(64, 368)

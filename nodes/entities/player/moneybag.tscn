@@ -21,9 +21,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldfxe"]
-size = Vector2(32, 30)
-
 [node name="MoneyBag" type="Node2D" unique_id=1653107175 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D") groups=["bag_group"]]
 script = ExtResource("1_46mdd")
 StopMovementOnCollision = true

@@ -13,7 +13,7 @@ const BAG_GROUP := &"bag_group"
 ## Free parent on hit.
 @export var free_parent_on_hit := true
 ## Points earned when enemy destroyed.
-@export var score_value := 100
+# @export var score_value := 100
 
 
 func _ready() -> void:
@@ -31,7 +31,7 @@ func _on_hit(other: Node2D) -> void:
 	elif other.is_in_group(BAG_GROUP):
 		print("💥 [Lethal] Carriable hit: ", other)
 		destroyed.emit()
-		GameManager.add_score(score_value)
+		# GameManager.add_score(score_value)
 		if free_parent_on_hit:
 			var parent = get_parent()
 			if parent.has_method("die"):

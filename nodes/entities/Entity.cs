@@ -342,9 +342,10 @@ public partial class Entity : Node2D
 		}
 	}
 
-    public void Die()
-    {
-    }
+	public void Die()
+	{
+		GD.Print("Player died!");
+	}
 	public void TryPullObject(Entity toPull)
 	{
 		GD.Print($"Pulling object {toPull}");

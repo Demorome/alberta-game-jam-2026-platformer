@@ -5,4 +5,3 @@ extends ShootEnemy
 func _ready() -> void:
 	# Keep shooter setup.
 	super()
-	

@@ -19,6 +19,7 @@ config/icon="res://art/icon.svg"
 
 GameManager="*res://nodes/autoload/game_manager.gd"
 Hud="*res://nodes/autoload/hud.tscn"
+BackgroundMusic="*uid://88gdv23y08w1"
 
 [display]
 

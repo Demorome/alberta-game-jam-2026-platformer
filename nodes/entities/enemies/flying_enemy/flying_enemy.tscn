@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ckkbmleeo6453" path="res://art/enemies/eyething/eyething1.png" id="3_yrwds"]
 [ext_resource type="Texture2D" uid="uid://cw3x6qbs75i4g" path="res://art/enemies/eyething/eyething2.png" id="4_ua2xl"]
 [ext_resource type="Texture2D" uid="uid://b8v0aio3ayehi" path="res://art/enemies/eyething/eyething3.png" id="5_qg4ge"]
+[ext_resource type="AudioStream" uid="uid://bnw3wvhxge4jb" path="res://audio/Enemy_Hurt_1.wav" id="6_ua2xl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yrwds"]
 animations = [{
@@ -43,7 +44,7 @@ bullet_direction = Vector2(0, 1)
 bullet_spawn_delay = 500
 
 [node name="Muzzle" parent="." index="2" unique_id=1228435906]
-position = Vector2(0, 8)
+position = Vector2(0, 13)
 
 [node name="DetectionArea" parent="." index="4" unique_id=1921624051]
 position = Vector2(0, 304)
@@ -51,6 +52,8 @@ scale = Vector2(5, 20)
 
 [node name="AnimatedSprite2D" parent="." index="6" unique_id=392108590]
 sprite_frames = SubResource("SpriteFrames_yrwds")
-animation = &"shooting"
 frame = 4
 frame_progress = 1.0
+
+[node name="deathSound" parent="." index="7" unique_id=480341216]
+stream = ExtResource("6_ua2xl")

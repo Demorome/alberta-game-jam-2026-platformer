@@ -6,9 +6,9 @@ signal player_touched(player: Node2D)
 signal destroyed
 
 # TODO: player joins group.
-const PLAYER_GROUP := &"player"
+const PLAYER_GROUP := &"player_group"
 # TODO: carriables join group.
-const CARRIABLE_GROUP := &"carriable"
+const BAG_GROUP := &"bag_group"
 
 ## Free parent on hit.
 @export var free_parent_on_hit := true
@@ -22,14 +22,21 @@ func _ready() -> void:
 
 
 func _on_hit(other: Node2D) -> void:
+	print("💥 [Lethal] Hit by: ", other)
 	if other.is_in_group(PLAYER_GROUP):
+		print("💥 [Lethal] Player hit: ", other)
 		player_touched.emit(other)
 		_kill_player(other)
-	elif other.is_in_group(CARRIABLE_GROUP):
+	elif other.is_in_group(BAG_GROUP):
+		print("💥 [Lethal] Carriable hit: ", other)
 		destroyed.emit()
 		GameManager.add_score(score_value)
 		if free_parent_on_hit:
-			get_parent().queue_free()
+			var parent = get_parent()
+			if parent.has_method("die"):
+				parent.call("die")
+			else:
+				parent.queue_free()
 
 
 func _kill_player(player: Node2D) -> void:

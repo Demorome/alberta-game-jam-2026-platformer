@@ -27,7 +27,7 @@ var _facing_right := false
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var detection_area: Area2D = $DetectionArea
 @onready var sight_shape: CollisionShape2D = $DetectionArea/CollisionShape2D
-
+@onready var deathSound: AudioStreamPlayer = $deathSound
 
 func _ready() -> void:
 	shoot_timer.timeout.connect(_on_shoot_timer_timeout)
@@ -106,3 +106,24 @@ func _shoot() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animatedSprite.animation == "shooting":
 		animatedSprite.play("default")
+
+func die():
+	# Play death sound if available
+	if deathSound.stream != null:
+		deathSound.play()
+	self.white_and_fade_out(0.10, 0.15)
+
+func white_and_fade_out(flash_duration: float = 0.15, fade_duration: float = 0.5) -> void:
+	# 1. Create a Tween instance
+	var tween = create_tween()
+	
+	# 2. Flash to solid white by over-saturating the RGB values (Color channels higher than 1.0 will over-saturate the sprite texture to white)
+	var white_flash = Color(10.0, 10.0, 10.0, 1.0)
+	tween.tween_property(self, "modulate", white_flash, flash_duration)
+	
+	# 3. Fade out smoothly to completely transparent
+	var transparent = Color(10.0, 10.0, 10.0, 0.0)
+	tween.tween_property(self, "modulate", transparent, fade_duration)
+	
+	# 4. Automatically remove or hide the node when finished
+	tween.finished.connect(queue_free) 

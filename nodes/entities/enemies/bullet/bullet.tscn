@@ -23,3 +23,5 @@ rotation = 4.712389
 texture = ExtResource("3_ests7")
 
 [editable path="LethalComponent"]
+
+[node name="deathSound" type="AudioStreamPlayer" parent="."]

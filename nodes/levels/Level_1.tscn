@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://brcnjafe2gbs4" path="res://nodes/levels/LevelChanger.tscn" id="3_ebak3"]
 [ext_resource type="PackedScene" uid="uid://ox2tnartqa2c" path="res://nodes/levels/Level_2.tscn" id="4_m73q4"]
 [ext_resource type="PackedScene" uid="uid://c33wvy4xt4xrc" path="res://nodes/entities/player/moneybag.tscn" id="5_m73q4"]
+[ext_resource type="AudioStream" uid="uid://dfsdfhnu75e7o" path="res://audio/No_Bones_About_It_v4.mp3" id="6_wrcx5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
 texture = ExtResource("1_2jda8")
@@ -74,3 +75,9 @@ CarriedEntityNodeLocation = NodePath("CharacterBody2D/CarriedObjectPlacement")
 position = Vector2(568, 376)
 rotation = 1.5707964
 target_scene = ExtResource("4_m73q4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1626041951]
+stream = ExtResource("6_wrcx5")
+volume_db = 1.0
+playback_type = 1
+parameters/looping = true

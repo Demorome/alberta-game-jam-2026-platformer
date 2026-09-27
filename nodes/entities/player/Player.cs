@@ -60,6 +60,8 @@ public partial class Player : Entity
 		{
 			TryCarryEntity(TetheredEntity);
 		}
+
+		AddToGroup("player_group");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

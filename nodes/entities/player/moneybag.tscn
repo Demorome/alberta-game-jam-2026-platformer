@@ -30,7 +30,7 @@ CharacterBody2D = NodePath("CharacterBody2D")
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1937386629]
 z_index = -1
 collision_layer = 32
-collision_mask = 127
+collision_mask = 111
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=416977149]
 position = Vector2(0, -15)

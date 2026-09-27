@@ -123,8 +123,8 @@ public partial class Entity : Node2D
 					GD.Print($"CarriedEntityNodeLocation is null!! {carryingEntity.CanCarryAndThrowObjectsInfo}");
 				}
 
-				// Position = carryingEntityCarryMarker!.Position;
-				GlobalPosition = carryingEntityCarryMarker!.GlobalPosition;
+				CharacterBody2D.Position = carryingEntityCarryMarker!.Position;
+				CharacterBody2D.GlobalPosition = carryingEntityCarryMarker!.GlobalPosition;
 			}
 
 			if (!CharacterBody2D.IsOnFloor())
@@ -406,8 +406,8 @@ public partial class Entity : Node2D
 				// GD.Print($"CarriedNode Global Pos: {carriedNodeLocation.GlobalPosition}, Local: {carriedNodeLocation.Position}");
 				// GD.Print($"BEFORE: ToCarry Global Pos: {toCarry.GlobalPosition}, local: {toCarry.Position}");
 
-				toCarry.Position = carriedNodeLocation!.Position;
-				toCarry.GlobalPosition = carriedNodeLocation.GlobalPosition;
+				toCarry.CharacterBody2D!.Position = carriedNodeLocation!.Position;
+				toCarry.CharacterBody2D!.GlobalPosition = carriedNodeLocation.GlobalPosition;
 
 				// GD.Print($"AFTER: ToCarry Global Pos: {toCarry.GlobalPosition}, local: {toCarry.Position}");
 			}).CallDeferred();

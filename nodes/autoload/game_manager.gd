@@ -17,11 +17,20 @@ var play_time := 0.0
 # Off until run starts.
 var running := false
 
+# Sets if the player is currently holding the bag.
+var isPlayerHoldingBag := false
 
 func _process(delta: float) -> void:
 	if running:
 		play_time += delta
 
+## Sets whether the player is holding the bag. (boolean)
+func set_player_holding_bag(holding: bool) -> void:
+	isPlayerHoldingBag = holding
+
+## Returns whether the player should be holding the bag. Returns a boolean.
+func is_player_holding_bag() -> bool:
+	return isPlayerHoldingBag
 
 func add_score(amount: int) -> void:
 	score += amount

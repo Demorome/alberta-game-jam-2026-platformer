@@ -79,7 +79,10 @@ public partial class Entity : Node2D
 			throw new NullReferenceException("AnimatedSprite should not be null!");
 		}
 
-		ParryStarEffectForThrowable = GetNode("res://nodes/entities/player/ParryStar.tscn");
+		AnimatedSprite.AnimationFinished += OnAnimationEnd;
+
+		// TODO: FIX!
+		// ParryStarEffectForThrowable = GetNode("res://nodes/entities/player/ParryStar.tscn");
 	}
 
 	public readonly record struct Inputs(
@@ -163,22 +166,6 @@ public partial class Entity : Node2D
 		{
 			AnimatedSprite!.Play("dying");
 			return;
-		}
-
-		// Update IsThrowing state to false once the anim finishes.
-		if (AnimatedSprite!.Animation.ToString().Contains("throwing"))
-		{
-			if (!AnimatedSprite.IsPlaying())
-			{
-				CanCarryAndThrowObjectsInfo!.IsThrowing = false;
-			}
-		}
-		if (AnimatedSprite!.Animation.ToString().Contains("pulling"))
-		{
-			if (!AnimatedSprite.IsPlaying())
-			{
-				HasTetheredObjectInfo!.IsPulling = false;
-			}
 		}
 
 		if (PlayerInputControlled)
@@ -355,6 +342,9 @@ public partial class Entity : Node2D
 		}
 	}
 
+    public void Die()
+    {
+    }
 	public void TryPullObject(Entity toPull)
 	{
 		GD.Print($"Pulling object {toPull}");
@@ -460,6 +450,26 @@ public partial class Entity : Node2D
 			GD.PrintErr($"Invalid throwDirection: {throwDirection}");
 			return Vector2.Zero;
 		}
+	}
+
+	public void OnAnimationEnd()
+	{
+		var animName = AnimatedSprite!.Animation.ToString();
+		GD.Print($"Animation ended: {animName}");
+
+		// Update states once an anim finishes.
+		if (animName.Contains("throwing"))
+		{
+			GD.Print("Stopped throwing");
+			CanCarryAndThrowObjectsInfo!.IsThrowing = false;
+		}
+		if (animName.Contains("pulling"))
+		{
+			GD.Print("Stopped pulling");
+			HasTetheredObjectInfo!.IsPulling = false;
+		}
+
+
 	}
 	public void TryThrowCarriedEntity(Vector2 throwDirection)
 	{

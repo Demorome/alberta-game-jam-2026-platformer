@@ -125,7 +125,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ok7e6")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"jumping_throwing",
 "speed": 5.0
 }, {
@@ -133,7 +133,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pgfec")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"picking_up",
 "speed": 5.0
 }, {
@@ -144,7 +144,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pas08")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"pulling",
 "speed": 5.0
 }, {
@@ -152,7 +152,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2ax7a")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"throwing_idle",
 "speed": 5.0
 }, {
@@ -160,7 +160,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2ax7a")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"throwing_walking",
 "speed": 5.0
 }, {
@@ -217,10 +217,8 @@ shape = SubResource("RectangleShape2D_ldfxe")
 z_index = 1
 position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_ldfxe")
-animation = &"walking_carrying"
+animation = &"jumping_carrying"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.8772701
 
 [node name="CarriedObjectPlacement" type="Marker2D" parent="CharacterBody2D" unique_id=1255912277]
 position = Vector2(1, -27)

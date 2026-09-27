@@ -64,7 +64,7 @@ public partial class Entity : Node2D
 	// [Export]
 	// public Node? OnParryScreenEffect;
 	[Export]
-	public Node? CarriedEntityNodeLocation;
+	public Marker2D? CarriedEntityNodeLocation;
 
 	public Node? ParryStarEffectForThrowable;
 
@@ -111,14 +111,20 @@ public partial class Entity : Node2D
 
 		if (CharacterBody2D != null)
 		{
-			bool isBeingCarried = CanBeCarriedAndThrownInfo?.IsBeingCarried == true;
+			bool isBeingCarried = CanBeCarriedAndThrownInfo?.MaybeCarryingEntity != null;
 			if (isBeingCarried)
 			{
 				// Move it on top of the player all the time.
 				Entity carryingEntity = CanBeCarriedAndThrownInfo!.MaybeCarryingEntity!;
-				var carryingEntityCarryMarker = carryingEntity.CarriedEntityNodeLocation as Marker2D;
-				// Position = carryingEntityCarryMarker!.Position;
-				GlobalPosition = carryingEntityCarryMarker!.GlobalPosition;
+
+				var carryingEntityCarryMarker = carryingEntity.CarriedEntityNodeLocation;
+				if (carryingEntity.CarriedEntityNodeLocation == null)
+				{
+					GD.Print($"CarriedEntityNodeLocation is null!! {carryingEntity.CanCarryAndThrowObjectsInfo}");
+				}
+
+				CharacterBody2D.Position = carryingEntityCarryMarker!.Position;
+				CharacterBody2D.GlobalPosition = carryingEntityCarryMarker!.GlobalPosition;
 			}
 
 			if (!CharacterBody2D.IsOnFloor())
@@ -386,21 +392,22 @@ public partial class Entity : Node2D
 
 	public void TryCarryEntity(Entity toCarry)
 	{
-		if (toCarry.CanBeCarriedAndThrownInfo != null)
+		if (this.CanCarryAndThrowObjectsInfo != null && toCarry.CanBeCarriedAndThrownInfo != null)
 		{
-			toCarry.CanBeCarriedAndThrownInfo.MaybeCarryingEntity = toCarry;
+			toCarry.CanBeCarriedAndThrownInfo.MaybeCarryingEntity = this;
+			this.CanCarryAndThrowObjectsInfo.MaybeCarriedEntity = toCarry;
 
 			// Instantly teleport the to-carry entity to a node.
 			// toCarry.Reparent(CarriedEntityNodeLocation!, false);
 			Callable.From(() => {
 				// GD.Print($"Player global pos: {this.GlobalPosition}, local: {Position}");
 
-				var carriedNodeLocation = CarriedEntityNodeLocation as Marker2D;
+				var carriedNodeLocation = CarriedEntityNodeLocation;
 				// GD.Print($"CarriedNode Global Pos: {carriedNodeLocation.GlobalPosition}, Local: {carriedNodeLocation.Position}");
 				// GD.Print($"BEFORE: ToCarry Global Pos: {toCarry.GlobalPosition}, local: {toCarry.Position}");
 
-				toCarry.Position = carriedNodeLocation!.Position;
-				toCarry.GlobalPosition = carriedNodeLocation.GlobalPosition;
+				toCarry.CharacterBody2D!.Position = carriedNodeLocation!.Position;
+				toCarry.CharacterBody2D!.GlobalPosition = carriedNodeLocation.GlobalPosition;
 
 				// GD.Print($"AFTER: ToCarry Global Pos: {toCarry.GlobalPosition}, local: {toCarry.Position}");
 			}).CallDeferred();

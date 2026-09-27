@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://iga5tydkg31y"]
 
 [ext_resource type="Texture2D" uid="uid://dwj70p15ki68t" path="res://art/tiles/tileset.png" id="1_8ejbr"]
+[ext_resource type="Texture2D" uid="uid://njgqm3a0jbpu" path="res://art/background/pixil-frame-078.png" id="1_43ruy"]
 [ext_resource type="PackedScene" uid="uid://djfunxgeyym7j" path="res://nodes/entities/player/player.tscn" id="2_kqxcu"]
 [ext_resource type="PackedScene" uid="uid://cam5w74fep5i" path="res://nodes/entities/enemies/pacifist_enemy/pacifist_enemy.tscn" id="3_8ejbr"]
 [ext_resource type="PackedScene" uid="uid://brcnjafe2gbs4" path="res://nodes/levels/LevelChanger.tscn" id="4_nenlx"]
@@ -60,6 +61,11 @@ custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_7wkfx")
 
 [node name="Lvl8" type="Node" unique_id=1422523592]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1654441915]
+position = Vector2(326, 179.99998)
+scale = Vector2(1.01875, 1)
+texture = ExtResource("1_43ruy")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1610676418]
 position = Vector2(31, 0)

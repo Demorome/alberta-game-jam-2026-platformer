@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://c3iklgk0ayxkg"]
 
+[ext_resource type="Texture2D" uid="uid://ccehkq7kiec0p" path="res://art/background/pixil-frame-080.png" id="1_kc3el"]
 [ext_resource type="Texture2D" uid="uid://dwj70p15ki68t" path="res://art/tiles/tileset.png" id="1_x8qv4"]
 [ext_resource type="PackedScene" uid="uid://cfpcqfap3awcn" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="3_e4hi3"]
 [ext_resource type="PackedScene" uid="uid://bayrlq3isyfmt" path="res://nodes/entities/enemies/flying_enemy/flying_enemy.tscn" id="4_kc3el"]
@@ -62,6 +63,11 @@ custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_7wkfx")
 
 [node name="Lvl5" type="Node" unique_id=1422523592]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=911815788]
+position = Vector2(324, 182)
+scale = Vector2(1.0125, 1.0111111)
+texture = ExtResource("1_kc3el")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1610676418]
 position = Vector2(31, 0)

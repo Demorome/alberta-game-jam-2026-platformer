@@ -19,6 +19,11 @@ animations = [{
 "loop": 1,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"shooting",
+"speed": 5.0
 }]
 
 [node name="ShootEnemy" type="StaticBody2D" unique_id=393889548 groups=["enemy"]]
@@ -52,3 +57,4 @@ shape = SubResource("RectangleShape2D_detect")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=392108590]
 sprite_frames = SubResource("SpriteFrames_lncns")
+animation = &"shooting"

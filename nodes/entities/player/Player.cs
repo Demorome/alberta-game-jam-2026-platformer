@@ -46,14 +46,19 @@ public partial class Player : Entity
 		Health = new Components.Health(MaxHealth);
 		CanCarryAndThrowObjectsInfo = new Components.CanCarryAndThrowObjects();
 
+		if (TetheredEntity == null)
+		{
+			throw new NullReferenceException("Missing tethered entity for player!");
+		}
+
 		HasTetheredObjectInfo = new Components.HasTetheredObject()
 		{
-			TetheredEntity = this.TetheredEntity!
+			TetheredEntity = this.TetheredEntity
 		};
 
 		if (StartWithTetheredEntityBeingCarried)
 		{
-			TryCarryEntity(TetheredEntity!);
+			TryCarryEntity(TetheredEntity);
 		}
 	}
 

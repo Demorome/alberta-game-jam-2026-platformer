@@ -8,7 +8,7 @@ using Components;
 /// </summary>
 public partial class Entity : Node2D
 {
-	[Export]
+    [Export]
 	public bool PlayerInputControlled;
 	public CanBeCarriedAndThrown? CanBeCarriedAndThrownInfo;
 	public CanCarryAndThrowObjects? CanCarryAndThrowObjectsInfo;
@@ -27,7 +27,7 @@ public partial class Entity : Node2D
 	public float? LosePointsOnThrownCollisionUnlessParried;
 
 	public float? ParryTimeOnThrownCollisionToRetrieve;
-    public float CountdownUntilParryExpires = 0f;
+	public float CountdownUntilParryExpires = 0f;
 
 	public float? GracePeriodToNotLosePointsAfterHittingEnemy;
 	public float TimerToNotLosePointsAfterHittingEnemy;
@@ -65,6 +65,8 @@ public partial class Entity : Node2D
 	[Export]
 	public Node? CarriedEntityNodeLocation;
 
+    public Node? ParryStarEffectForThrowable;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -75,6 +77,8 @@ public partial class Entity : Node2D
 		{
 			throw new NullReferenceException("AnimatedSprite should not be null!");
 		}
+
+        ParryStarEffectForThrowable = GetNode("res://nodes/entities/player/ParryStar.tscn");
 	}
 
 	public readonly record struct Inputs(
@@ -188,24 +192,24 @@ public partial class Entity : Node2D
 					CharacterBody2D.MoveAndSlide();
 
 					bool canParry = false;
-                    Vector2? parryStarLocation;
+					Vector2? parryStarLocation;
 
 					var num_collisions = CharacterBody2D.GetSlideCollisionCount();
 					for (int i = 0; i < num_collisions; ++i)
 					{
 						var collision = CharacterBody2D.GetSlideCollision(i);
 						var collider = collision.GetCollider();
-                        // GD.Print(collider);
+						// GD.Print(collider);
 
-                        if (collider is Node2D colliderNode)
-                        {
-                            if (colliderNode.IsInGroup("enemy"))
-                            {
-                                GD.Print($"{this} collided with enemy!");
-                                canParry = true;
-                                parryStarLocation = colliderNode.GlobalPosition;
-                            }
-                        }
+						if (collider is Node2D colliderNode)
+						{
+							if (colliderNode.IsInGroup("enemy"))
+							{
+								GD.Print($"{this} collided with enemy!");
+								canParry = true;
+								parryStarLocation = colliderNode.GlobalPosition;
+							}
+						}
 					}
 
 					if (num_collisions > 0)
@@ -227,13 +231,14 @@ public partial class Entity : Node2D
 							}
 						}
 						// Else, lose points later if the player doesn't parry in time.
-                        else
-                        {
-                            CountdownUntilParryExpires = ParryTimeOnThrownCollisionToRetrieve!.Value;
+						else
+						{
+							CountdownUntilParryExpires = ParryTimeOnThrownCollisionToRetrieve!.Value;
 
-                            // TODO: Spawn Parrystar node on enemy hit location!
-                            // parryStarLocation
-                        }
+							// TODO: Spawn Parrystar node on enemy hit location!
+							// ParryStarEffectForThrowable
+                                // parryStarLocation
+						}
 					}
 
 				}

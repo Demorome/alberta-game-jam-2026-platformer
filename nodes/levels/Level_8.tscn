@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://77og5br0g55u" path="res://nodes/entities/chain_system/ChainSystem.tscn" id="6_yrywb"]
 [ext_resource type="Texture2D" uid="uid://b3st0ccb2wegq" path="res://art/player/chain_link.png" id="7_qodq5"]
 [ext_resource type="PackedScene" uid="uid://c33wvy4xt4xrc" path="res://nodes/entities/player/moneybag.tscn" id="8_xvus7"]
+[ext_resource type="Script" uid="uid://cecuv8tpc8ay6" path="res://nodes/levels/killzone.gd" id="10_xvus7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
 texture = ExtResource("1_8ejbr")
@@ -58,6 +59,12 @@ custom_data_layer_0/name = "Hit"
 custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_7wkfx")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvoje"]
+size = Vector2(472, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqyl1"]
+size = Vector2(64, 26)
+
 [node name="Lvl8" type="Node" unique_id=1422523592]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1654441915]
@@ -96,3 +103,20 @@ link_texture = ExtResource("7_qodq5")
 
 [node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("8_xvus7")]
 position = Vector2(107, 36)
+
+[node name="killzone" type="Area2D" parent="." unique_id=1446438848]
+script = ExtResource("10_xvus7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=228870491]
+position = Vector2(272, 336)
+shape = SubResource("RectangleShape2D_rvoje")
+
+[node name="killzone2" type="Area2D" parent="." unique_id=864257129]
+script = ExtResource("10_xvus7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone2" unique_id=931968423]
+position = Vector2(384, 176)
+shape = SubResource("RectangleShape2D_tqyl1")
+
+[connection signal="body_entered" from="killzone" to="killzone" method="_on_body_entered"]
+[connection signal="body_entered" from="killzone2" to="killzone2" method="_on_body_entered"]

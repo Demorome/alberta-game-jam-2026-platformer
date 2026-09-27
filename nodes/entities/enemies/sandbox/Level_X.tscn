@@ -67,7 +67,7 @@ tile_map_data = PackedByteArray("AAAAAAoAAQACAAEAAAAAAAkAAQACAAEAAAAAAAgAAQACAAE
 tile_set = SubResource("TileSet_kvns4")
 
 [node name="PacifistEnemy" parent="." unique_id=123456789 instance=ExtResource("2_lrocf")]
-position = Vector2(218, 277)
+position = Vector2(477, 239)
 
 [node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("2_nyimo")]
 position = Vector2(496, 171)
@@ -82,10 +82,10 @@ rotation = 1.5707964
 target_scene = ExtResource("5_e4sge")
 
 [node name="JumpEnemy" parent="." unique_id=1654153278 instance=ExtResource("7_4gi74")]
-position = Vector2(286, 307)
+position = Vector2(440, 239)
 
 [node name="FlyingEnemy" parent="." unique_id=1622520287 instance=ExtResource("8_eyyei")]
 position = Vector2(317, 80)
 
 [node name="ShootEnemy" parent="." unique_id=393889548 instance=ExtResource("9_4fia1")]
-position = Vector2(595, 242)
+position = Vector2(148, 276)

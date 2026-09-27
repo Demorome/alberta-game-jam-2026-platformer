@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://77og5br0g55u" path="res://nodes/entities/chain_system/ChainSystem.tscn" id="6_gf481"]
 [ext_resource type="Texture2D" uid="uid://b3st0ccb2wegq" path="res://art/player/chain_link.png" id="7_0e3bd"]
 [ext_resource type="PackedScene" uid="uid://c33wvy4xt4xrc" path="res://nodes/entities/player/moneybag.tscn" id="8_yie6w"]
+[ext_resource type="Script" uid="uid://cecuv8tpc8ay6" path="res://nodes/levels/killzone.gd" id="10_yie6w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
 texture = ExtResource("1_2jda8")
@@ -20,7 +21,6 @@ texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:0/0/custom_data_0 = 1
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -33,7 +33,6 @@ texture_region_size = Vector2i(32, 32)
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:1/0/custom_data_0 = 1
 4:1/0 = 0
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -59,6 +58,9 @@ physics_layer_0/collision_mask = 63
 custom_data_layer_0/name = "Hit"
 custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_7wkfx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0cde"]
+size = Vector2(160, 26)
 
 [node name="Lvl2" type="Node" unique_id=1422523592]
 
@@ -89,6 +91,7 @@ link_texture = ExtResource("7_0e3bd")
 
 [node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("8_yie6w")]
 position = Vector2(107, 36)
+
 [node name="Label" type="Label" parent="." unique_id=1673503363]
 offset_left = 431.0
 offset_top = 276.0
@@ -104,3 +107,12 @@ offset_right = 205.0
 offset_bottom = 90.0
 text = "Press E when far from your bag
 to pull it towards you."
+
+[node name="killzone" type="Area2D" parent="." unique_id=646850343]
+script = ExtResource("10_yie6w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=871630105]
+position = Vector2(336, 339)
+shape = SubResource("RectangleShape2D_s0cde")
+
+[connection signal="body_entered" from="killzone" to="killzone" method="_on_body_entered"]

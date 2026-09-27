@@ -319,14 +319,7 @@ public partial class Entity : Node2D
 			// else, in the air
 			else if (!playingOtherAnim)
 			{
-				if (CanCarryAndThrowObjectsInfo?.IsThrowing == true)
-				{
-					if (AnimatedSprite!.SpriteFrames.HasAnimation("jumping_throwing"))
-					{
-						AnimatedSprite.Play("jumping_throwing");
-					}
-				}
-				else if (carrying)
+				if (carrying)
 				{
 					//if (ObjectCarrying.Value.InGrabbingAnimation)
 					if (AnimatedSprite!.SpriteFrames.HasAnimation("jumping_carrying"))
@@ -379,6 +372,9 @@ public partial class Entity : Node2D
 		{
 			HasTetheredObjectInfo!.IsPulling = true;
 		}
+
+		// Play pull anim for the puller.
+		this.AnimatedSprite!.Play("pulling");
 	}
 
 	public void TryCarryEntity(Entity toCarry)
@@ -507,8 +503,11 @@ public partial class Entity : Node2D
 		// FIXME: Start timer to make thrown object collide with player!
 		// TODO: Also reset it to use CARRIABLE layer
 
+		bool isOnGround = false;
 		if (this.CharacterBody2D != null)
 		{
+			isOnGround = this.CharacterBody2D.IsOnFloor();
+
 			if (throwDirection == Vector2.Down)
 			{
 				// Reset the Y velocity from gravity.
@@ -517,6 +516,16 @@ public partial class Entity : Node2D
 				// Give the thrower a height boost if they threw down.
 				this.CharacterBody2D.Velocity += new Vector2(0, -throwInfo.VerticalVelocityBoostWhenThrowingDownwards);
 			}
+		}
+
+		// Play throw anim for thrower.
+		if (isOnGround)
+		{
+			this.AnimatedSprite!.Play("throwing");
+		}
+		else
+		{
+			this.AnimatedSprite!.Play("throwing_idle");
 		}
 	}
 

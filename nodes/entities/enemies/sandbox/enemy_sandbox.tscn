@@ -100,7 +100,7 @@ position = Vector2(467, 261)
 JUMP_VELOCITY = -500.0
 
 [node name="Bag" type="RigidBody2D" parent="TestPlayer" unique_id=215362188]
-position = Vector2(315, -234)
+position = Vector2(128, -151)
 collision_layer = 32
 collision_mask = 64
 

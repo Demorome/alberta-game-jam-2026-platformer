@@ -29,10 +29,10 @@ public partial class Player : Entity
 	[Export]
 	int MaxJumps = 1;
 
-    [Export]
-    public Entity? TetheredEntity;
-    [Export]
-    public bool StartWithTetheredEntityBeingCarried = true;
+	[Export]
+	public Entity? TetheredEntity;
+	[Export]
+	public bool StartWithTetheredEntityBeingCarried = true;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -46,15 +46,15 @@ public partial class Player : Entity
 		Health = new Components.Health(MaxHealth);
 		CanCarryAndThrowObjectsInfo = new Components.CanCarryAndThrowObjects();
 
-        HasTetheredObjectInfo = new Components.HasTetheredObject()
-        {
-            TetheredEntity = this.TetheredEntity!
-        };
+		HasTetheredObjectInfo = new Components.HasTetheredObject()
+		{
+			TetheredEntity = this.TetheredEntity!
+		};
 
-        if (StartWithTetheredEntityBeingCarried)
-        {
-            TryCarryEntity(TetheredEntity!);
-        }
+		if (StartWithTetheredEntityBeingCarried)
+		{
+			TryCarryEntity(TetheredEntity!);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -113,7 +113,7 @@ public partial class Player : Entity
 			// Air jump (double jump, etc.)
 			else
 			{
-                // +1, since being in the air already consumes the first jump.
+				// +1, since being in the air already consumes the first jump.
 				if (jumpInfo.CurrentJumps + 1 < jumpInfo.MaxJumps)
 				{
 					CharacterBody2D.Velocity = CharacterBody2D.Velocity with { Y = -jumpInfo.JumpStrength * 0.8f };

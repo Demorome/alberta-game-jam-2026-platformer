@@ -13,11 +13,11 @@ public record class CanBeCarriedAndThrown
     public bool CanBeThrown = true;
 
     // Shoots in a high upward arc (inspiration: Kragg neutral throw from Rivals of Aether).
-    // The direction will get auto-flipped based on player facing angle.
-    public Vector2 ThrownVelocity_Idle = new Vector2(120, 550);
-    public Vector2 ThrownVelocity_LeftRight = new Vector2(300, 200);
-    public Vector2 ThrownVelocity_Up = new Vector2(0, 1000);
-    public Vector2 ThrownVelocity_Down = new Vector2(0, -250);
+    // The X direction will get auto-flipped based on player facing angle.
+    public Vector2 ThrownVelocity_Idle = new Vector2(150, -300);
+    public Vector2 ThrownVelocity_LeftRight = new Vector2(300, -200);
+    public Vector2 ThrownVelocity_Up = new Vector2(0, -500);
+    public Vector2 ThrownVelocity_Down = new Vector2(0, 250);
 }
 public record class CanCarryAndThrowObjects
 {

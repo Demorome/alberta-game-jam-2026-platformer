@@ -16,6 +16,11 @@ public partial class Player : Entity
 	float GroundMoveSpeed = 180f;
 	[Export]
 	float AirMoveSpeed = 120f;
+	[Export]
+	float MoveAccelerationMult = 3f;
+
+	[Export]
+	float MoveDecelerationMult = 5f;
 
 	[Export]
 	int MaxHealth = 1;
@@ -116,10 +121,8 @@ public partial class Player : Entity
 			newVelocityX = Mathf.MoveToward(
 				oldVelocity.X,
 				movementDirection * moveSpeed,
-				moveSpeed * 2.0f * (float)delta
+				moveSpeed * MoveAccelerationMult * (float)delta
 			);
-
-			//TODO: Flip the sprite
 		}
 		else
 		{
@@ -127,7 +130,7 @@ public partial class Player : Entity
 			newVelocityX = Mathf.MoveToward(
 				oldVelocity.X,
 				0,
-				moveSpeed * 2.0f * (float)delta
+				moveSpeed * MoveDecelerationMult * (float)delta
 			);
 		}
 

@@ -28,6 +28,9 @@ public partial class MoneyBag : Entity
 		DealsDamageOnContactToEnemiesWhenThrown = DamageDealtToEnemies;
 		LosePointsOnThrownCollisionUnlessParried = PointsLostOnThrownCollision;
 		GracePeriodToNotLosePointsAfterHittingEnemy = PeriodToNotLosePointsAfterHittingEnemy;
+
+		AddToGroup("bag_group");
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,6 +43,6 @@ public partial class MoneyBag : Entity
 	{
 		base._PhysicsProcess(delta);
 
-        base.PostPhysicsProcess(delta);
+		base.PostPhysicsProcess(delta);
 	}
 }

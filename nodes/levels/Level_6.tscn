@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://drv0u8inco3gl"]
 
 [ext_resource type="Texture2D" uid="uid://dwj70p15ki68t" path="res://art/tiles/tileset.png" id="1_ma2ro"]
+[ext_resource type="Texture2D" uid="uid://njgqm3a0jbpu" path="res://art/background/pixil-frame-078.png" id="1_mmo4p"]
 [ext_resource type="PackedScene" uid="uid://bayrlq3isyfmt" path="res://nodes/entities/enemies/flying_enemy/flying_enemy.tscn" id="2_40jd2"]
 [ext_resource type="PackedScene" uid="uid://cam5w74fep5i" path="res://nodes/entities/enemies/pacifist_enemy/pacifist_enemy.tscn" id="3_d3vtq"]
 [ext_resource type="PackedScene" uid="uid://cfpcqfap3awcn" path="res://nodes/entities/enemies/shoot_enemy/shoot_enemy.tscn" id="4_mmo4p"]
@@ -59,6 +60,11 @@ custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_7wkfx")
 
 [node name="Lvl6" type="Node" unique_id=1422523592]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=926094272]
+position = Vector2(326, 192)
+scale = Vector2(1.01875, 1.0111111)
+texture = ExtResource("1_mmo4p")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1610676418]
 position = Vector2(31, 0)

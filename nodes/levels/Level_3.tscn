@@ -91,8 +91,9 @@ jump_pattern = Array[float]([1.0, 0.5, 1.25])
 [node name="FlyingEnemy2" parent="." unique_id=1955329343 instance=ExtResource("3_ye38q")]
 position = Vector2(624, 176)
 
-[node name="Player" parent="." unique_id=1748661077 instance=ExtResource("4_vvi3n")]
+[node name="Player" parent="." unique_id=1748661077 node_paths=PackedStringArray("TetheredEntity") instance=ExtResource("4_vvi3n")]
 position = Vector2(64, 40)
+TetheredEntity = NodePath("../MoneyBag")
 
 [node name="LevelChanger" parent="." unique_id=592061574 instance=ExtResource("5_6gndq")]
 position = Vector2(656, 232)
@@ -105,6 +106,7 @@ position = Vector2(145, 56)
 position = Vector2(38, 20)
 auto_setup = true
 link_texture = ExtResource("9_rcpwd")
+
 [node name="Label" type="Label" parent="." unique_id=1808099394]
 offset_left = 24.0
 offset_top = 312.0

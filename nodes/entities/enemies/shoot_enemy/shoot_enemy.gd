@@ -104,6 +104,5 @@ func _shoot() -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	print("[SHOOT_ENEMY] 🔥 animation finished: ", animatedSprite.animation)
 	if animatedSprite.animation == "shooting":
 		animatedSprite.play("default")

@@ -199,14 +199,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D" unique_id=1748661077 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D", "CarriedEntityNodeLocation") groups=["player"]]
+[node name="Player" type="Node2D" unique_id=1748661077 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D", "CarriedEntityNodeLocation") groups=["player_group"]]
 script = ExtResource("1_50kia")
 PlayerInputControlled = true
 AnimatedSprite = NodePath("CharacterBody2D/AnimatedSprite2D")
 CharacterBody2D = NodePath("CharacterBody2D")
 CarriedEntityNodeLocation = NodePath("CharacterBody2D/CarriedObjectPlacement")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1927395993 groups=["player"]]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1927395993 groups=["player_group"]]
 collision_mask = 96
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=445683785 groups=["player"]]

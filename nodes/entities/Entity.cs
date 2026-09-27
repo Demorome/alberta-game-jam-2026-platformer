@@ -110,6 +110,11 @@ public partial class Entity : Node2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		// if (CanCarryAndThrowObjectsInfo != null)
+		// {
+		// 	GD.Print(CanCarryAndThrowObjectsInfo);
+		// }
+
 		base._PhysicsProcess(delta);
 
 		if (CharacterBody2D != null)
@@ -455,18 +460,24 @@ public partial class Entity : Node2D
 		GD.Print($"Animation ended: {animName}");
 
 		// Update states once an anim finishes.
+		bool stateEnded = false;
 		if (animName.Contains("throwing"))
 		{
+			stateEnded = true;
 			GD.Print("Stopped throwing");
 			CanCarryAndThrowObjectsInfo!.IsThrowing = false;
 		}
 		if (animName.Contains("pulling"))
 		{
+			stateEnded = true;
 			GD.Print("Stopped pulling");
 			HasTetheredObjectInfo!.IsPulling = false;
 		}
 
-
+		if (stateEnded)
+		{
+			AnimatedSprite!.Play("idle");
+		}
 	}
 	public void TryThrowCarriedEntity(Vector2 throwDirection)
 	{
@@ -521,11 +532,11 @@ public partial class Entity : Node2D
 		// Play throw anim for thrower.
 		if (isOnGround)
 		{
-			this.AnimatedSprite!.Play("throwing");
+			this.AnimatedSprite!.Play("throwing_idle");
 		}
 		else
 		{
-			this.AnimatedSprite!.Play("throwing_idle");
+			this.AnimatedSprite!.Play("jumping_throwing");
 		}
 	}
 

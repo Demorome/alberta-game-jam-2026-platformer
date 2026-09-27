@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://djfunxgeyym7j" path="res://nodes/entities/player/player.tscn" id="5_pcsq5"]
 [ext_resource type="PackedScene" uid="uid://brcnjafe2gbs4" path="res://nodes/levels/LevelChanger.tscn" id="6_sa4ar"]
 [ext_resource type="PackedScene" uid="uid://c3iklgk0ayxkg" path="res://nodes/levels/Level_5.tscn" id="7_74wcf"]
+[ext_resource type="PackedScene" uid="uid://77og5br0g55u" path="res://nodes/entities/chain_system/ChainSystem.tscn" id="8_hfwat"]
+[ext_resource type="Texture2D" uid="uid://b3st0ccb2wegq" path="res://art/player/chain_link.png" id="9_iudef"]
+[ext_resource type="PackedScene" uid="uid://c33wvy4xt4xrc" path="res://nodes/entities/player/moneybag.tscn" id="10_62ie2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
 texture = ExtResource("1_bhunt")
@@ -81,3 +84,11 @@ target_scene = ExtResource("7_74wcf")
 
 [node name="JumpEnemy" parent="." unique_id=1654153278 instance=ExtResource("4_sa4ar")]
 position = Vector2(528, 208)
+
+[node name="ChainSystem" parent="." unique_id=1673201277 instance=ExtResource("8_hfwat")]
+position = Vector2(374, 228)
+auto_setup = true
+link_texture = ExtResource("9_iudef")
+
+[node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("10_62ie2")]
+position = Vector2(107, 36)

@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://djfunxgeyym7j" path="res://nodes/entities/player/player.tscn" id="4_vvi3n"]
 [ext_resource type="PackedScene" uid="uid://brcnjafe2gbs4" path="res://nodes/levels/LevelChanger.tscn" id="5_6gndq"]
 [ext_resource type="PackedScene" uid="uid://bd3gbau4fe5wb" path="res://nodes/levels/Level_4.tscn" id="6_h6t6v"]
+[ext_resource type="PackedScene" uid="uid://c33wvy4xt4xrc" path="res://nodes/entities/player/moneybag.tscn" id="7_25wa3"]
+[ext_resource type="PackedScene" uid="uid://77og5br0g55u" path="res://nodes/entities/chain_system/ChainSystem.tscn" id="8_ovwsv"]
+[ext_resource type="Texture2D" uid="uid://b3st0ccb2wegq" path="res://art/player/chain_link.png" id="9_rcpwd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
 texture = ExtResource("1_ye38q")
@@ -88,3 +91,11 @@ position = Vector2(64, 40)
 [node name="LevelChanger" parent="." unique_id=592061574 instance=ExtResource("5_6gndq")]
 position = Vector2(656, 232)
 target_scene = ExtResource("6_h6t6v")
+
+[node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("7_25wa3")]
+position = Vector2(145, 56)
+
+[node name="ChainSystem" parent="." unique_id=1673201277 instance=ExtResource("8_ovwsv")]
+position = Vector2(38, 20)
+auto_setup = true
+link_texture = ExtResource("9_rcpwd")

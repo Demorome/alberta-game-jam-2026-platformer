@@ -3,7 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dwj70p15ki68t" path="res://art/tiles/tileset.png" id="1_2jda8"]
 [ext_resource type="PackedScene" uid="uid://djfunxgeyym7j" path="res://nodes/entities/player/player.tscn" id="2_qyq5f"]
 [ext_resource type="PackedScene" uid="uid://brcnjafe2gbs4" path="res://nodes/levels/LevelChanger.tscn" id="3_ebak3"]
+[ext_resource type="PackedScene" uid="uid://77og5br0g55u" path="res://nodes/entities/chain_system/ChainSystem.tscn" id="4_e8l60"]
 [ext_resource type="PackedScene" uid="uid://ox2tnartqa2c" path="res://nodes/levels/Level_2.tscn" id="4_m73q4"]
+[ext_resource type="Texture2D" uid="uid://b3st0ccb2wegq" path="res://art/player/chain_link.png" id="5_3wxbn"]
 [ext_resource type="PackedScene" uid="uid://c33wvy4xt4xrc" path="res://nodes/entities/player/moneybag.tscn" id="5_m73q4"]
 [ext_resource type="AudioStream" uid="uid://dfsdfhnu75e7o" path="res://audio/No_Bones_About_It_v4.mp3" id="6_wrcx5"]
 
@@ -81,3 +83,9 @@ stream = ExtResource("6_wrcx5")
 volume_db = 1.0
 playback_type = 1
 parameters/looping = true
+
+[node name="ChainSystem" parent="." unique_id=1673201277 instance=ExtResource("4_e8l60")]
+position = Vector2(38, 20)
+scale = Vector2(1, 1)
+auto_setup = true
+link_texture = ExtResource("5_3wxbn")

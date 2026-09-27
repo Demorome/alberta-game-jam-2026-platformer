@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://d3dpt74uekot1" path="res://nodes/entities/chain_system/chain_system.gd" id="1_3n0mm"]
 
 [node name="ChainSystem" type="Node2D" unique_id=1673201277]
-scale = Vector2(0.25, 0.25)
 script = ExtResource("1_3n0mm")
 
 [node name="LinkContainer" type="Node2D" parent="." unique_id=1872151991]

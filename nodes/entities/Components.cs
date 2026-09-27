@@ -7,7 +7,7 @@ namespace Components;
 
 public record class CanBeCarriedAndThrown
 {
-	public bool IsBeingCarried;
+	public bool IsBeingCarried => MaybeCarryingEntity != null;
 	public Entity? MaybeCarryingEntity;
 
 	public bool CanBeThrown = true;

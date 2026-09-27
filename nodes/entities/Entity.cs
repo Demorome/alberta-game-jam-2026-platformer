@@ -8,7 +8,8 @@ using Components;
 /// </summary>
 public partial class Entity : Node2D
 {
-    [Export]
+	public Entity? MaybeMoveTowardsEntity;
+	[Export]
 	public bool PlayerInputControlled;
 	public CanBeCarriedAndThrown? CanBeCarriedAndThrownInfo;
 	public CanCarryAndThrowObjects? CanCarryAndThrowObjectsInfo;
@@ -65,7 +66,7 @@ public partial class Entity : Node2D
 	[Export]
 	public Node? CarriedEntityNodeLocation;
 
-    public Node? ParryStarEffectForThrowable;
+	public Node? ParryStarEffectForThrowable;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -78,7 +79,7 @@ public partial class Entity : Node2D
 			throw new NullReferenceException("AnimatedSprite should not be null!");
 		}
 
-        ParryStarEffectForThrowable = GetNode("res://nodes/entities/player/ParryStar.tscn");
+		ParryStarEffectForThrowable = GetNode("res://nodes/entities/player/ParryStar.tscn");
 	}
 
 	public readonly record struct Inputs(
@@ -111,6 +112,15 @@ public partial class Entity : Node2D
 		if (CharacterBody2D != null)
 		{
 			bool isBeingCarried = CanBeCarriedAndThrownInfo?.IsBeingCarried == true;
+			if (isBeingCarried)
+			{
+				// Move it on top of the player all the time.
+				Entity carryingEntity = CanBeCarriedAndThrownInfo!.MaybeCarryingEntity!;
+				var carryingEntityCarryMarker = carryingEntity.CarriedEntityNodeLocation as Marker2D;
+				// Position = carryingEntityCarryMarker!.Position;
+				GlobalPosition = carryingEntityCarryMarker!.GlobalPosition;
+			}
+
 			if (!CharacterBody2D.IsOnFloor())
 			{
 				// GD.Print($"{this} is not touching the floor");
@@ -237,7 +247,7 @@ public partial class Entity : Node2D
 
 							// TODO: Spawn Parrystar node on enemy hit location!
 							// ParryStarEffectForThrowable
-                                // parryStarLocation
+								// parryStarLocation
 						}
 					}
 
@@ -341,15 +351,29 @@ public partial class Entity : Node2D
 
 	public void TryPullObject(Entity toPull)
 	{
+		GD.Print($"Pulling object {toPull}");
+
 		bool isTethered = HasTetheredObjectInfo?.TetheredEntity == toPull;
 
-		// TODO: Detect if this was done within a parry frame period!
+		bool isParried = false;
+		if (toPull.CountdownUntilParryExpires > 0)
+		{
+			isParried = true;
+			toPull.CountdownUntilParryExpires = -10000000;
+		}
+
+		// if (!isParried)
+		// {
+		//
+		// }
 
 		// TODO: Change the tethered entity's collision layer so it doesn't collide with anything.
 
-
 		// TODO: Make it move in a straight line towards player.
+		// toPull.MaybeMoveTowardsEntity = this;
 
+		// TODO: Remove this!
+		TryCarryEntity(toPull);
 
 		// Make it show up in the foreground while it is being pulled.
 		// Change the Visual Layer to do so.
@@ -364,13 +388,21 @@ public partial class Entity : Node2D
 	{
 		if (toCarry.CanBeCarriedAndThrownInfo != null)
 		{
-			toCarry.CanBeCarriedAndThrownInfo.IsBeingCarried = true;
+			toCarry.CanBeCarriedAndThrownInfo.MaybeCarryingEntity = toCarry;
 
 			// Instantly teleport the to-carry entity to a node.
 			// toCarry.Reparent(CarriedEntityNodeLocation!, false);
 			Callable.From(() => {
-				toCarry.Reparent(CarriedEntityNodeLocation!, false);
-				toCarry.Position = Vector2.Zero;
+				// GD.Print($"Player global pos: {this.GlobalPosition}, local: {Position}");
+
+				var carriedNodeLocation = CarriedEntityNodeLocation as Marker2D;
+				// GD.Print($"CarriedNode Global Pos: {carriedNodeLocation.GlobalPosition}, Local: {carriedNodeLocation.Position}");
+				// GD.Print($"BEFORE: ToCarry Global Pos: {toCarry.GlobalPosition}, local: {toCarry.Position}");
+
+				toCarry.Position = carriedNodeLocation!.Position;
+				toCarry.GlobalPosition = carriedNodeLocation.GlobalPosition;
+
+				// GD.Print($"AFTER: ToCarry Global Pos: {toCarry.GlobalPosition}, local: {toCarry.Position}");
 			}).CallDeferred();
 
 			// Disable collision with the player (assuming they're the ones grabbing it!!)
@@ -379,8 +411,6 @@ public partial class Entity : Node2D
 			// Swap CARRIABLE layer for PLAYER_GRABBED_OBJECT.
 			toCarry.CharacterBody2D.SetCollisionLayerValue(6, false);
 			toCarry.CharacterBody2D.SetCollisionLayerValue(2, true);
-
-			CanCarryAndThrowObjectsInfo!.MaybeCarriedEntity = toCarry;
 		}
 	}
 
@@ -444,7 +474,7 @@ public partial class Entity : Node2D
 		}
 
 		var carriedEntity = throwInfo.MaybeCarriedEntity!;
-		carriedEntity.CanBeCarriedAndThrownInfo!.IsBeingCarried = false;
+		carriedEntity.CanBeCarriedAndThrownInfo!.MaybeCarryingEntity = null;
 
 		// Detach from player node, so it can move semi-independently.
 		carriedEntity.Reparent(GetTree().CurrentScene, true);

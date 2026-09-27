@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c33wvy4xt4xrc"]
+
+[ext_resource type="Script" uid="uid://m8xr73etjqcn" path="res://nodes/entities/player/MoneyBag.cs" id="1_46mdd"]
+[ext_resource type="Texture2D" uid="uid://b7okmr7d4ryqd" path="res://art/player/Bag.png" id="2_v64a0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tyuc"]
+atlas = ExtResource("2_v64a0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ldfxe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tyuc")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldfxe"]
+size = Vector2(32, 30)
+
+[node name="Moneybag" type="Node2D" unique_id=1653107175 node_paths=PackedStringArray("AnimatedSprite")]
+script = ExtResource("1_46mdd")
+AnimatedSprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1594354777]
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_ldfxe")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=679415023]
+z_index = -1
+collision_layer = 32
+collision_mask = 127
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=416977149]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_ldfxe")
+disabled = true

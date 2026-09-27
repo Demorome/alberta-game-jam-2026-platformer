@@ -29,6 +29,11 @@ public partial class Player : Entity
 	[Export]
 	int MaxJumps = 1;
 
+    [Export]
+    public Entity? TetheredEntity;
+    [Export]
+    public bool StartWithTetheredEntityBeingCarried = true;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -39,7 +44,17 @@ public partial class Player : Entity
 		BaseAirMoveSpeed = AirMoveSpeed;
 		BaseGroundMoveSpeed = GroundMoveSpeed;
 		Health = new Components.Health(MaxHealth);
-		ObjectCarrying = new Components.CanCarryObjects();
+		CanCarryAndThrowObjectsInfo = new Components.CanCarryAndThrowObjects();
+
+        HasTetheredObjectInfo = new Components.HasTetheredObject()
+        {
+            TetheredEntity = this.TetheredEntity!
+        };
+
+        if (StartWithTetheredEntityBeingCarried)
+        {
+            TryCarryEntity(TetheredEntity!);
+        }
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -98,6 +113,7 @@ public partial class Player : Entity
 			// Air jump (double jump, etc.)
 			else
 			{
+                // +1, since being in the air already consumes the first jump.
 				if (jumpInfo.CurrentJumps + 1 < jumpInfo.MaxJumps)
 				{
 					CharacterBody2D.Velocity = CharacterBody2D.Velocity with { Y = -jumpInfo.JumpStrength * 0.8f };
@@ -132,17 +148,6 @@ public partial class Player : Entity
 				0,
 				moveSpeed * MoveDecelerationMult * (float)delta
 			);
-		}
-
-		float verticalAim = Input.GetAxis("aim_up", "aim_down");
-		bool grab_or_throw_pressed = Input.GetActionRawStrength("grab_or_throw") > .5f;
-
-		if (grab_or_throw_pressed)
-		{
-			if (ObjectCarrying.MaybeCarriedEntity != null)
-			{
-				// Throw in moving + aiming direction.
-			}
 		}
 
 		CharacterBody2D.Velocity = new Vector2(newVelocityX, oldVelocity.Y);

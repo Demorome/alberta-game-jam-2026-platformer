@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://tph47ac20mor" path="res://nodes/entities/player/Player.cs" id="1_50kia"]
 [ext_resource type="Texture2D" uid="uid://5vdppyi7220m" path="res://art/player/pixilart-sprite7.png" id="2_jmlei"]
-[ext_resource type="Texture2D" uid="uid://b7okmr7d4ryqd" path="res://art/player/Bag.png" id="3_apgst"]
 [ext_resource type="Texture2D" uid="uid://brut6cdrmflgq" path="res://art/player/Bonni_sprites.png" id="3_ryjgh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldfxe"]
@@ -202,13 +201,14 @@ animations = [{
 
 [node name="Player" type="Node2D" unique_id=1748661077 node_paths=PackedStringArray("AnimatedSprite", "CharacterBody2D") groups=["player"]]
 script = ExtResource("1_50kia")
+PlayerInputControlled = true
 AnimatedSprite = NodePath("CharacterBody2D/AnimatedSprite2D")
 CharacterBody2D = NodePath("CharacterBody2D")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1927395993 groups=["player"]]
 collision_mask = 96
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=445683785]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=445683785 groups=["player"]]
 position = Vector2(-2.5, -21)
 shape = SubResource("RectangleShape2D_ldfxe")
 

@@ -2,26 +2,42 @@
 
 [ext_resource type="Script" uid="uid://b3un8db6a3x60" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.gd" id="1_jump"]
 [ext_resource type="PackedScene" uid="uid://1lju6rkdtp7r" path="res://nodes/entities/enemies/lethal_component.tscn" id="2_lethal"]
-[ext_resource type="Texture2D" uid="uid://dj2l0yg1ts3hd" path="res://art/enemies/angelfrog/angelfrog1.png" id="3_ny25v"]
-[ext_resource type="Texture2D" uid="uid://dmslkg1sn3f8u" path="res://art/enemies/angelfrog/angelfrog2.png" id="4_t24nn"]
-[ext_resource type="Texture2D" uid="uid://cxj64f7yirg7r" path="res://art/enemies/angelfrog/angelfrog3.png" id="5_1fg8m"]
-[ext_resource type="Texture2D" uid="uid://btk5al7eutr7l" path="res://art/enemies/angelfrog/angelfrogjump1.png" id="6_83qug"]
-[ext_resource type="Texture2D" uid="uid://4tjdwtaxkx0q" path="res://art/enemies/angelfrog/angelfrogjump2.png" id="7_qeu6y"]
+[ext_resource type="Texture2D" uid="uid://4wyl3ail5dbr" path="res://art/enemies/angelfrog/angel_frog_sprites.png" id="3_clo8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lutn8"]
+atlas = ExtResource("3_clo8k")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t24nn"]
+atlas = ExtResource("3_clo8k")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fg8m"]
+atlas = ExtResource("3_clo8k")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny25v"]
+atlas = ExtResource("3_clo8k")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncwyp"]
+atlas = ExtResource("3_clo8k")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s0cde"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_ny25v")
+"texture": SubResource("AtlasTexture_lutn8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_t24nn")
+"texture": SubResource("AtlasTexture_t24nn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_1fg8m")
+"texture": SubResource("AtlasTexture_1fg8m")
 }],
 "loop": 1,
 "name": &"default",
@@ -29,10 +45,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_83qug")
+"texture": SubResource("AtlasTexture_ny25v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_qeu6y")
+"texture": SubResource("AtlasTexture_ncwyp")
 }],
 "loop": 1,
 "name": &"jump",
@@ -52,5 +68,7 @@ shape = SubResource("RectangleShape2D_body")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1519404770]
 sprite_frames = SubResource("SpriteFrames_s0cde")
+animation = &"jump"
 autoplay = "default"
-frame_progress = 0.11592079
+frame = 1
+frame_progress = 0.97986

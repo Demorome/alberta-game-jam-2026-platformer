@@ -71,7 +71,7 @@ bullet_spawn_delay = 100
 position = Vector2(240, 240)
 jump_interval = 2.2
 jump_delay = 0.1
-jump_pattern = Array[float]([1.0, 0.5])
+jump_pattern = Array[float]([1.25, 0.5])
 
 [node name="JumpEnemy2" parent="." unique_id=1927278561 instance=ExtResource("3_6gndq")]
 position = Vector2(360, 240)

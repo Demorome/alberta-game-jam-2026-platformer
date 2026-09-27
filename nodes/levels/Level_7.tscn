@@ -71,11 +71,6 @@ position = Vector2(400, 80)
 shoot_delay = 3.0
 shoot_interval = 0.1
 
-[node name="ShootEnemy2" parent="." unique_id=60060280 instance=ExtResource("4_8pdr7")]
-position = Vector2(400, 48)
-shoot_delay = 3.0
-shoot_interval = 0.1
-
 [node name="LevelChanger" parent="." unique_id=592061574 instance=ExtResource("4_c3q0p")]
 position = Vector2(320, 376)
 rotation = 1.5707964

@@ -192,7 +192,7 @@ script = ExtResource("1_50kia")
 AnimatedSprite = NodePath("CharacterBody2D/AnimatedSprite2D")
 CharacterBody2D = NodePath("CharacterBody2D")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1927395993]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1927395993 groups=["player"]]
 collision_mask = 112
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=445683785]

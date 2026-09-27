@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://nodes/menus/end_screen.gd" id="1_end"]
+
+[node name="GameComplete" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_end")
+title = "YOU WIN!"
+message = "Thanks for playing!"
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Box" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="Center/Box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "YOU WIN!"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="Center/Box"]
+layout_mode = 2
+text = "Thanks for playing!"
+horizontal_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="Center/Box"]
+layout_mode = 2
+text = "Final score: 0
+Play time: 00:00
+Deaths: 0"
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="Center/Box"]
+layout_mode = 2
+text = "Press any key to continue"
+horizontal_alignment = 1

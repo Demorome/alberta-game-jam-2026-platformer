@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cam5w74fep5i" path="res://nodes/entities/enemies/pacifist_enemy/pacifist_enemy.tscn" id="3_8ejbr"]
 [ext_resource type="PackedScene" uid="uid://brcnjafe2gbs4" path="res://nodes/levels/LevelChanger.tscn" id="4_nenlx"]
 [ext_resource type="PackedScene" path="res://nodes/menus/game_complete.tscn" id="5_43ruy"]
+[ext_resource type="PackedScene" uid="uid://77og5br0g55u" path="res://nodes/entities/chain_system/ChainSystem.tscn" id="6_yrywb"]
+[ext_resource type="Texture2D" uid="uid://b3st0ccb2wegq" path="res://art/player/chain_link.png" id="7_qodq5"]
+[ext_resource type="PackedScene" uid="uid://c33wvy4xt4xrc" path="res://nodes/entities/player/moneybag.tscn" id="8_xvus7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
 texture = ExtResource("1_8ejbr")
@@ -87,3 +90,11 @@ position = Vector2(528, 208)
 [node name="LevelChanger" parent="." unique_id=592061574 instance=ExtResource("4_nenlx")]
 position = Vector2(656, 184)
 target_scene = ExtResource("5_43ruy")
+
+[node name="ChainSystem" parent="." unique_id=1673201277 instance=ExtResource("6_yrywb")]
+position = Vector2(38, 20)
+auto_setup = true
+link_texture = ExtResource("7_qodq5")
+
+[node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("8_xvus7")]
+position = Vector2(107, 36)

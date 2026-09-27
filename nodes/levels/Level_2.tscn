@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dwj70p15ki68t" path="res://art/tiles/tileset.png" id="1_2jda8"]
 [ext_resource type="PackedScene" uid="uid://xvky0d3nnmb1" path="res://nodes/entities/enemies/sandbox/test_player.tscn" id="2_eo5cg"]
-[ext_resource type="PackedScene" uid="uid://c0ujg2wuj4j6s" path="res://nodes/entities/enemies/jump_enemy/jump_enemy.tscn" id="3_eo5cg"]
+[ext_resource type="PackedScene" uid="uid://cam5w74fep5i" path="res://nodes/entities/enemies/pacifist_enemy/pacifist_enemy.tscn" id="3_eo5cg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wkfx"]
 texture = ExtResource("1_2jda8")
@@ -61,8 +61,8 @@ tile_map_data = PackedByteArray("AAAAAAoAAQACAAEAAAAAAAkAAQACAAEAAAAAAAgAAQACAAE
 tile_set = SubResource("TileSet_kvns4")
 
 [node name="TestPlayer" parent="." unique_id=58294919 instance=ExtResource("2_eo5cg")]
-position = Vector2(567, 24)
-JUMP_VELOCITY = -400.0
+position = Vector2(576, 16)
+JUMP_VELOCITY = -300.0
 
-[node name="JumpEnemy" parent="." unique_id=1654153278 instance=ExtResource("3_eo5cg")]
+[node name="PacifistEnemy" parent="." unique_id=123456789 instance=ExtResource("3_eo5cg")]
 position = Vector2(112, 272)

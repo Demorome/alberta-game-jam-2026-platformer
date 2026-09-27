@@ -60,5 +60,5 @@ tile_map_data = PackedByteArray("AAAAAAoAAQAEAAEAAAABAAoAAQABAAEAAAACAAoAAQABAAE
 tile_set = SubResource("TileSet_kvns4")
 
 [node name="TestPlayer" parent="." unique_id=58294919 instance=ExtResource("2_eo5cg")]
-position = Vector2(46, 22)
-JUMP_VELOCITY = -400.0
+position = Vector2(48, 16)
+JUMP_VELOCITY = -300.0

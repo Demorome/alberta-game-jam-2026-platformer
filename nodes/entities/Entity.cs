@@ -465,17 +465,17 @@ public partial class Entity : Node2D
 		{
 			stateEnded = true;
 			GD.Print("Stopped throwing");
-			CanCarryAndThrowObjectsInfo!.IsThrowing = false;
 		}
 		if (animName.Contains("pulling"))
 		{
 			stateEnded = true;
 			GD.Print("Stopped pulling");
-			HasTetheredObjectInfo!.IsPulling = false;
 		}
 
 		if (stateEnded)
 		{
+			HasTetheredObjectInfo!.IsPulling = false;
+			CanCarryAndThrowObjectsInfo!.IsThrowing = false;
 			AnimatedSprite!.Play("idle");
 		}
 	}

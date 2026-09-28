@@ -71,7 +71,7 @@ tile_set = SubResource("TileSet_kvns4")
 [node name="MoneyBag" parent="." unique_id=1653107175 instance=ExtResource("5_m73q4")]
 position = Vector2(96, 48)
 
-[node name="Player" parent="." unique_id=1748661077 node_paths=PackedStringArray("TetheredEntity") groups=["player"] instance=ExtResource("2_qyq5f")]
+[node name="Player" parent="." unique_id=1748661077 node_paths=PackedStringArray("TetheredEntity") instance=ExtResource("2_qyq5f")]
 position = Vector2(48, 40)
 TetheredEntity = NodePath("../MoneyBag")
 

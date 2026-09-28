@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="AlbertaGameJam2026_Plaftformer"
+config/name="Spare Bones"
 run/main_scene="uid://dymyn86li0v0"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
-config/icon="res://art/icon.svg"
+config/icon="uid://4qi4my6dlwks"
 
 [autoload]
 
@@ -25,6 +25,7 @@ BackgroundMusic="*uid://88gdv23y08w1"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
@@ -44,6 +45,7 @@ folder_colors={
 
 [global_group]
 
+player=""
 enemy=""
 player_group=""
 bag_group=""
